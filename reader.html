@@ -1896,6 +1896,205 @@ html:not([data-theme="dark"]) .audio-qari-choice small,
 html:not([data-theme="dark"]) .audio-offline-message small,
 html:not([data-theme="dark"]) .field label{color:#5F756E}
 html:not([data-theme="dark"]) select option{color:#0F5C50;background:#FFFCF4}
+
+
+/* ---------- v101 · unified Zad Al-Khair reader menus ----------
+   Visual-only contract: all reader sheets, reciter/download dialogs and
+   Quran-home actions share one ivory / deep-green / soft-gold language. */
+html:not([data-theme="dark"]) .quran-index-head-action{
+  color:var(--brand-strong) !important;
+  background:color-mix(in srgb,var(--brand) 6%,var(--ui-surface-2));
+  border-color:color-mix(in srgb,var(--gold) 24%,var(--ui-line));
+}
+html:not([data-theme="dark"]) .quran-index-head-action:active{
+  background:color-mix(in srgb,var(--brand) 11%,var(--ui-surface-2));
+  border-color:color-mix(in srgb,var(--gold) 48%,var(--ui-line));
+}
+
+/* One shell for every reader dialog. */
+.sheet,
+.quran-options-sheet{
+  background:
+    radial-gradient(circle at 88% -10%,color-mix(in srgb,var(--gold) 9%,transparent),transparent 18rem),
+    var(--ui-surface);
+  color:var(--ui-text);
+  border-color:color-mix(in srgb,var(--gold) 30%,var(--ui-line));
+}
+.sheethead,
+.quran-options-sheet .sheethead{
+  position:relative;
+  padding-bottom:12px;
+  border-bottom:1px solid color-mix(in srgb,var(--gold) 24%,var(--ui-line));
+}
+.sheethead:after,
+.quran-options-sheet .sheethead:after{
+  content:"";
+  position:absolute;
+  right:0;
+  bottom:-1px;
+  width:52px;
+  height:1.5px;
+  border-radius:999px;
+  background:var(--gold);
+  opacity:.9;
+}
+.sheethead h3,
+.quran-options-sheet .sheethead h3{
+  color:var(--brand-strong) !important;
+  font-weight:400;
+}
+.close-sheet,
+.quran-options-sheet .close-sheet{
+  color:var(--brand-strong);
+  background:color-mix(in srgb,var(--brand) 5%,var(--ui-surface-2));
+  border:1px solid color-mix(in srgb,var(--gold) 22%,var(--ui-line));
+  font-weight:500;
+}
+.close-sheet:active,
+.quran-options-sheet .close-sheet:active{
+  background:color-mix(in srgb,var(--brand) 10%,var(--ui-surface-2));
+}
+
+/* One card language for options, reciters, downloads and ordinary selectors. */
+.audio-qari-choice,
+.audio-offline-checkrow,
+.audio-offline-actions button,
+.quran-hub-menu button,
+.index-row,
+.tafsir-nav-btn,
+.field select,
+.quran-search-input{
+  border-color:color-mix(in srgb,var(--gold) 22%,var(--ui-line));
+  background:color-mix(in srgb,var(--brand) 2.5%,var(--ui-surface-2));
+  color:var(--brand-strong);
+  box-shadow:none;
+}
+.audio-qari-choice,
+.audio-offline-checkrow,
+.audio-offline-actions button{
+  border-radius:14px;
+  font-weight:600;
+}
+.audio-qari-choice:active,
+.audio-offline-checkrow:active,
+.audio-offline-actions button:active,
+.quran-hub-menu button:active,
+.index-row:active,
+.tafsir-nav-btn:active{
+  background:color-mix(in srgb,var(--brand) 8%,var(--ui-surface-2));
+  border-color:color-mix(in srgb,var(--gold) 42%,var(--ui-line));
+}
+.audio-qari-choice.downloaded,
+.audio-offline-checkrow.select-all{
+  background:color-mix(in srgb,var(--gold) 8%,var(--ui-surface-2));
+  border-color:color-mix(in srgb,var(--gold) 45%,var(--ui-line));
+}
+.audio-offline-prompt{
+  color:var(--brand-strong) !important;
+  font-weight:600;
+}
+.audio-qari-choice small,
+.audio-offline-message small,
+.quran-hub-menu button small,
+.field label{
+  color:color-mix(in srgb,var(--brand-strong) 62%,var(--ui-muted));
+}
+.audio-offline-more{
+  color:var(--brand);
+  font-weight:600;
+}
+.audio-offline-actions .delete{
+  color:#7A5A25;
+  background:color-mix(in srgb,var(--gold) 8%,var(--ui-surface));
+  border-color:color-mix(in srgb,var(--gold) 38%,var(--ui-line));
+}
+
+/* Bring the previously bespoke Options sheet back into the same system. */
+.quran-options-sheet .sheethead{padding:15px 16px 12px}
+.quran-options-sheet .sheethead:after{right:16px;width:52px;height:1.5px}
+.quran-options-sheet .sheethead h3{font-size:27px}
+.quran-options-intro{
+  padding:10px 16px 0;
+  color:var(--ui-muted);
+  font-weight:500;
+}
+.quran-options-intro:before{width:20px;height:1px;box-shadow:none;background:var(--gold)}
+.quran-hub-menu{gap:8px;margin:9px 12px 4px}
+.quran-hub-menu button{
+  min-height:60px;
+  border-radius:15px;
+  padding:8px 10px;
+  grid-template-columns:42px minmax(0,1fr) 17px;
+  gap:10px;
+  background:color-mix(in srgb,var(--brand) 2.5%,var(--ui-surface-2));
+}
+.quran-option-icon{
+  width:40px;height:40px;border-radius:12px;
+  color:var(--brand);
+  background:color-mix(in srgb,var(--brand) 7%,var(--ui-surface));
+  box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--gold) 17%,transparent);
+}
+.quran-option-icon.gold{
+  color:#916A25;
+  background:color-mix(in srgb,var(--gold) 9%,var(--ui-surface));
+  box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--gold) 22%,transparent);
+}
+.quran-option-copy strong{color:var(--brand-strong);font-weight:600}
+.quran-option-arrow{color:var(--gold)}
+
+/* Native reciter/select controls: same identity even where the OS renders the popup. */
+html:not([data-theme="dark"]) .audio-qari,
+html:not([data-theme="dark"]) .field select{
+  color:var(--brand-strong);
+  background:color-mix(in srgb,var(--brand) 2.5%,var(--ui-surface));
+  border-color:color-mix(in srgb,var(--gold) 22%,var(--ui-line));
+}
+html:not([data-theme="dark"]) select option{
+  color:var(--brand-strong);
+  background:#FFFCF4;
+}
+
+/* Dark mode is the same component system, translated to the night palette. */
+html[data-theme="dark"] .sheet,
+html[data-theme="dark"] .quran-options-sheet{
+  background:
+    radial-gradient(circle at 88% -10%,rgba(228,201,128,.07),transparent 18rem),
+    var(--ui-surface);
+  border-color:rgba(228,201,128,.20);
+}
+html[data-theme="dark"] .sheethead,
+html[data-theme="dark"] .quran-options-sheet .sheethead{border-bottom-color:rgba(228,201,128,.16)}
+html[data-theme="dark"] .sheethead:after,
+html[data-theme="dark"] .quran-options-sheet .sheethead:after{background:var(--gold-hi)}
+html[data-theme="dark"] .sheethead h3,
+html[data-theme="dark"] .quran-options-sheet .sheethead h3{color:var(--gold-hi) !important}
+html[data-theme="dark"] .audio-qari-choice,
+html[data-theme="dark"] .audio-offline-checkrow,
+html[data-theme="dark"] .audio-offline-actions button,
+html[data-theme="dark"] .quran-hub-menu button,
+html[data-theme="dark"] .index-row,
+html[data-theme="dark"] .tafsir-nav-btn,
+html[data-theme="dark"] .field select,
+html[data-theme="dark"] .quran-search-input{
+  color:var(--ivory);
+  background:rgba(255,249,234,.045);
+  border-color:rgba(228,201,128,.16);
+}
+html[data-theme="dark"] .audio-qari-choice:active,
+html[data-theme="dark"] .audio-offline-checkrow:active,
+html[data-theme="dark"] .audio-offline-actions button:active,
+html[data-theme="dark"] .quran-hub-menu button:active,
+html[data-theme="dark"] .index-row:active,
+html[data-theme="dark"] .tafsir-nav-btn:active{background:rgba(228,201,128,.07);border-color:rgba(228,201,128,.30)}
+html[data-theme="dark"] .audio-qari-choice.downloaded,
+html[data-theme="dark"] .audio-offline-checkrow.select-all{background:rgba(228,201,128,.07);border-color:rgba(228,201,128,.30)}
+html[data-theme="dark"] .audio-offline-prompt{color:var(--ivory) !important}
+html[data-theme="dark"] .audio-qari-choice small,
+html[data-theme="dark"] .audio-offline-message small,
+html[data-theme="dark"] .quran-hub-menu button small,
+html[data-theme="dark"] .field label{color:rgba(255,249,234,.62)}
+html[data-theme="dark"] .quran-option-copy strong{color:var(--ivory)}
+html[data-theme="dark"] .quran-index-head-action{color:var(--ivory)}
 </style>
 </head>
 <body class="hidden-tools zad-identity">
