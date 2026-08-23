@@ -1,15 +1,15 @@
 "use strict";
 
 /*
-  Zad Al-Khair service worker — v89 production candidate.
+  Zad Al-Khair service worker — v90 staging candidate.
   Cache domains are intentionally separated so an interface update never forces
   a re-download of the Mushaf, and a Tafsir correction never invalidates QCF4.
 */
-const SHELL_CACHE="zad-shell-v89";
+const SHELL_CACHE="zad-shell-v90";
 const QURAN_CACHE="zad-quran-core-v1";
 const TAFSIR_CACHE="zad-tafsir-alwajeez-v1";
 const AUDIO_CACHE="zad-audio-v1";
-const RUNTIME_CACHE="zad-runtime-v89";
+const RUNTIME_CACHE="zad-runtime-v90";
 const LEGACY_QURAN_CACHE="zad-quran-v80";
 
 const QCF_BASE="https://cdn.jsdelivr.net/npm/quran-qcf4@1.0.3/";

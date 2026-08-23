@@ -1791,6 +1791,67 @@ html[data-theme="dark"] .quran-option-icon.gold{
   .quran-option-icon{width:41px;height:41px;border-radius:13px}
 }
 
+
+/* ---------- v90 · unified reference palette + selected Surah ---------- */
+/* In daylight the current Surah mirrors the night treatment: gold, not green. */
+html:not([data-theme="dark"]) .quran-index-row.current .quran-index-name,
+html:not([data-theme="dark"]) .quran-index-row.current .quran-index-surah-num{
+  color:var(--gold) !important;
+}
+
+/* One reference language everywhere: index tab and the sheet opened while reading. */
+.quran-bookmark-group,
+.bookmark-section{
+  --ref-accent:var(--brand);
+  --ref-tint:color-mix(in srgb,var(--brand) 5%,var(--ui-surface));
+  --ref-line:color-mix(in srgb,var(--brand) 19%,var(--ui-line));
+}
+.quran-bookmark-group.ref-recent,.bookmark-section.ref-recent{
+  --ref-accent:var(--brand);
+  --ref-tint:color-mix(in srgb,var(--brand) 5%,var(--ui-surface));
+  --ref-line:color-mix(in srgb,var(--brand) 19%,var(--ui-line));
+}
+.quran-bookmark-group.ref-pages,.bookmark-section.ref-pages{
+  --ref-accent:#9A6C20;
+  --ref-tint:color-mix(in srgb,var(--gold) 8%,var(--ui-surface));
+  --ref-line:color-mix(in srgb,var(--gold) 28%,var(--ui-line));
+}
+.quran-bookmark-group.ref-ayahs,.bookmark-section.ref-ayahs{
+  --ref-accent:#171A18;
+  --ref-tint:color-mix(in srgb,#B8AA91 7%,var(--ui-surface));
+  --ref-line:color-mix(in srgb,#8D806A 22%,var(--ui-line));
+}
+.bookmark-section{
+  gap:7px;margin:0;padding:9px 10px 7px;border:1px solid var(--ref-line);border-radius:17px;background:var(--ref-tint);
+}
+.bookmark-section+.bookmark-section{padding-top:9px;border-top:1px solid var(--ref-line)}
+.bookmark-title h4{color:var(--ref-accent) !important;line-height:1.55}
+.bookmark-title small{color:color-mix(in srgb,var(--ref-accent) 45%,var(--ui-muted))}
+.bookmark-list{gap:0}
+.bookmark-row{border-bottom:1px solid color-mix(in srgb,var(--ref-accent) 13%,var(--ui-line));gap:7px}
+.bookmark-row:last-child{border-bottom:0}
+.bookmark-main,.bookmark-delete{background:transparent !important;border:0 !important;color:var(--ui-text);border-radius:11px}
+.bookmark-main{padding:10px 7px}
+.bookmark-main b{color:var(--ref-accent);line-height:1.75}
+.bookmark-main small{color:color-mix(in srgb,var(--ref-accent) 46%,var(--ui-muted)) !important}
+.bookmark-delete,.quran-bookmark-del{color:color-mix(in srgb,var(--ref-accent) 38%,var(--ui-muted)) !important}
+.bookmark-delete:active,.quran-bookmark-del:active{background:color-mix(in srgb,var(--ref-accent) 8%,transparent) !important}
+
+html[data-theme="dark"] .quran-bookmark-group.ref-recent,
+html[data-theme="dark"] .bookmark-section.ref-recent{
+  --ref-accent:#72C6B1;--ref-tint:rgba(73,161,140,.055);--ref-line:rgba(73,161,140,.18);
+}
+html[data-theme="dark"] .quran-bookmark-group.ref-pages,
+html[data-theme="dark"] .bookmark-section.ref-pages{
+  --ref-accent:var(--gold-hi);--ref-tint:rgba(228,201,128,.05);--ref-line:rgba(228,201,128,.18);
+}
+html[data-theme="dark"] .quran-bookmark-group.ref-ayahs,
+html[data-theme="dark"] .bookmark-section.ref-ayahs{
+  --ref-accent:var(--ivory);--ref-tint:rgba(255,249,234,.045);--ref-line:rgba(255,249,234,.15);
+}
+html[data-theme="dark"] .bookmark-main small,
+html[data-theme="dark"] .quran-bookmark-open small{color:rgba(255,249,234,.62) !important}
+
 </style>
 </head>
 <body class="hidden-tools zad-identity">
@@ -2967,9 +3028,9 @@ async function bookmarkAyahExcerpt(item){
 }
 function openBookmarks(){
   const b=sheet("العلامات المرجعية",`<div class="bookmark-sections">
-    <section class="bookmark-section"><div class="bookmark-title"><h4>آخر المتصفحات</h4><small>آخر ٣ زيارات</small></div><div class="bookmark-list" id="recentList"></div></section>
-    <section class="bookmark-section"><div class="bookmark-title"><h4>مرجعيات الصفحات</h4></div><div class="bookmark-list" id="pageBookmarkList"></div></section>
-    <section class="bookmark-section"><div class="bookmark-title"><h4>مرجعيات الآيات</h4></div><div class="bookmark-list" id="ayahBookmarkList"></div></section>
+    <section class="bookmark-section ref-recent"><div class="bookmark-title"><h4>آخر المتصفحات</h4><small>آخر ٣ زيارات</small></div><div class="bookmark-list" id="recentList"></div></section>
+    <section class="bookmark-section ref-pages"><div class="bookmark-title"><h4>مرجعيات الصفحات</h4></div><div class="bookmark-list" id="pageBookmarkList"></div></section>
+    <section class="bookmark-section ref-ayahs"><div class="bookmark-title"><h4>مرجعيات الآيات</h4></div><div class="bookmark-list" id="ayahBookmarkList"></div></section>
   </div>`);
   const recentHost=b.querySelector("#recentList"),pageHost=b.querySelector("#pageBookmarkList"),ayahHost=b.querySelector("#ayahBookmarkList");
 
