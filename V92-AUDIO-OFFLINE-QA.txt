@@ -1,0 +1,25 @@
+Zad Al-Khair v92 — Offline Surah Audio QA
+
+Scope: production-final v91 + per-surah offline audio + launcher icon-column alignment.
+
+reader.html inline JavaScript: PASS
+index.html inline JavaScript: PASS
+sw.js JavaScript: PASS
+manifest.json: PASS
+Surah download action present: PASS
+Downloaded check icon present: PASS
+Exact unavailable message present: PASS
+Downloaded-management message present: PASS
+Delete action present: PASS
+Offline package is reciter-specific: PASS
+SW explicit audio-package message: PASS
+SW audio cache preserved: PASS
+SW Range support preserved: PASS
+Launcher fixed icon column: PASS
+Quran cache version unchanged: PASS
+Tafsir cache version unchanged: PASS
+
+Mock service-worker test:
+PASS — explicit audio+support resources cache correctly; cached byte-range request returns HTTP 206 and correct byte slice; cached timing JSON is available while network is disabled.
+
+Device test still required because external reciter/CDN CORS and Android media behavior cannot be fully reproduced in this container.

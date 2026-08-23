@@ -1,15 +1,15 @@
 "use strict";
 
 /*
-  Zad Al-Khair service worker — v90 staging candidate.
+  Zad Al-Khair service worker — production final.
   Cache domains are intentionally separated so an interface update never forces
   a re-download of the Mushaf, and a Tafsir correction never invalidates QCF4.
 */
-const SHELL_CACHE="zad-shell-v90";
+const SHELL_CACHE="zad-shell-v92";
 const QURAN_CACHE="zad-quran-core-v1";
 const TAFSIR_CACHE="zad-tafsir-alwajeez-v1";
 const AUDIO_CACHE="zad-audio-v1";
-const RUNTIME_CACHE="zad-runtime-v90";
+const RUNTIME_CACHE="zad-runtime-v92";
 const LEGACY_QURAN_CACHE="zad-quran-v80";
 
 const QCF_BASE="https://cdn.jsdelivr.net/npm/quran-qcf4@1.0.3/";
@@ -144,6 +144,10 @@ async function networkFirst(request){
 function isAudioUrl(url,request){
   return request.destination==="audio"||/\.(?:mp3|m4a|ogg|aac)(?:$|\?)/i.test(url.pathname);
 }
+function isAudioSupportUrl(url){
+  return (url.hostname==="mp3quran.net"&&/^\/api\/v3\/ayat_timing(?:\/reads)?$/.test(url.pathname))||
+    (url.hostname==="cdn.jsdelivr.net"&&/\/audio\/maher\/timestamps\/\d+\.json$/i.test(url.pathname));
+}
 function fullAudioRequest(request){
   return new Request(request.url,{method:"GET",mode:request.mode,credentials:request.credentials,redirect:"follow"});
 }
@@ -168,10 +172,16 @@ async function rangedResponse(response,rangeHeader){
 async function audioFetch(request){
   const cache=await caches.open(AUDIO_CACHE);
   const full=fullAudioRequest(request);
-  const hit=await cache.match(full,{ignoreVary:true});
+  const hit=await cache.match(request.url,{ignoreVary:true})||await cache.match(full,{ignoreVary:true});
   if(hit)return rangedResponse(hit,request.headers.get("range"));
   /* Audio is never cached implicitly: large downloads must remain user initiated. */
   return fetch(request);
+}
+async function audioSupportFetch(request){
+  const cache=await caches.open(AUDIO_CACHE);
+  const hit=await cache.match(request.url,{ignoreVary:true});
+  if(hit)return hit;
+  return cacheFirst(request,RUNTIME_CACHE);
 }
 
 self.addEventListener("fetch",event=>{
@@ -189,6 +199,10 @@ self.addEventListener("fetch",event=>{
   }
   if(url.href.startsWith(QCF_BASE)||url.href===QUL_HEADER){
     event.respondWith(cacheFirst(request,QURAN_CACHE));
+    return;
+  }
+  if(isAudioSupportUrl(url)){
+    event.respondWith(audioSupportFetch(request));
     return;
   }
   if(url.origin===self.location.origin&&/\/data\/tafsir\/al-wajeez\//.test(url.pathname)){
@@ -254,28 +268,43 @@ async function checkOfflineLibrary(){
   return state;
 }
 
-/* Infrastructure for future explicit per-surah audio downloads. Nothing here
-   starts automatically. Cross-origin audio is cached only on an explicit
-   CACHE_AUDIO_URLS message from the reader UI. */
+/* Explicit per-surah audio downloads. Audio is never bulk-downloaded and is
+   never cached merely because the user streamed it. Each download is initiated
+   from the Surah index and may include small timing/support JSON resources. */
 let audioPackPromise=null;
-async function cacheAudioUrls(urls,tag=""){
-  const clean=[...new Set((Array.isArray(urls)?urls:[]).filter(url=>/^https:\/\//i.test(String(url))))];
+function cleanAudioResources(resources){
+  const out=[],seen=new Set();
+  for(const item of Array.isArray(resources)?resources:[]){
+    const url=String(typeof item==="string"?item:item?.url||"");
+    const kind=typeof item==="object"&&item?.kind==="support"?"support":"audio";
+    if(!/^https:\/\//i.test(url)||seen.has(url))continue;seen.add(url);out.push({url,kind});
+  }
+  return out;
+}
+async function fetchExplicitAudioResource(item){
+  if(item.kind==="support"){
+    const req=new Request(item.url,{method:"GET",mode:"cors",credentials:"omit",redirect:"follow"});
+    const response=await fetch(req);if(!cacheable(response))throw new Error("support response");return {req,response};
+  }
+  try{
+    const req=new Request(item.url,{method:"GET",mode:"cors",credentials:"omit",redirect:"follow"});
+    const response=await fetch(req);if(cacheable(response))return {req,response};
+  }catch(_){ }
+  const req=new Request(item.url,{method:"GET",mode:"no-cors",credentials:"omit",redirect:"follow"});
+  const response=await fetch(req);if(!cacheable(response))throw new Error("audio response");return {req,response};
+}
+async function cacheAudioResources(resources,tag=""){
+  const clean=cleanAudioResources(resources);
   if(!clean.length)return {done:0,failed:0};
   if(audioPackPromise)return audioPackPromise;
   audioPackPromise=(async()=>{
     const cache=await caches.open(AUDIO_CACHE);let done=0,failed=0;
-    for(const url of clean){
-      const req=fullAudioRequest(new Request(url));
+    for(const item of clean){
       try{
-        const hit=await cache.match(req,{ignoreVary:true});
-        if(!hit){
-          const response=await fetch(req);
-          if(!cacheable(response))throw new Error("audio response");
-          await cache.put(req,response.clone());
-        }
+        const hit=await cache.match(item.url,{ignoreVary:true});
+        if(!hit){const {req,response}=await fetchExplicitAudioResource(item);await cache.put(req,response.clone())}
       }catch(_){failed++}
-      done++;
-      await notifyAll({type:"AUDIO_OFFLINE_PROGRESS",tag,done,total:clean.length,failed});
+      done++;await notifyAll({type:"AUDIO_OFFLINE_PROGRESS",tag,done,total:clean.length,failed});
     }
     await notifyAll({type:"AUDIO_OFFLINE_DONE",tag,done,total:clean.length,failed});
     return {done,failed};
@@ -287,5 +316,6 @@ self.addEventListener("message",event=>{
   const data=event.data||{};
   if(data.type==="CHECK_OFFLINE_LIBRARY"||data.type==="CHECK_QURAN_OFFLINE")event.waitUntil(checkOfflineLibrary());
   if(data.type==="ENSURE_OFFLINE_LIBRARY"||data.type==="CACHE_QURAN_OFFLINE")event.waitUntil(ensureOfflineLibrary());
-  if(data.type==="CACHE_AUDIO_URLS")event.waitUntil(cacheAudioUrls(data.urls,data.tag));
+  if(data.type==="CACHE_AUDIO_PACKAGE")event.waitUntil(cacheAudioResources(data.resources,data.tag));
+  if(data.type==="CACHE_AUDIO_URLS")event.waitUntil(cacheAudioResources((data.urls||[]).map(url=>({url,kind:"audio"})),data.tag));
 });

@@ -1100,7 +1100,7 @@ body.show-home-mine .tb-user,body.show-top-user .tb-user{opacity:1;transform:non
 }
 
 
-/* ---------- v90 · بوابة زاد الخير: محراب وهوية واحدة ---------- */
+/* ---------- Production final · بوابة زاد الخير: محراب وهوية واحدة ---------- */
 .zk-launch{
   position:fixed;inset:0;z-index:120;display:none;overflow:auto;overscroll-behavior:contain;
   padding:max(26px,env(safe-area-inset-top)) max(20px,env(safe-area-inset-right)) max(26px,env(safe-area-inset-bottom)) max(20px,env(safe-area-inset-left));
@@ -1168,7 +1168,7 @@ body.show-home-mine .tb-user,body.show-top-user .tb-user{opacity:1;transform:non
 .zk-launch-options::before{content:"";height:1px;width:64%;margin:0 auto 8px;background:linear-gradient(90deg,transparent,rgba(197,154,74,.46),transparent)}
 .zk-launch-option{
   appearance:none;width:100%;min-height:76px;border:1px solid rgba(197,154,74,.28);border-radius:19px;padding:11px 14px;
-  display:grid;grid-template-columns:52px minmax(0,1fr);gap:13px;align-items:center;direction:rtl;text-align:right;
+  display:grid;grid-template-columns:50px minmax(0,210px);justify-content:center;align-items:center;gap:13px;direction:rtl;text-align:center;
   background:rgba(255,252,244,.86);color:#173D35;cursor:pointer;
   box-shadow:0 13px 31px -28px rgba(55,44,22,.72),inset 0 1px 0 rgba(255,255,255,.94);
   transition:transform .14s ease,border-color .18s ease,background .18s ease,box-shadow .18s ease
@@ -1178,9 +1178,9 @@ body.show-home-mine .tb-user,body.show-top-user .tb-user{opacity:1;transform:non
 .zk-launch-option:hover{border-color:rgba(197,154,74,.60);box-shadow:0 17px 36px -27px rgba(55,44,22,.76),inset 0 1px 0 rgba(255,255,255,.96)}
 .zk-launch-option:active{transform:scale(.986);background:#F0E7D7}
 .zk-launch-option:focus-visible{outline:3px solid rgba(15,92,80,.18);outline-offset:3px}
-.zk-launch-option strong{font-family:var(--ruqaa);font-size:clamp(1.43rem,5.5vw,1.78rem);font-weight:700;line-height:1.35;color:#173D35;min-width:0}
+.zk-launch-option strong{font-family:var(--ruqaa);font-size:clamp(1.43rem,5.5vw,1.78rem);font-weight:700;line-height:1.35;color:#173D35;min-width:0;width:100%;text-align:center}
 .zk-launch-option-icon{
-  width:50px;height:50px;border-radius:15px;display:grid;place-items:center;color:#0F5C50;
+  flex:0 0 auto;width:50px;height:50px;border-radius:15px;display:grid;place-items:center;color:#0F5C50;
   background:rgba(15,92,80,.07);box-shadow:inset 0 0 0 1px rgba(15,92,80,.10)
 }
 .zk-launch-option:first-child .zk-launch-option-icon{color:#9B7027;background:rgba(197,154,74,.10);box-shadow:inset 0 0 0 1px rgba(197,154,74,.16)}
@@ -1192,7 +1192,7 @@ body.show-home-mine .tb-user,body.show-top-user .tb-user{opacity:1;transform:non
   .zk-launch-card::before{inset:7px;border-radius:48% 48% 21px 21px / 13% 13% 21px 21px}
   .zk-launch-card::after{inset:-17px -14px -13px;border-radius:48% 48% 34px 34px / 16% 16% 34px 34px}
   .zk-launch-mark{width:62px;height:62px}.zk-launch-brand{font-size:3.05rem}
-  .zk-launch-option{min-height:70px;border-radius:16px;grid-template-columns:46px minmax(0,1fr);gap:11px;padding:9px 12px}.zk-launch-options{gap:9px}
+  .zk-launch-option{min-height:70px;border-radius:16px;grid-template-columns:44px minmax(0,190px);gap:11px;padding:9px 12px}.zk-launch-options{gap:9px}
   .zk-launch-option-icon{width:44px;height:44px;border-radius:13px}.zk-launch-option-icon svg{width:24px;height:24px}
   .zk-launch-motto{font-size:1.55rem;padding-inline:31px}.zk-launch-motto::before,.zk-launch-motto::after{width:22px}
 }
