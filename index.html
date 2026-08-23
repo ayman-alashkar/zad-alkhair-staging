@@ -1366,6 +1366,36 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
   .zk-launch-motto{height:56px;min-height:56px;width:min(190px,70%)}
   .zk-launch-motto span{font-size:1.18rem}.zk-launch-motto .zk-motto-and{font-size:.98rem}
 }
+
+/* ═══════════ v100 · precise refinements on the v97/v99 launcher ═══════════ */
+/* Launcher background motif: exactly the same motif used by the main app body. */
+.zk-launch::before{
+  opacity:.24;
+  background-image:
+    linear-gradient(30deg,rgba(228,201,128,.18) 12%,transparent 12.5%,transparent 87%,rgba(228,201,128,.18) 87.5%),
+    linear-gradient(150deg,rgba(228,201,128,.18) 12%,transparent 12.5%,transparent 87%,rgba(228,201,128,.18) 87.5%),
+    linear-gradient(30deg,rgba(228,201,128,.18) 12%,transparent 12.5%,transparent 87%,rgba(228,201,128,.18) 87.5%),
+    linear-gradient(150deg,rgba(228,201,128,.18) 12%,transparent 12.5%,transparent 87%,rgba(228,201,128,.18) 87.5%),
+    linear-gradient(60deg,rgba(228,201,128,.08) 25%,transparent 25.5%,transparent 75%,rgba(228,201,128,.08) 75%);
+  background-position:0 0,0 0,42px 72px,42px 72px,0 0;
+  background-size:84px 144px;
+  -webkit-mask-image:linear-gradient(90deg,black,transparent 44%,transparent 56%,black);
+  mask-image:linear-gradient(90deg,black,transparent 44%,transparent 56%,black)
+}
+/* A very fine gold underline, exactly as wide as the Zad Al-Khair wordmark. */
+.zk-launch-brand{display:inline-block}
+.zk-launch-brand::after{
+  content:"";display:block;width:100%;height:1px;margin-top:7px;border-radius:999px;
+  background:rgba(197,154,74,.62);box-shadow:0 .5px 0 rgba(255,255,255,.7)
+}
+/* Lower the entire diagonal motto without changing its internal geometry. */
+.zk-launch-motto{transform:translateY(10px)}
+/* Restore the v97 launcher-card label alignment; only the prayer tab itself is centered. */
+.zk-launch-option:nth-child(3) strong{text-align:right}
+.prayer-times-modal .display{width:100%;text-align:center!important}
+.prayer-times-modal .prayer-head{text-align:center}
+@media(max-width:620px){.zk-launch-motto{transform:translateY(8px)}}
+@media(max-height:690px) and (max-width:620px){.zk-launch-motto{transform:translateY(5px)}}
 </style>
 
 

@@ -1877,6 +1877,25 @@ html[data-theme="dark"] .bookmark-section.ref-ayahs{
 html[data-theme="dark"] .bookmark-main small,
 html[data-theme="dark"] .quran-bookmark-open small{color:rgba(255,249,234,.62) !important}
 
+
+/* v100 · light-mode menus follow the Zad Al-Khair identity, never neutral black. */
+html:not([data-theme="dark"]) .sheet,
+html:not([data-theme="dark"]) .sheethead,
+html:not([data-theme="dark"]) .audio-qari-choice,
+html:not([data-theme="dark"]) .audio-offline-prompt,
+html:not([data-theme="dark"]) .audio-offline-message,
+html:not([data-theme="dark"]) .audio-offline-checkrow,
+html:not([data-theme="dark"]) .quran-hub-menu button,
+html:not([data-theme="dark"]) .index-row,
+html:not([data-theme="dark"]) .field select,
+html:not([data-theme="dark"]) .audio-qari{color:#0F5C50}
+html:not([data-theme="dark"]) .sheethead h3,
+html:not([data-theme="dark"]) .quran-options-intro,
+html:not([data-theme="dark"]) .audio-offline-prompt{color:#0A473E}
+html:not([data-theme="dark"]) .audio-qari-choice small,
+html:not([data-theme="dark"]) .audio-offline-message small,
+html:not([data-theme="dark"]) .field label{color:#5F756E}
+html:not([data-theme="dark"]) select option{color:#0F5C50;background:#FFFCF4}
 </style>
 </head>
 <body class="hidden-tools zad-identity">
@@ -3308,7 +3327,7 @@ function chooseOfflineReciterForSurah(s,rows){
     let settled=false;
     const finish=r=>{if(settled)return;settled=true;try{b.remove()}catch(_){ }resolve(r||null)};
     const choices=rows.map(({r})=>`<button type="button" class="audio-qari-choice" data-offline-play-qari="${escapeHtml(r.id)}"><span>${escapeHtml(r.name)}</span><small>متاح دون اتصال ✓</small></button>`).join("");
-    const b=sheet("اختر القارئ",`<div class="audio-offline-prompt">هذه السورة متاحة للتشغيل دون اتصال بأكثر من قارئ. اختر القارئ الذي تود الاستماع بصوته:</div><div class="audio-qari-choices">${choices}</div>`);
+    const b=sheet("اختر القارئ",`<div class="audio-offline-prompt">هذه السورة متاحة للتشغيل دون اتصال، بصوت أكثر من قارئ. اختر القارئ الذي تود الاستماع بصوته:</div><div class="audio-qari-choices">${choices}</div>`);
     b.querySelectorAll("[data-offline-play-qari]").forEach(btn=>btn.onclick=()=>{
       const r=rows.find(x=>x.r.id===btn.dataset.offlinePlayQari)?.r||null;finish(r);
     });
