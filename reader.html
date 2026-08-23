@@ -1359,6 +1359,19 @@ html[data-theme="dark"] .tafsir-fadl-text{border-top-color:rgba(228,201,128,.10)
 .quran-index-action svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .audio-offline-message{margin:12px 0 4px;padding:15px 14px;border:1px solid var(--ui-line);border-radius:15px;background:var(--ui-surface-2);color:var(--ui-text);font-size:12px;line-height:1.9;text-align:center}
 .audio-offline-message small{display:block;margin-top:4px;color:var(--ui-muted);font-size:9px}
+.audio-offline-message ul{list-style:none;padding:0;margin:8px 0 2px;display:grid;gap:4px;color:var(--brand);font-weight:700}
+html[data-theme="dark"] .audio-offline-message ul{color:var(--gold-hi)}
+.audio-offline-prompt{margin:8px 0 12px;text-align:center;color:var(--ui-text);font:700 13px/1.9 Alexandria,system-ui,sans-serif}
+.audio-qari-choices{display:grid;gap:7px}
+.audio-qari-choice{appearance:none;width:100%;min-height:48px;padding:9px 12px;border:1px solid var(--ui-line);border-radius:13px;background:var(--ui-surface-2);color:var(--ui-text);display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:right;font:700 11px Alexandria,system-ui,sans-serif;cursor:pointer}
+.audio-qari-choice small{font-size:8px;color:var(--ui-muted);font-weight:600;white-space:nowrap}
+.audio-qari-choice.downloaded{border-color:color-mix(in srgb,var(--ui-gold) 42%,var(--ui-line));background:color-mix(in srgb,var(--ui-gold) 7%,var(--ui-surface-2))}
+.audio-offline-more{appearance:none;border:0;background:transparent;color:var(--brand);font:700 9px Alexandria,system-ui,sans-serif;text-decoration:underline;text-underline-offset:3px;margin-top:7px;cursor:pointer}
+html[data-theme="dark"] .audio-offline-more{color:var(--gold-hi)}
+.audio-offline-delete-list{display:grid;gap:7px;margin-top:10px}
+.audio-offline-checkrow{min-height:46px;padding:8px 12px;border:1px solid var(--ui-line);border-radius:12px;background:var(--ui-surface-2);display:flex;align-items:center;gap:10px;color:var(--ui-text);font:700 11px Alexandria,system-ui,sans-serif;cursor:pointer}
+.audio-offline-checkrow.select-all{border-color:color-mix(in srgb,var(--ui-gold) 42%,var(--ui-line));background:color-mix(in srgb,var(--ui-gold) 7%,var(--ui-surface-2))}
+.audio-offline-checkrow input{width:18px;height:18px;accent-color:var(--brand);flex:0 0 auto}
 .audio-offline-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
 .audio-offline-actions button{appearance:none;min-height:44px;border-radius:12px;border:1px solid var(--ui-line);background:var(--ui-surface-2);color:var(--ui-text);font:700 11px Alexandria,system-ui,sans-serif;cursor:pointer}
 .audio-offline-actions .delete{color:#8C532B;border-color:color-mix(in srgb,var(--ui-gold) 46%,var(--ui-line));background:color-mix(in srgb,var(--ui-gold) 8%,var(--ui-surface))}
@@ -3238,20 +3251,20 @@ function setAudioDownloadButton(btn,state,pct=0){
   btn.classList.toggle("downloaded",state==="downloaded");
   btn.classList.toggle("downloading",state==="downloading");
   btn.disabled=state==="downloading";
-  if(state==="downloaded")btn.innerHTML=HUB_CHECK_ICON;
-  else if(state==="downloading")btn.textContent=`${ar(Math.max(0,Math.min(100,Number(pct)||0)))}٪`;
-  else btn.innerHTML=HUB_DOWNLOAD_ICON;
+  if(state==="downloaded"){btn.innerHTML=HUB_CHECK_ICON;btn.setAttribute("aria-label","إدارة تنزيل السورة للاستماع دون اتصال")}
+  else if(state==="downloading"){btn.textContent=`${ar(Math.max(0,Math.min(100,Number(pct)||0)))}٪`;btn.setAttribute("aria-label","جارٍ تنزيل السورة للاستماع دون اتصال")}
+  else{btn.innerHTML=HUB_DOWNLOAD_ICON;btn.setAttribute("aria-label","تنزيل السورة للاستماع دون اتصال")}
 }
-async function buildSurahAudioPackage(s){
+async function buildSurahAudioPackage(s,r=reciter){
   s=Math.max(1,Math.min(114,Number(s)||1));
-  const r=reciter,key=audioPackageKey(s,r),resources=[],ownedUrls=[],sharedUrls=[];
+  const key=audioPackageKey(s,r),resources=[],ownedUrls=[],sharedUrls=[];
   const add=(url,kind="audio",owned=true)=>{if(!url)return;resources.push({url,kind});(owned?ownedUrls:sharedUrls).push(url)};
   const sourceId=ayahAudioSourceId(s,r);
   if(sourceId){
     for(let a=1;a<=maxAyah(s);a++)add(`https://everyayah.com/data/${sourceId}/${pad3(s)}${pad3(a)}.mp3`,"audio",true);
     if(r.provider==="ayah"&&r.ayahBasmalaPrelude&&s!==1&&s!==9)add(`https://everyayah.com/data/${r.everyAyahId}/001001.mp3`,"audio",false);
   }else if(r.provider==="mp3quran-timed"){
-    const timed=await getMp3Timing(s),read=timed.read;
+    const timed=await getMp3Timing(s,r),read=timed.read;
     const timingUrl=`https://mp3quran.net/api/v3/ayat_timing?surah=${s}&read=${read.id}`;
     const src=(read.folder_url.endsWith("/")?read.folder_url:read.folder_url+"/")+pad3(s)+".mp3";
     add(MP3QURAN_READS_URL,"support",false);add(timingUrl,"support",true);add(src,"audio",true);
@@ -3260,47 +3273,99 @@ async function buildSurahAudioPackage(s){
     const timed=await getMaherQulTiming(s);add(timingUrl,"support",true);add(timed.src,"audio",true);
   }else throw new Error("offline audio provider");
   const urls=[...new Set(resources.map(x=>x.url))];
-  return {version:1,key,reciterId:r.id,reciterName:r.name,surah:s,urls,ownedUrls:[...new Set(ownedUrls)],sharedUrls:[...new Set(sharedUrls)],resources,downloadedAt:Date.now()};
+  return {version:2,key,reciterId:r.id,reciterName:r.name,surah:s,urls,ownedUrls:[...new Set(ownedUrls)],sharedUrls:[...new Set(sharedUrls)],resources,downloadedAt:Date.now()};
+}
+async function downloadedAudioPackagesForSurah(s,verify=true){
+  const out=[];
+  for(const r of RECITERS){
+    const pkg=getAudioOfflinePackage(s,r);if(!pkg)continue;
+    if(!verify){out.push({r,pkg});continue}
+    const ok=await audioPackageCached(pkg);
+    if(ok)out.push({r,pkg});else removeAudioOfflinePackage(s,r);
+  }
+  return out;
 }
 async function refreshAudioDownloadButton(btn,s){
-  const pkg=getAudioOfflinePackage(s);if(!pkg){setAudioDownloadButton(btn,"available");return}
-  const ok=await audioPackageCached(pkg);setAudioDownloadButton(btn,ok?"downloaded":"available");
-  if(!ok)removeAudioOfflinePackage(s);
+  const rows=await downloadedAudioPackagesForSurah(s,true);
+  setAudioDownloadButton(btn,rows.length?"downloaded":"available");
 }
-async function deleteSurahAudioDownload(s,btn){
-  const pkg=getAudioOfflinePackage(s);if(!pkg){setAudioDownloadButton(btn,"available");return}
+async function deleteSurahAudioPackages(s,reciterIds,btn){
+  const ids=new Set((reciterIds||[]).map(String));if(!ids.size)return;
+  const all=audioOfflinePackages(),deleteKeys=[];
+  for(const id of ids)deleteKeys.push(`${id}:${Number(s)||1}`);
+  const remainingRefs=new Set();
+  for(const [key,pkg] of Object.entries(all)){
+    if(deleteKeys.includes(key))continue;
+    for(const url of pkg?.urls||[])remainingRefs.add(url);
+  }
   try{
     const cache=await caches.open(AUDIO_CACHE_NAME);
-    await Promise.all((pkg.ownedUrls||[]).map(url=>cache.delete(url,{ignoreVary:true})));
-  }catch(_){ }
-  removeAudioOfflinePackage(s);setAudioDownloadButton(btn,"available");showToast("حُذف تنزيل السورة");
+    for(const key of deleteKeys){
+      const pkg=all[key];if(!pkg)continue;
+      for(const url of pkg.ownedUrls||[]){if(!remainingRefs.has(url))await cache.delete(url,{ignoreVary:true})}
+      delete all[key];
+    }
+  }catch(_){for(const key of deleteKeys)delete all[key]}
+  storageJsonSet(STORAGE_KEYS.audioOffline,all);
+  await refreshAudioDownloadButton(btn,s);
+  showToast(ids.size>1?"حُذفت التنزيلات المحددة":"حُذف تنزيل السورة");
+}
+async function openDeleteSurahAudio(s,btn){
+  const rows=await downloadedAudioPackagesForSurah(s,true);
+  if(!rows.length){setAudioDownloadButton(btn,"available");return}
+  const items=rows.map(({r})=>`<label class="audio-offline-checkrow"><input type="checkbox" value="${escapeHtml(r.id)}"><span>${escapeHtml(r.name)}</span></label>`).join("");
+  const b=sheet("حذف التنزيل",`<div class="audio-offline-delete-list"><label class="audio-offline-checkrow select-all"><input type="checkbox" id="audioDeleteAll"><span>تحديد الكل</span></label>${items}</div><div class="audio-offline-actions"><button type="button" class="ok">إلغاء</button><button type="button" class="delete">حذف المحدد</button></div>`);
+  const all=b.querySelector("#audioDeleteAll"),checks=[...b.querySelectorAll('.audio-offline-checkrow:not(.select-all) input[type="checkbox"]')];
+  all.onchange=()=>checks.forEach(x=>x.checked=all.checked);
+  checks.forEach(x=>x.onchange=()=>{all.checked=checks.length>0&&checks.every(c=>c.checked);all.indeterminate=checks.some(c=>c.checked)&&!all.checked});
+  b.querySelector(".ok").onclick=()=>b.remove();
+  b.querySelector(".delete").onclick=async()=>{
+    const selected=checks.filter(x=>x.checked).map(x=>x.value);
+    if(!selected.length){showToast("اختر قارئًا واحدًا على الأقل");return}
+    b.remove();await deleteSurahAudioPackages(s,selected,btn);
+  };
 }
 async function openDownloadedSurahAudio(s,btn){
-  const pkg=getAudioOfflinePackage(s);
-  if(!pkg||!await audioPackageCached(pkg)){removeAudioOfflinePackage(s);setAudioDownloadButton(btn,"available");return downloadSurahAudio(s,btn)}
-  const b=sheet("التشغيل دون اتصال",`<div class="audio-offline-message">هذه السورة متاحة للتشغيل دون اتصال<small>القارئ: ${escapeHtml(pkg.reciterName||reciter.name)}</small></div><div class="audio-offline-actions"><button type="button" class="ok">حسنًا</button><button type="button" class="delete">حذف</button></div>`);
+  const rows=await downloadedAudioPackagesForSurah(s,true);
+  if(!rows.length){setAudioDownloadButton(btn,"available");return openAudioDownloadPicker(s,btn)}
+  const names=rows.map(({r})=>`<li>${escapeHtml(r.name)}</li>`).join("");
+  const more=rows.length<RECITERS.length?'<button type="button" class="audio-offline-more">تنزيل بصوت قارئ آخر</button>':"";
+  const b=sheet("التشغيل دون اتصال",`<div class="audio-offline-message">هذه السورة متاحة للتشغيل دون اتصال، بصوت القارئ:<ul>${names}</ul>${more}</div><div class="audio-offline-actions"><button type="button" class="ok">حسنًا</button><button type="button" class="delete">حذف</button></div>`);
   b.querySelector(".ok").onclick=()=>b.remove();
-  b.querySelector(".delete").onclick=async()=>{b.remove();await deleteSurahAudioDownload(s,btn)};
+  b.querySelector(".delete").onclick=()=>{b.remove();openDeleteSurahAudio(s,btn)};
+  const moreBtn=b.querySelector(".audio-offline-more");if(moreBtn)moreBtn.onclick=()=>{b.remove();openAudioDownloadPicker(s,btn)};
 }
-async function downloadSurahAudio(s,btn){
+async function openAudioDownloadPicker(s,btn){
   if(!navigator.onLine){showToast("يلزم الاتصال بالإنترنت لتنزيل السورة");return}
   if(audioDownloadPreparing||audioDownloadJobs.size){showToast("انتظر اكتمال تنزيل السورة الحالية");return}
-  const existing=getAudioOfflinePackage(s);
+  const downloaded=await downloadedAudioPackagesForSurah(s,true),have=new Set(downloaded.map(x=>x.r.id));
+  const rows=RECITERS.map(r=>`<button type="button" class="audio-qari-choice${have.has(r.id)?" downloaded":""}" data-qari="${escapeHtml(r.id)}"><span>${escapeHtml(r.name)}</span>${have.has(r.id)?'<small>متاح دون اتصال ✓</small>':""}</button>`).join("");
+  const b=sheet("تنزيل السورة",`<div class="audio-offline-prompt">بصوت أي قارئ تود تنزيل هذه السورة؟</div><div class="audio-qari-choices">${rows}</div>`);
+  b.querySelectorAll("[data-qari]").forEach(x=>x.onclick=async()=>{
+    const r=RECITERS.find(q=>q.id===x.dataset.qari);if(!r)return;
+    if(have.has(r.id)){showToast("هذه النسخة متاحة بالفعل دون اتصال");return}
+    b.remove();await downloadSurahAudio(s,btn,r);
+  });
+}
+async function downloadSurahAudio(s,btn,r=reciter){
+  if(!navigator.onLine){showToast("يلزم الاتصال بالإنترنت لتنزيل السورة");return}
+  if(audioDownloadPreparing||audioDownloadJobs.size){showToast("انتظر اكتمال تنزيل السورة الحالية");return}
+  const existing=getAudioOfflinePackage(s,r);
   if(existing&&await audioPackageCached(existing)){await openDownloadedSurahAudio(s,btn);return}
   setAudioDownloadButton(btn,"downloading",0);audioDownloadPreparing=true;
   try{
-    const pkg=await buildSurahAudioPackage(s),tag=audioDownloadTag(s);
+    const pkg=await buildSurahAudioPackage(s,r),tag=audioDownloadTag(s,r);
     const reg=await navigator.serviceWorker?.ready,worker=reg&&(reg.active||reg.waiting||reg.installing);
     if(!worker)throw new Error("service worker");
-    audioDownloadJobs.set(tag,{s,btn,pkg});
+    audioDownloadJobs.set(tag,{s,btn,pkg,r});
     worker.postMessage({type:"CACHE_AUDIO_PACKAGE",resources:pkg.resources,tag});
-    showToast(`جارٍ تنزيل سورة ${chapterMap.get(Number(s))?.name_arabic||ar(s)} بصوت ${reciter.name}`);
-  }catch(e){console.error(e);setAudioDownloadButton(btn,"available");showToast("تعذّر بدء تنزيل السورة الآن")}
+    showToast(`جارٍ تنزيل سورة ${chapterMap.get(Number(s))?.name_arabic||ar(s)} بصوت ${r.name}`);
+  }catch(e){console.error(e);await refreshAudioDownloadButton(btn,s);showToast("تعذّر بدء تنزيل السورة الآن")}
   finally{audioDownloadPreparing=false}
 }
 function bindSurahDownloadButton(btn,s){
   btn.dataset.audioDownload=String(s);setAudioDownloadButton(btn,"available");
-  btn.onclick=async()=>{const pkg=getAudioOfflinePackage(s);if(pkg&&await audioPackageCached(pkg))await openDownloadedSurahAudio(s,btn);else await downloadSurahAudio(s,btn)};
+  btn.onclick=async()=>{const rows=await downloadedAudioPackagesForSurah(s,true);if(rows.length)await openDownloadedSurahAudio(s,btn);else await openAudioDownloadPicker(s,btn)};
   refreshAudioDownloadButton(btn,s).catch(()=>{});
 }
 let quranSearchIndex=storageJsonGet(STORAGE_KEYS.searchIndex,null);
@@ -3381,6 +3446,7 @@ async function playSurahFromHub(s,closeHub){
   const last=maxAyah(s);setIndexPlaybackBoundary({s,a:last});
   continuousMode=true;storageSet(STORAGE_KEYS.continuous,"1");
   play={surah:s,from:1,to:1,current:1,repeatAyah:1,repeatAyahLeft:1,repeatGroup:1,repeatGroupLeft:1,repeatSurah:1,repeatSurahLeft:1,speed:play.speed||1};
+  pendingSurahBasmala=(s!==1&&s!==9);basmalaFallbackTarget=null;
   closeHub();const p=Number(chapterMap.get(s)?.pages?.[0]||1);await go(p);await playCurrent(true);
 }
 async function playJuzFromHub(j,closeHub){
@@ -3511,26 +3577,26 @@ function timedReadScore(row,r){
   else if(count>0)score+=Math.min(5,count/30);
   return score;
 }
-async function resolveMp3Read(){
-  if(timedReadCache.has(reciter.id))return timedReadCache.get(reciter.id);
+async function resolveMp3Read(r=reciter){
+  if(timedReadCache.has(r.id))return timedReadCache.get(r.id);
   const rows=await loadTimedReads();
   let best=null,bestScore=-Infinity;
   for(const row of rows){
-    const score=timedReadScore(row,reciter);
+    const score=timedReadScore(row,r);
     if(score>bestScore){best=row;bestScore=score}
   }
   const resolved=Number.isFinite(bestScore)&&bestScore>-Infinity?best:null;
-  timedReadCache.set(reciter.id,resolved);
+  timedReadCache.set(r.id,resolved);
   return resolved;
 }
-async function getMp3Timing(s){
-  const read=await resolveMp3Read();
+async function getMp3Timing(s,r=reciter){
+  const read=await resolveMp3Read(r);
   if(!read)throw new Error("timed reciter unavailable");
   const key=`${read.id}:${s}`;
   if(mp3TimingCache.has(key))return {read,rows:mp3TimingCache.get(key)};
-  const r=await fetch(`https://mp3quran.net/api/v3/ayat_timing?surah=${s}&read=${read.id}`,{cache:"force-cache"});
-  if(!r.ok)throw new Error("mp3quran timing");
-  const rows=await r.json();
+  const response=await fetch(`https://mp3quran.net/api/v3/ayat_timing?surah=${s}&read=${read.id}`,{cache:"force-cache"});
+  if(!response.ok)throw new Error("mp3quran timing");
+  const rows=await response.json();
   if(!Array.isArray(rows)||!rows.some(x=>Number(x.ayah)>0))throw new Error("invalid mp3quran timing");
   mp3TimingCache.set(key,rows);
   return {read,rows};
@@ -4139,6 +4205,22 @@ audio.onended=async()=>{
 };
 
 function opts(max,sel){let s="";for(let i=1;i<=max;i++)s+=`<option value="${i}" ${i===sel?"selected":""}>${ar(i)}</option>`;return s}
+const BASMALA_AUDIO_LABEL="بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ";
+function audioAyahOptions(surah,selected=1){
+  const s=Math.max(1,Math.min(114,Number(surah)||1)),max=maxAyah(s);let out="";
+  if(s===1){
+    for(let i=1;i<=max;i++)out+=`<option value="${i}" ${Number(selected)===i?"selected":""}>${ar(i)}</option>`;
+    return out;
+  }
+  if(s!==9)out+=`<option value="basmala" ${selected==="basmala"?"selected":""}>${BASMALA_AUDIO_LABEL}</option>`;
+  for(let i=1;i<=max;i++)out+=`<option value="${i}" ${Number(selected)===i?"selected":""}>${ar(i)}</option>`;
+  return out;
+}
+function audioStartSelection(surah,value){
+  const s=Math.max(1,Math.min(114,Number(surah)||1));
+  if(value==="basmala"&&s!==1&&s!==9)return {ayah:1,basmala:true};
+  return {ayah:Math.max(1,Number(value)||1),basmala:false};
+}
 
 function playerSurahOptions(selected){
   return [...chapterMap.values()]
@@ -4150,17 +4232,17 @@ document.getElementById("audioJump").onclick=()=>{
   const initialS=Number(play.surah)||1,initialA=Number(play.current)||1;
   const b=sheet("الانتقال إلى",`<div class="settings">
     <div class="field"><label>السورة</label><select id="jumpSurah">${playerSurahOptions(initialS)}</select></div>
-    <div class="field"><label>الآية</label><select id="jumpAyah">${opts(maxAyah(initialS),initialA)}</select></div>
+    <div class="field"><label>الآية</label><select id="jumpAyah">${audioAyahOptions(initialS,initialA)}</select></div>
     <button type="button" class="apply" id="applyAudioJump">تشغيل</button>
   </div>`);
   const ss=b.querySelector("#jumpSurah"),aa=b.querySelector("#jumpAyah");
   ss.onchange=()=>{
     const s=Number(ss.value)||1;
-    aa.innerHTML=opts(maxAyah(s),1);
+    aa.innerHTML=audioAyahOptions(s,(s===1||s===9)?1:"basmala");
   };
   b.querySelector("#applyAudioJump").onclick=async()=>{
-    const s=Number(ss.value)||1,a=Number(aa.value)||1;
-    pendingSurahBasmala=false;basmalaFallbackTarget=null;
+    const s=Number(ss.value)||1,start=audioStartSelection(s,aa.value),a=start.ayah;
+    pendingSurahBasmala=start.basmala;basmalaFallbackTarget=null;
     play.surah=s;play.from=a;play.to=a;play.current=a;
     continuousStopRef=null;play.repeatAyahLeft=play.repeatAyah;
     play.repeatGroup=1;play.repeatGroupLeft=1;play.repeatSurah=1;play.repeatSurahLeft=1;
@@ -4173,15 +4255,15 @@ document.getElementById("audioSettings").onclick=()=>{
   const s=selectedKey?verseParts(selectedKey).s:play.surah,max=maxAyah(s);
   const b=sheet("إعدادات الاستماع",`<div class="settings">
     <div class="field"><label>القارئ</label><select id="qari">${RECITERS.map(r=>`<option value="${escapeHtml(r.id)}" ${r.id===reciter.id?"selected":""}>${escapeHtml(r.name)}</option>`).join("")}</select></div>
-    <div class="grid2"><div class="field"><label>من الآية</label><select id="from">${opts(max,play.from)}</select></div><div class="field"><label>إلى الآية</label><select id="to">${opts(max,play.to)}</select></div></div>
+    <div class="grid2"><div class="field"><label>من الآية</label><select id="from">${audioAyahOptions(s,pendingSurahBasmala?"basmala":play.from)}</select></div><div class="field"><label>إلى الآية</label><select id="to">${opts(max,play.to)}</select></div></div>
     <div class="grid2"><div class="field"><label>تكرار المجموعة</label><select id="grp"><option>1</option><option>2</option><option>3</option><option>5</option><option>10</option></select></div><div class="field"><label>تكرار كل آية</label><select id="each"><option>1</option><option>2</option><option>3</option><option>5</option><option>10</option></select></div></div>
     <div class="field"><label>السرعة</label><select id="speed"><option value=".75">0.75×</option><option value="1">1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></div>
     <button type="button" class="apply" id="applyAudio">تطبيق وتشغيل</button></div>`);
   b.querySelector("#grp").value=String(play.repeatGroup);b.querySelector("#each").value=String(play.repeatAyah);b.querySelector("#speed").value=String(play.speed);
   b.querySelector("#applyAudio").onclick=async()=>{
-    reciter=RECITERS.find(r=>r.id===b.querySelector("#qari").value)||defaultReciter();playbackRequestId++;audio.pause();activeSegment=null;activeTimingRows=null;releaseAudioPreload();pendingSurahBasmala=false;basmalaFallbackTarget=null;delete audio.dataset.source;delete audio.dataset.playMode;audio.removeAttribute("src");audio.load();storageJsonSet(STORAGE_KEYS.qari,reciter);
-    const f=+b.querySelector("#from").value,t=+b.querySelector("#to").value;if(t<f){showToast("اختر نهاية بعد البداية");return}
-    continuousStopRef=null;
+    reciter=RECITERS.find(r=>r.id===b.querySelector("#qari").value)||defaultReciter();playbackRequestId++;audio.pause();activeSegment=null;activeTimingRows=null;releaseAudioPreload();basmalaFallbackTarget=null;delete audio.dataset.source;delete audio.dataset.playMode;audio.removeAttribute("src");audio.load();storageJsonSet(STORAGE_KEYS.qari,reciter);
+    const start=audioStartSelection(s,b.querySelector("#from").value),f=start.ayah,t=+b.querySelector("#to").value;if(t<f){showToast("اختر نهاية بعد البداية");return}
+    pendingSurahBasmala=start.basmala;continuousStopRef=null;
     play={surah:s,from:f,to:t,current:f,repeatAyah:+b.querySelector("#each").value,repeatAyahLeft:+b.querySelector("#each").value,repeatGroup:+b.querySelector("#grp").value,repeatGroupLeft:+b.querySelector("#grp").value,repeatSurah:1,repeatSurahLeft:1,speed:+b.querySelector("#speed").value};
     b.remove();await playCurrent(true)
   }
@@ -4312,7 +4394,7 @@ if("serviceWorker" in navigator){
       const tag=String(data.tag||""),job=audioDownloadJobs.get(tag);if(!job)return;
       audioDownloadJobs.delete(tag);
       if(Number(data.failed)===0){putAudioOfflinePackage(job.pkg);setAudioDownloadButton(job.btn,"downloaded");showToast("أصبحت السورة متاحة للتشغيل دون اتصال")}
-      else{setAudioDownloadButton(job.btn,"available");showToast("تعذّر تنزيل السورة كاملة، حاول مرة أخرى")}
+      else{refreshAudioDownloadButton(job.btn,job.s).catch(()=>setAudioDownloadButton(job.btn,"available"));showToast("تعذّر تنزيل السورة كاملة، حاول مرة أخرى")}
     }
   });
   window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").then(()=>navigator.serviceWorker.ready).then(reg=>{

@@ -1168,22 +1168,25 @@ body.show-home-mine .tb-user,body.show-top-user .tb-user{opacity:1;transform:non
 .zk-launch-options::before{content:"";height:1px;width:64%;margin:0 auto 8px;background:linear-gradient(90deg,transparent,rgba(197,154,74,.46),transparent)}
 .zk-launch-option{
   appearance:none;width:100%;min-height:76px;border:1px solid rgba(197,154,74,.28);border-radius:19px;padding:11px 14px;
-  display:grid;grid-template-columns:50px minmax(0,210px);justify-content:center;align-items:center;gap:13px;direction:rtl;text-align:center;
+  display:grid;grid-template-columns:44px 170px;justify-content:center;align-items:center;gap:7px;direction:rtl;text-align:center;
   background:rgba(255,252,244,.86);color:#173D35;cursor:pointer;
   box-shadow:0 13px 31px -28px rgba(55,44,22,.72),inset 0 1px 0 rgba(255,255,255,.94);
   transition:transform .14s ease,border-color .18s ease,background .18s ease,box-shadow .18s ease
 }
-.zk-launch-option:first-child{background:linear-gradient(180deg,#FFFCF4,#F8F1E3);border-color:rgba(197,154,74,.42)}
-.zk-launch-option:last-child{background:linear-gradient(180deg,#F3EADB,#ECE1CD);border-color:rgba(15,92,80,.24)}
+.zk-launch-option:nth-child(1){background:linear-gradient(180deg,#FFFCF4,#F8F1E3);border-color:rgba(197,154,74,.42)}
+.zk-launch-option:nth-child(2){background:linear-gradient(180deg,#F3EADB,#ECE1CD);border-color:rgba(15,92,80,.24)}
+.zk-launch-option:nth-child(3){background:linear-gradient(180deg,#FBF6EA,#F1E8D6);border-color:rgba(197,154,74,.30)}
 .zk-launch-option:hover{border-color:rgba(197,154,74,.60);box-shadow:0 17px 36px -27px rgba(55,44,22,.76),inset 0 1px 0 rgba(255,255,255,.96)}
 .zk-launch-option:active{transform:scale(.986);background:#F0E7D7}
 .zk-launch-option:focus-visible{outline:3px solid rgba(15,92,80,.18);outline-offset:3px}
-.zk-launch-option strong{font-family:var(--ruqaa);font-size:clamp(1.43rem,5.5vw,1.78rem);font-weight:700;line-height:1.35;color:#173D35;min-width:0;width:100%;text-align:center}
+.zk-launch-option strong{font-family:var(--ruqaa);font-size:clamp(1.43rem,5.5vw,1.78rem);font-weight:700;line-height:1.35;color:#173D35;min-width:0;width:100%;text-align:start}
 .zk-launch-option-icon{
   flex:0 0 auto;width:50px;height:50px;border-radius:15px;display:grid;place-items:center;color:#0F5C50;
   background:rgba(15,92,80,.07);box-shadow:inset 0 0 0 1px rgba(15,92,80,.10)
 }
-.zk-launch-option:first-child .zk-launch-option-icon{color:#9B7027;background:rgba(197,154,74,.10);box-shadow:inset 0 0 0 1px rgba(197,154,74,.16)}
+.zk-launch-option:nth-child(1) .zk-launch-option-icon{color:#9B7027;background:rgba(197,154,74,.10);box-shadow:inset 0 0 0 1px rgba(197,154,74,.16)}
+.zk-launch-option:nth-child(3) .zk-launch-option-icon{color:#9B7027;background:rgba(197,154,74,.08);box-shadow:inset 0 0 0 1px rgba(197,154,74,.14)}
+body.zk-launch-prayer .modal{z-index:150}
 .zk-launch-option-icon svg{display:block;width:27px;height:27px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
 @media(max-width:620px){
   .zk-launch{padding-top:calc(20px + env(safe-area-inset-top));padding-bottom:calc(20px + env(safe-area-inset-bottom))}
@@ -1192,9 +1195,143 @@ body.show-home-mine .tb-user,body.show-top-user .tb-user{opacity:1;transform:non
   .zk-launch-card::before{inset:7px;border-radius:48% 48% 21px 21px / 13% 13% 21px 21px}
   .zk-launch-card::after{inset:-17px -14px -13px;border-radius:48% 48% 34px 34px / 16% 16% 34px 34px}
   .zk-launch-mark{width:62px;height:62px}.zk-launch-brand{font-size:3.05rem}
-  .zk-launch-option{min-height:70px;border-radius:16px;grid-template-columns:44px minmax(0,190px);gap:11px;padding:9px 12px}.zk-launch-options{gap:9px}
+  .zk-launch-option{min-height:70px;border-radius:16px;grid-template-columns:40px 166px;gap:6px;padding:9px 12px}.zk-launch-options{gap:9px}
   .zk-launch-option-icon{width:44px;height:44px;border-radius:13px}.zk-launch-option-icon svg{width:24px;height:24px}
   .zk-launch-motto{font-size:1.55rem;padding-inline:31px}.zk-launch-motto::before,.zk-launch-motto::after{width:22px}
+}
+
+
+/* ═══════════ v97 · المحراب الفاخر — أقرب للتصور المعتمد ═══════════ */
+.zk-launch{
+  padding:max(14px,env(safe-area-inset-top)) max(10px,env(safe-area-inset-right)) max(14px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left));
+  background:
+    radial-gradient(circle at 50% -8%,rgba(228,201,128,.15),transparent 30rem),
+    radial-gradient(circle at 10% 88%,rgba(73,161,140,.12),transparent 32rem),
+    linear-gradient(154deg,#041A18 0%,#062521 48%,#0A3C34 100%);
+  isolation:isolate
+}
+.zk-launch::before{
+  opacity:.34;background-size:58px 100px;
+  filter:saturate(.92);mix-blend-mode:screen
+}
+.zk-launch::after{
+  content:"";display:block;position:absolute;inset:12px;pointer-events:none;z-index:0;
+  border:1px solid rgba(197,154,74,.38);border-radius:34px;
+  box-shadow:inset 0 0 0 1px rgba(228,201,128,.04)
+}
+.zk-launch-card{
+  position:relative;z-index:1;width:min(500px,calc(100vw - 24px));aspect-ratio:500/780;min-height:0;
+  padding:clamp(76px,12vh,104px) clamp(56px,11vw,82px) clamp(46px,7.4vh,62px);
+  display:grid;grid-template-rows:auto auto 1fr auto;align-content:stretch;gap:clamp(6px,1.15vh,12px);
+  border:0;border-radius:0;background:none;box-shadow:none;overflow:visible
+}
+.zk-launch-card::before,.zk-launch-card::after{display:none}
+.zk-launch-mihrab{
+  position:absolute;z-index:-1;inset:-4px;width:calc(100% + 8px);height:calc(100% + 8px);overflow:visible;
+  filter:drop-shadow(0 28px 30px rgba(0,0,0,.42)) drop-shadow(0 4px 9px rgba(197,154,74,.09))
+}
+.zk-launch-identity{align-self:start;display:grid;justify-items:center;gap:0;padding:0;margin:0}
+.zk-launch-mark{
+  width:clamp(84px,18vw,104px);height:clamp(84px,18vw,104px);display:block;object-fit:contain;
+  filter:drop-shadow(0 9px 12px rgba(15,92,80,.12));margin-bottom:1px
+}
+.zk-launch-brand{
+  font-size:clamp(3rem,10.4vw,4.18rem);line-height:.96;color:#0D463D;text-shadow:0 1px 0 #fff;
+  margin:0;letter-spacing:0
+}
+.zk-launch-motto{
+  align-self:start;margin:2px 0 0;padding:0 42px 15px;min-height:auto;
+  font-family:var(--ruqaa);font-size:clamp(1.5rem,5.6vw,1.92rem);font-weight:700;line-height:1.35;color:#A67527;
+  text-shadow:0 1px 0 rgba(255,255,255,.8)
+}
+.zk-launch-motto::before,.zk-launch-motto::after{
+  top:auto;bottom:0;width:30%;height:1px;transform:none;
+  background:linear-gradient(90deg,transparent,rgba(197,154,74,.64))
+}
+.zk-launch-motto::before{right:3%}.zk-launch-motto::after{left:3%;transform:scaleX(-1)}
+.zk-launch-options{
+  align-self:center;display:grid;gap:clamp(10px,1.65vh,14px);padding:clamp(16px,2.4vh,22px) 0 0;margin:0
+}
+.zk-launch-options::before{display:none}
+.zk-launch-option{
+  position:relative;width:min(326px,100%);min-height:clamp(64px,9.2vh,76px);margin-inline:auto;
+  display:grid;grid-template-columns:46px minmax(0,196px);align-items:center;justify-content:center;column-gap:10px;
+  direction:ltr;padding:8px 32px 8px 14px;border-radius:15px;
+  border:1px solid rgba(167,119,38,.44);
+  background:linear-gradient(180deg,rgba(255,253,247,.985),rgba(247,239,224,.975));
+  box-shadow:0 10px 22px -18px rgba(76,48,14,.58),inset 0 1px 0 rgba(255,255,255,.96),inset 0 -1px 0 rgba(197,154,74,.05);
+  transition:transform .12s ease,border-color .18s ease,box-shadow .18s ease,background .18s ease
+}
+.zk-launch-option:nth-child(1),.zk-launch-option:nth-child(2),.zk-launch-option:nth-child(3){background:linear-gradient(180deg,rgba(255,253,247,.985),rgba(247,239,224,.975));border-color:rgba(167,119,38,.44)}
+.zk-launch-option:hover{border-color:rgba(167,119,38,.7);box-shadow:0 15px 28px -20px rgba(76,48,14,.7),inset 0 1px 0 #fff}
+.zk-launch-option:active{transform:scale(.985);background:linear-gradient(180deg,#FAF5E9,#F1E5D0)}
+.zk-launch-option:focus-visible{outline:3px solid rgba(15,92,80,.18);outline-offset:3px}
+.zk-launch-option::after{
+  content:"‹";position:absolute;inset-inline-end:13px;top:50%;transform:translateY(-53%);
+  font-family:serif;font-size:1.55rem;color:#AA7B2B;opacity:.72
+}
+.zk-launch-option strong{
+  direction:rtl;width:auto;min-width:0;text-align:right;font-family:var(--ruqaa);font-size:clamp(1.34rem,4.8vw,1.64rem);
+  font-weight:700;line-height:1.35;color:#123F36;white-space:nowrap
+}
+.zk-launch-option-icon{
+  width:44px;height:44px;border-radius:12px;display:grid;place-items:center;color:#0F5C50;
+  background:transparent;box-shadow:none
+}
+.zk-launch-option:nth-child(1) .zk-launch-option-icon{color:#0F5C50;background:transparent;box-shadow:none}
+.zk-launch-option:nth-child(2) .zk-launch-option-icon{color:#0F5C50;background:transparent;box-shadow:none}
+.zk-launch-option:nth-child(3) .zk-launch-option-icon{color:#9A6D25;background:transparent;box-shadow:none}
+.zk-launch-option-icon svg{width:29px;height:29px;stroke-width:1.55}
+.zk-launch-rosette{
+  position:absolute;z-index:4;left:50%;bottom:8px;transform:translate(-50%,50%);
+  width:58px;height:58px;margin:0;padding:7px;color:#E4C980;border-radius:50%;
+  background:#0A473E;border:2px solid #C59A4A;
+  box-shadow:0 0 0 4px rgba(255,249,234,.86),0 0 0 6px rgba(197,154,74,.46),0 8px 16px rgba(0,0,0,.18)
+}
+@media(max-width:620px){
+  .zk-launch{padding-inline:6px}.zk-launch::after{inset:7px;border-radius:26px}
+  .zk-launch-card{width:min(446px,calc(100vw - 8px));padding:clamp(70px,18vw,88px) clamp(37px,9.5vw,54px) clamp(40px,10vw,50px);gap:clamp(5px,1vh,10px)}
+  .zk-launch-mark{width:clamp(76px,20vw,90px);height:clamp(76px,20vw,90px)}
+  .zk-launch-brand{font-size:clamp(2.75rem,12vw,3.5rem)}
+  .zk-launch-motto{font-size:clamp(1.36rem,6vw,1.68rem);padding-bottom:12px}
+  .zk-launch-options{gap:clamp(8px,1.25vh,11px);padding-top:clamp(10px,1.7vh,15px)}
+  .zk-launch-option{width:min(310px,100%);min-height:62px;grid-template-columns:42px minmax(0,178px);column-gap:8px;padding:7px 27px 7px 13px;border-radius:14px}
+  .zk-launch-option strong{font-size:clamp(1.2rem,5.45vw,1.46rem)}
+  .zk-launch-option-icon{width:40px;height:40px}.zk-launch-option-icon svg{width:26px;height:26px}
+  .zk-launch-option::after{inset-inline-end:10px;font-size:1.35rem}
+  .zk-launch-rosette{width:50px;height:50px;bottom:6px;padding:6px}
+}
+@media(max-height:690px) and (max-width:620px){
+  .zk-launch-card{width:min(390px,calc(100vw - 8px));padding-top:57px;padding-bottom:36px}
+  .zk-launch-mark{width:62px;height:62px}.zk-launch-brand{font-size:2.55rem}.zk-launch-motto{font-size:1.32rem;padding-bottom:8px}
+  .zk-launch-options{gap:6px;padding-top:7px}.zk-launch-option{min-height:53px}.zk-launch-option-icon{width:35px;height:35px}.zk-launch-option-icon svg{width:23px;height:23px}
+  .zk-launch-rosette{width:43px;height:43px}
+}
+
+/* مواقيت الصلاة · v97 — نفس الفخامة ولكن بلا تغيير في المنطق */
+.prayer-times-modal{background:rgba(2,16,14,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.prayer-times-modal .frame{
+  position:relative;max-width:470px;padding:0;overflow:hidden;border:1px solid rgba(228,201,128,.72);border-radius:28px;
+  background:linear-gradient(180deg,#083A33 0,#0B4A40 174px,#FFF9EA 174px,#F7EFDF 100%);
+  box-shadow:0 46px 105px -40px rgba(0,0,0,.92),inset 0 0 0 1px rgba(255,255,255,.06)
+}
+.prayer-times-modal .frame::before{content:"";position:absolute;inset:6px;border:1px solid rgba(228,201,128,.2);border-radius:22px;pointer-events:none;z-index:4}
+.prayer-times-modal .frame::after{
+  content:"";position:absolute;left:-15%;right:-15%;top:0;height:174px;pointer-events:none;opacity:.2;
+  background-image:linear-gradient(30deg,rgba(228,201,128,.30) 12%,transparent 12.5%,transparent 87%,rgba(228,201,128,.30) 87.5%),linear-gradient(150deg,rgba(228,201,128,.30) 12%,transparent 12.5%,transparent 87%,rgba(228,201,128,.30) 87.5%);background-size:68px 118px
+}
+.prayer-times-modal .prayer-emblem{position:relative;z-index:5;width:48px;height:48px;margin:18px auto 4px;border:1px solid rgba(228,201,128,.58);border-radius:15px;background:rgba(255,249,234,.055);color:#E4C980;box-shadow:inset 0 0 0 3px rgba(228,201,128,.04)}
+.prayer-times-modal .display{position:relative;z-index:5;color:#FFF9EA!important;text-shadow:0 1px 0 rgba(0,0,0,.2)}
+.prayer-times-modal .prayer-head{position:relative;z-index:5;margin:.1rem 0 14px;padding:0 18px}.prayer-times-modal .prayer-head .ptcity{color:#E4C980}.prayer-times-modal .prayer-date-g{color:#FFF9EA}.prayer-times-modal .prayer-date-h{color:rgba(255,249,234,.7)}
+.prayer-times-modal .ptable{position:relative;z-index:5;margin:0 13px;border:1px solid #D6C5A6;border-radius:17px;overflow:hidden;background:#FFFBF2;box-shadow:0 17px 33px -30px rgba(0,0,0,.7)}
+.prayer-times-modal .ptrow{min-height:51px;padding:.55rem 1rem;background:transparent;border-color:#E6DAC3}.prayer-times-modal .ptrow.sun{background:#F2E8D5}.prayer-times-modal .ptrow.now{background:linear-gradient(90deg,rgba(221,236,229,.72),rgba(255,251,241,.9))}
+.prayer-times-modal .ptrow .pn{font-family:var(--naskh);font-size:.98rem;font-weight:700;color:#173D35}.prayer-times-modal .ptrow .pv{font-family:var(--sans);font-size:.86rem;font-weight:700;color:#674924}.prayer-times-modal .ptrow.now .pn,.prayer-times-modal .ptrow.now .pv{color:#0F5C50}
+.prayer-times-modal .actions{position:relative;z-index:5;margin:0;padding:14px 16px 16px;background:linear-gradient(180deg,rgba(255,249,234,0),#F7EFDF 35%)}
+.prayer-times-modal .actions .btn{border-color:#D6C6A5;background:#FFFDF7}.prayer-times-modal .actions .btn:first-child{color:#0F5C50;border-color:#BDA56F}
+@media(max-width:560px){
+  .prayer-times-modal{padding:.55rem}.prayer-times-modal .frame{border-radius:23px;background:linear-gradient(180deg,#083A33 0,#0B4A40 158px,#FFF9EA 158px,#F7EFDF 100%)}
+  .prayer-times-modal .frame::after{height:158px}.prayer-times-modal .prayer-emblem{width:43px;height:43px;margin-top:13px}.prayer-times-modal .prayer-emblem .zk-icon{width:25px;height:25px}
+  .prayer-times-modal .display{font-size:1.22rem!important}.prayer-times-modal .prayer-head{margin-bottom:9px}.prayer-times-modal .ptable{margin-inline:9px;border-radius:15px}.prayer-times-modal .ptrow{min-height:46px;padding:.42rem .78rem}.prayer-times-modal .actions{padding:10px 11px 12px}
 }
 
 /* v89 · stable text sizing across Chrome refreshes */
@@ -1209,11 +1346,27 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 
 <section class="zk-launch" id="zk-launch" aria-label="زاد الخير">
   <div class="zk-launch-card">
-    <p class="zk-launch-motto">اقرأْ وارتقِ</p>
+    <svg class="zk-launch-mihrab" viewBox="0 0 500 780" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="zk97Gold" x1="88" y1="54" x2="420" y2="744" gradientUnits="userSpaceOnUse"><stop stop-color="#F4DFA7"/><stop offset=".28" stop-color="#D8B565"/><stop offset=".62" stop-color="#C0923E"/><stop offset="1" stop-color="#8E6121"/></linearGradient>
+        <linearGradient id="zk97GoldHi" x1="92" y1="52" x2="405" y2="736" gradientUnits="userSpaceOnUse"><stop stop-color="#FFF0BE"/><stop offset=".5" stop-color="#E1C278"/><stop offset="1" stop-color="#B8812B"/></linearGradient>
+        <linearGradient id="zk97Paper" x1="250" y1="36" x2="250" y2="750" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFDF7"/><stop offset=".56" stop-color="#FCF5E8"/><stop offset="1" stop-color="#EFE3CD"/></linearGradient>
+        <pattern id="zk97PaperPattern" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M24 2 46 24 24 46 2 24Z" fill="none" stroke="#C59A4A" stroke-opacity=".048"/><path d="M12 12h24v24H12Z" fill="none" stroke="#0F5C50" stroke-opacity=".018" transform="rotate(45 24 24)"/></pattern>
+        <filter id="zk97InnerShadow" x="-15%" y="-15%" width="130%" height="135%"><feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#4F3513" flood-opacity=".16"/></filter>
+      </defs>
+      <path d="M250 20C224 54 190 81 171 116c-15 27-22 53-21 82 0 12-8 20-21 22-43 5-71 34-71 76v399c0 27 18 45 45 45h294c27 0 45-18 45-45V296c0-42-28-71-71-76-13-2-21-10-21-22 1-29-6-55-21-82-19-35-53-62-79-96Z" fill="url(#zk97Gold)"/>
+      <path d="M250 35C226 65 198 88 181 121c-13 24-19 49-18 76 0 19-12 32-31 35-37 5-61 28-61 66v392c0 21 13 34 34 34h290c21 0 34-13 34-34V298c0-38-24-61-61-66-19-3-31-16-31-35 1-27-5-52-18-76-17-33-45-56-69-86Z" fill="#0A473E"/>
+      <path d="M250 48C228 75 204 96 190 125c-12 23-17 46-16 71 1 25-15 43-40 47-31 4-50 23-50 56v385c0 17 10 27 27 27h278c17 0 27-10 27-27V299c0-33-19-52-50-56-25-4-41-22-40-47 1-25-4-48-16-71-14-29-38-50-60-77Z" fill="url(#zk97Paper)" filter="url(#zk97InnerShadow)"/>
+      <path d="M250 48C228 75 204 96 190 125c-12 23-17 46-16 71 1 25-15 43-40 47-31 4-50 23-50 56v385c0 17 10 27 27 27h278c17 0 27-10 27-27V299c0-33-19-52-50-56-25-4-41-22-40-47 1-25-4-48-16-71-14-29-38-50-60-77Z" fill="url(#zk97PaperPattern)"/>
+      <path d="M250 28C225 60 194 85 176 119c-14 25-20 51-19 78 0 16-10 27-27 30-40 5-66 31-66 70v396c0 24 16 40 40 40h292c24 0 40-16 40-40V297c0-39-26-65-66-70-17-3-27-14-27-30 1-27-5-53-19-78-18-34-49-59-74-91Z" fill="none" stroke="url(#zk97GoldHi)" stroke-width="3.4" opacity=".86"/>
+      <path d="M103 700h294" stroke="#C59A4A" stroke-opacity=".28"/>
+      <path d="M99 703h302" stroke="#FFF0BE" stroke-opacity=".18"/>
+    </svg>
     <div class="zk-launch-identity">
       <img class="zk-launch-mark" src="icons/zad-mark.svg" alt="" aria-hidden="true">
       <h1 class="zk-launch-brand">زاد الخير</h1>
     </div>
+    <p class="zk-launch-motto">اقرأْ وارتقِ</p>
     <div class="zk-launch-options">
       <button class="zk-launch-option" id="zk-launch-quran" type="button">
         <span class="zk-launch-option-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m19.648 5.437-.659-1.043c-.364-.577-.546-.866-.785-.892-.238-.027-.505.247-1.038.795-1.722 1.77-3.444 1.508-5.166 4.691-1.722-3.183-3.444-2.921-5.166-4.691-.533-.548-.8-.822-1.038-.795-.239.026-.421.315-.785.892l-.658 1.043c-.255.402-.382.604-.347.816.034.212.217.357.584.647l6.182 4.898c.591.468.887.702 1.228.702s.637-.234 1.228-.702L19.41 6.9c.367-.29.55-.435.584-.647.035-.212-.092-.414-.346-.816M22 8.5l-16 12v-4.696M2 8.5l16 12v-4.696"/></svg></span>
@@ -1223,7 +1376,18 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
         <span class="zk-launch-option-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.25"/><path d="M3.5 19c.45-3.15 2.4-5 5.5-5s5.05 1.85 5.5 5M14.3 14.8c.75-.55 1.7-.8 2.7-.8 2.35 0 3.75 1.4 4 3.8"/></svg></span>
         <strong>الختمات الجماعية</strong>
       </button>
+      <button class="zk-launch-option" id="zk-launch-prayer" type="button">
+        <span class="zk-launch-option-icon" aria-hidden="true"><svg viewBox="0 0 25 24"><path d="M15.5092 5.00159C14.2435 3.18742 11.8856 2.00044 9.50543 2.00044C5.63698 2.00044 2.50098 5.13565 2.50098 9.00311C2.50098 12.7024 5.37016 15.7493 9.00511 16.0058"/><path d="M9.50486 7.00244V9.5034L8.00391 10.5038"/><path d="M13.1148 15.5486C11.7537 13.8925 11.5215 12.2295 13.469 10.2102C15.5149 8.38506 16.6931 7.52188 17.007 7.00244C17.3209 7.52188 18.5182 8.38506 20.5641 10.2102C22.4183 11.8643 22.3017 13.8925 20.9405 15.5486M13.1148 15.5486H12.5923M13.1148 15.5486H20.9405M20.9405 15.5486H21.4009M11.5215 15.5486H12.5923M12.5923 15.5486V21.0934C12.6323 21.7611 12.5923 22.0727 13.8035 21.9852H16.9881M21.4009 15.5486H22.5001M21.4009 15.5486V21.1949C21.5177 22.1018 20.7956 21.9427 20.3338 21.9852H16.9881M16.9881 21.9852L17.0235 19.8507"/></svg></span>
+        <strong>مواقيت الصلاة</strong>
+      </button>
     </div>
+    <svg class="zk-launch-rosette" viewBox="0 0 64 64" aria-hidden="true">
+      <g fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M32 5c4 8 7 11 15 12-5 7-5 11 0 18-8 1-11 4-15 12-4-8-7-11-15-12 5-7 5-11 0-18 8-1 11-4 15-12Z"/>
+        <path d="M12.9 12.9c8.5 2.8 12.7 2.8 19.1-2.2 6.4 5 10.6 5 19.1 2.2-2.8 8.5-2.8 12.7 2.2 19.1-5 6.4-5 10.6-2.2 19.1-8.5-2.8-12.7-2.8-19.1 2.2-6.4-5-10.6-5-19.1-2.2 2.8-8.5 2.8-12.7-2.2-19.1 5-6.4 5-10.6 2.2-19.1Z" opacity=".62"/>
+        <circle cx="32" cy="32" r="8"/>
+      </g>
+    </svg>
   </div>
 </section>
 
@@ -1357,9 +1521,10 @@ const readLink=j=>readerLink(j);
    البلدان: [الاسم، المنطقة الزمنية، طريقة الحساب المعتادة، [المدن]]
    المدينة: [الاسم، خط العرض، خط الطول، منطقة زمنية خاصة (اختيارية)] */
 const PT_KEY="zad:prayer";
-const PRAYER_ICON=`<svg class="zk-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-  <path d="M4.2 20.1h15.6"/><path d="M6.8 20.1v-8.3c0-3.65 2.08-6.55 5.2-8.35 3.12 1.8 5.2 4.7 5.2 8.35v8.3"/>
-  <path d="M9.65 20.1v-3.3a2.35 2.35 0 0 1 4.7 0v3.3"/><path d="M9.6 11.7h4.8"/><path d="M12 3.45V1.9"/>
+const PRAYER_ICON=`<svg class="zk-icon" viewBox="0 0 25 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <path d="M15.5092 5.00159C14.2435 3.18742 11.8856 2.00044 9.50543 2.00044C5.63698 2.00044 2.50098 5.13565 2.50098 9.00311C2.50098 12.7024 5.37016 15.7493 9.00511 16.0058"/>
+  <path d="M9.50486 7.00244V9.5034L8.00391 10.5038"/>
+  <path d="M13.1148 15.5486C11.7537 13.8925 11.5215 12.2295 13.469 10.2102C15.5149 8.38506 16.6931 7.52188 17.007 7.00244C17.3209 7.52188 18.5182 8.38506 20.5641 10.2102C22.4183 11.8643 22.3017 13.8925 20.9405 15.5486M13.1148 15.5486H12.5923M13.1148 15.5486H20.9405M20.9405 15.5486H21.4009M11.5215 15.5486H12.5923M12.5923 15.5486V21.0934C12.6323 21.7611 12.5923 22.0727 13.8035 21.9852H16.9881M21.4009 15.5486H22.5001M21.4009 15.5486V21.1949C21.5177 22.1018 20.7956 21.9427 20.3338 21.9852H16.9881M16.9881 21.9852L17.0235 19.8507"/>
 </svg>`;
 
 const PT_NAMES={fajr:"الفجر",sunrise:"الشروق",dhuhr:"الظهر",asr:"العصر",maghrib:"المغرب",isha:"العشاء"};
@@ -2631,7 +2796,7 @@ function openSheet(i){
   if(asg) asg.onclick=()=>assignDialog(i);
   document.querySelectorAll("[data-act]").forEach(b=>b.onclick=()=>act(b.dataset.act,+b.dataset.i));
 }
-function closeLayer(){document.getElementById("layer").innerHTML="";selected=null;}
+function closeLayer(){document.getElementById("layer").innerHTML="";document.body.classList.remove("zk-launch-prayer");selected=null;}
 function modal(html,kind=""){
   document.getElementById("layer").innerHTML=`<div class="modal${kind?` ${kind}`:""}" id="m-back"><div class="frame">${html}</div></div>`;
   document.getElementById("m-back").onclick=e=>{if(e.target.id==="m-back")closeLayer();};
@@ -3862,6 +4027,7 @@ function zkRootBack(){
 window.addEventListener("popstate",()=>zkRootBack());
 document.getElementById("zk-launch-quran")?.addEventListener("click",()=>{location.href="reader.html?home=1&from=zad"});
 document.getElementById("zk-launch-zad")?.addEventListener("click",()=>{zkHideLaunch();boot()});
+document.getElementById("zk-launch-prayer")?.addEventListener("click",()=>{document.body.classList.add("zk-launch-prayer");prayerDialog()});
 window.addEventListener("hashchange",()=>{zkHideLaunch();boot()});
 window.addEventListener("resize",queueTopUserSync,{passive:true});
 window.addEventListener("online",outboxWake);
