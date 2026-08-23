@@ -1,7 +1,7 @@
 {
   "name": "زاد الخير",
   "short_name": "زاد الخير",
-  "description": "تطبيق لتنظيم و ضبط الختم الجماعية، مع تذكير يومي، وإمكانية تحويل القراءة الفردية إلى مذاكرة جماعية للقرآن الكريم بين قراء الختمة.",
+  "description": "القرآن العظيم وزاد الخير للختم الجماعية.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
@@ -10,8 +10,27 @@
   "lang": "ar",
   "dir": "rtl",
   "icons": [
-    {"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png"},
-    {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png"},
-    {"src": "icons/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
-  ]
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "launch_handler": {
+    "client_mode": [
+      "focus-existing",
+      "auto"
+    ]
+  }
 }

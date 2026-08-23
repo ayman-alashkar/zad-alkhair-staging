@@ -1099,6 +1099,71 @@ body.show-home-mine .tb-user,body.show-top-user .tb-user{opacity:1;transform:non
   .tb-user{max-width:25vw!important}
 }
 
+
+/* ---------- v82 · بوابة زاد الخير: كريمي + أخضر ---------- */
+.zk-launch{
+  position:fixed;inset:0;z-index:120;display:none;overflow:auto;overscroll-behavior:contain;
+  padding:max(24px,env(safe-area-inset-top)) max(20px,env(safe-area-inset-right)) max(24px,env(safe-area-inset-bottom)) max(20px,env(safe-area-inset-left));
+  color:var(--ink);font-family:var(--sans);
+  background:
+    radial-gradient(circle at 50% 8%,rgba(228,201,128,.15),transparent 20rem),
+    radial-gradient(circle at 12% 88%,rgba(73,161,140,.12),transparent 25rem),
+    linear-gradient(145deg,#061F1D 0%,var(--night) 48%,#0B3832 100%)
+}
+.zk-launch::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.13;
+  background-image:
+    linear-gradient(30deg,rgba(228,201,128,.18) 12%,transparent 12.5%,transparent 87%,rgba(228,201,128,.18) 87.5%),
+    linear-gradient(150deg,rgba(228,201,128,.18) 12%,transparent 12.5%,transparent 87%,rgba(228,201,128,.18) 87.5%),
+    linear-gradient(30deg,rgba(228,201,128,.18) 12%,transparent 12.5%,transparent 87%,rgba(228,201,128,.18) 87.5%),
+    linear-gradient(150deg,rgba(228,201,128,.18) 12%,transparent 12.5%,transparent 87%,rgba(228,201,128,.18) 87.5%);
+  background-position:0 0,0 0,42px 72px,42px 72px;background-size:84px 144px;
+  -webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.75),transparent 45%,transparent 55%,rgba(0,0,0,.75));
+  mask-image:linear-gradient(90deg,rgba(0,0,0,.75),transparent 45%,transparent 55%,rgba(0,0,0,.75))
+}
+.zk-launch.show{display:grid;place-items:center}
+.zk-launch-card{
+  position:relative;z-index:1;width:min(455px,100%);display:grid;gap:25px;text-align:center;
+  padding:clamp(28px,6vw,42px) clamp(20px,5vw,34px) clamp(24px,5vw,34px);
+  border:1px solid rgba(197,154,74,.38);border-radius:34px;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(228,201,128,.20),transparent 14rem),
+    linear-gradient(180deg,#FFF9EA 0%,#F8F1E2 56%,#F5F0E4 100%);
+  box-shadow:0 30px 70px -38px rgba(0,0,0,.78),inset 0 0 0 1px rgba(255,255,255,.72)
+}
+.zk-launch-card::before{
+  content:"";position:absolute;inset:9px;border:1px solid rgba(197,154,74,.18);border-radius:26px;pointer-events:none
+}
+.zk-launch-motto{
+  position:relative;z-index:1;margin:0;font-family:var(--naskh);font-size:clamp(1.15rem,4.5vw,1.42rem);
+  line-height:1.6;color:#886428;letter-spacing:.01em
+}
+.zk-launch-identity{position:relative;z-index:1;display:grid;justify-items:center;gap:10px;padding:2px 0 4px}
+.zk-launch-mark{width:76px;height:76px;display:block;object-fit:contain;filter:drop-shadow(0 13px 20px rgba(45,61,51,.16))}
+.zk-launch-brand{font-family:var(--ruqaa);font-size:clamp(2.7rem,11vw,4.05rem);font-weight:700;line-height:1.08;color:#0F5C50;margin:0;letter-spacing:0}
+.zk-launch-options{position:relative;z-index:1;display:grid;gap:12px;padding-top:5px}
+.zk-launch-options::before{content:"";height:1px;width:64%;margin:0 auto 7px;background:linear-gradient(90deg,transparent,rgba(197,154,74,.42),transparent)}
+.zk-launch-option{
+  appearance:none;width:100%;min-height:72px;border:1px solid rgba(197,154,74,.25);border-radius:18px;padding:14px 20px;
+  display:grid;place-items:center;background:rgba(255,252,244,.82);color:#173D35;cursor:pointer;
+  box-shadow:0 12px 30px -28px rgba(55,44,22,.65),inset 0 1px 0 rgba(255,255,255,.92);
+  transition:transform .14s ease,border-color .18s ease,background .18s ease,box-shadow .18s ease
+}
+.zk-launch-option:first-child{background:linear-gradient(180deg,#FFFCF4,#F8F1E3);border-color:rgba(197,154,74,.38)}
+.zk-launch-option:last-child{background:linear-gradient(180deg,#F3EADB,#EDE2CE);border-color:rgba(15,92,80,.22)}
+.zk-launch-option:hover{border-color:rgba(197,154,74,.55);box-shadow:0 16px 34px -28px rgba(55,44,22,.72),inset 0 1px 0 rgba(255,255,255,.95)}
+.zk-launch-option:active{transform:scale(.987);background:#F0E7D7}
+.zk-launch-option:focus-visible{outline:3px solid rgba(15,92,80,.18);outline-offset:3px}
+.zk-launch-option strong{font-family:var(--ruqaa);font-size:clamp(1.45rem,5.5vw,1.78rem);font-weight:700;line-height:1.3;color:#173D35}
+@media(max-width:620px){
+  .zk-launch{padding-top:calc(22px + env(safe-area-inset-top));padding-bottom:calc(22px + env(safe-area-inset-bottom))}
+  .zk-launch-card{width:min(390px,100%);gap:21px;padding:30px 18px 24px;border-radius:28px}
+  .zk-launch-card::before{inset:7px;border-radius:22px}
+  .zk-launch-mark{width:68px;height:68px}.zk-launch-brand{font-size:3.05rem}
+  .zk-launch-option{min-height:68px;border-radius:16px}.zk-launch-options{gap:10px}
+  .zk-launch-motto{font-size:1.2rem}
+}
+
 </style>
 
 
@@ -1106,6 +1171,21 @@ body.show-home-mine .tb-user,body.show-top-user .tb-user{opacity:1;transform:non
 
 </head>
 <body>
+
+<section class="zk-launch" id="zk-launch" aria-label="زاد الخير">
+  <div class="zk-launch-card">
+    <p class="zk-launch-motto">كلامُ الباري يجمعُنا</p>
+    <div class="zk-launch-identity">
+      <img class="zk-launch-mark" src="icons/zad-mark.svg" alt="" aria-hidden="true">
+      <h1 class="zk-launch-brand">زاد الخير</h1>
+    </div>
+    <div class="zk-launch-options">
+      <button class="zk-launch-option" id="zk-launch-quran" type="button"><strong>القرآن العظيم</strong></button>
+      <button class="zk-launch-option" id="zk-launch-zad" type="button"><strong>الختمات الجماعية</strong></button>
+    </div>
+  </div>
+</section>
+
 <div class="topbar">
   <button class="tb-brand" id="tb-home" type="button" aria-label="الصفحة الرئيسية">زاد الخير</button>
   <button class="tb-reader" id="tb-reader" type="button" aria-label="فتح القرآن العظيم">القرآن العظيم</button>
@@ -1218,17 +1298,11 @@ const JUZ_START=[
   [41,47], [46,1],  [51,31], [58,1],  [67,1],  [78,1],
 ];
 function readerLink(j=null,khatmahCode=code){
-  const n=Number(j);
-  const c=String(khatmahCode||"").trim().toUpperCase();
-
-  if(n>=1&&n<=30){
-    const q=new URLSearchParams();
-    if(c) q.set("code",c);
-    const tail=q.toString();
-    return `juz/${n}/`+(tail?"?"+tail:"");
-  }
-
   const q=new URLSearchParams();
+  const n=Number(j);
+  if(n>=1&&n<=30) q.set("juz",String(n));
+  else q.set("home","1");
+  const c=String(khatmahCode||"").trim().toUpperCase();
   if(c) q.set("code",c);
   const tail=q.toString();
   return "reader.html"+(tail?"?"+tail:"");
@@ -1826,6 +1900,12 @@ let code="", state=null, viewer=null, selected=null, gateName="",
     screen="boot";   /* boot | home | create | share | gate | main | notfound */
 
 const hashCode=()=>(location.hash||"").replace(/^#/,"").trim().toUpperCase().slice(0,4);
+function zkReplaceHash(value=""){
+  try{
+    const url=new URL(location.href);url.hash=value?String(value):"";
+    history.replaceState(history.state,"",url.href);
+  }catch(_){location.hash=value?String(value):""}
+}
 /* آخر ختمة دخلها صاحب هذا الجهاز.
    يفتح بها التطبيق المثبَّت، فهو يبدأ من الجذر بلا رمز. */
 const LAST="zad:last";
@@ -1970,7 +2050,7 @@ function goHome(){
   clearInterval(lkTimer); lkTimer=null; linking=false;
   localStorage.removeItem(LAST);   /* طلب صريح للرئيسية، فلا يُعاد التوجيه */
   closeLayer();
-  location.hash="";code="";state=null;viewer=null;screen="home";render();
+  zkReplaceHash("");code="";state=null;viewer=null;screen="home";render();
   loadPublicKhatmahs(true);
 }
 function toast(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("show");
@@ -2610,7 +2690,7 @@ async function joinKhatmahCard(publicId){
     try{publicCode=await rpc("open_public_khatmah",{p_public_id:publicId});}
     catch(e){return toast("تعذّر فتح الختمة الآن");}
     if(!publicCode) return toast("لم تعد هذه الختمة متاحة");
-    location.hash=String(publicCode).toUpperCase();boot();return;
+    zkReplaceHash(String(publicCode).toUpperCase());boot();return;
   }
   modal(`<div class="display" style="font-size:1.35rem">${esc(item.title)}</div>
     <p class="hint" style="margin:.55rem 0 1rem">أدخل رمز هذه الختمة للانضمام إليها.</p>
@@ -2626,7 +2706,7 @@ async function joinKhatmahCard(publicId){
     try{matches=await rpc("match_khatmah_code",{p_public_id:publicId,p_code:c});}
     catch(e){return toast("تعذّر التحقق من الرمز");}
     if(!matches) return toast("هذا الرمز لا يخصّ الختمة المختارة");
-    closeLayer();location.hash=c;boot();
+    closeLayer();zkReplaceHash(c);boot();
   };
   document.getElementById("card-go").onclick=go;
   document.getElementById("card-no").onclick=closeLayer;
@@ -3384,7 +3464,7 @@ function reminderFromAccountMenu(){
 }
 function handleTopMenuClick(e){
   const mine=e.target.closest("[data-top-mine]");
-  if(mine){closeTopMenu();location.hash=mine.dataset.topMine;boot();return;}
+  if(mine){closeTopMenu();zkReplaceHash(mine.dataset.topMine);boot();return;}
   const action=e.target.closest("[data-top-action]")?.dataset.topAction;
   if(!action) return;
   if(action==="mine"){showTopMenu("mine");return;}
@@ -3410,7 +3490,7 @@ function bind(){
   if($("btn-prayer")) $("btn-prayer").onclick=prayerDialog;
   if($("btn-leave")) $("btn-leave").onclick=leaveDialog;
   document.querySelectorAll("[data-mine]").forEach(b=>b.onclick=()=>{
-    location.hash=b.dataset.mine; boot();
+    zkReplaceHash(b.dataset.mine); boot();
   });
   if($("btn-new")) $("btn-new").onclick=()=>{screen="create";render();};
   document.querySelectorAll("[data-khatmah-card]").forEach(button=>
@@ -3422,7 +3502,7 @@ function bind(){
     const go=()=>{
       const c=norm($("f-join").value).toUpperCase();
       if(c.length!==4) return toast("الرمز أربعة محارف");
-      location.hash=c; boot();
+      zkReplaceHash(c); boot();
     };
     $("btn-join").onclick=go;
     $("f-join").onkeydown=e=>{if(e.key==="Enter")go();};
@@ -3448,7 +3528,7 @@ function bind(){
         p_access_type:access});
       if(!r.ok) return toast(r.error||"تعذّر الإنشاء");
       code=r.code;
-      history.replaceState(null,"","#"+code);
+      zkReplaceHash(code);
       viewer={id:keyOf(org),name:org};
       localStorage.setItem(vKey(),JSON.stringify(viewer));
       localStorage.setItem(LAST,code);
@@ -3645,7 +3725,7 @@ async function cancelKhatmah(){
     if(!r.ok) return toast(r.error||"الرمز غير صحيح");
     localStorage.removeItem(vKey()); localStorage.removeItem(cKey());
     localStorage.removeItem(LAST);
-    location.hash=""; code=""; state=null; viewer=null; screen="home"; closeLayer(); render();
+    zkReplaceHash(""); code=""; state=null; viewer=null; screen="home"; closeLayer(); render();
     loadPublicKhatmahs(true);
     toast("أُلغيت الختمة");
   }catch(e){ toast("تعذّر الاتصال"); }
@@ -3694,10 +3774,91 @@ document.addEventListener("click",e=>{
   if(now<lockedUntil){ e.preventDefault(); e.stopImmediatePropagation(); return; }
   target.dataset.tapLock=String(now+700);
 },true);
-window.addEventListener("hashchange",boot);
+const zkLaunch=document.getElementById("zk-launch");
+const zkOfflineStatus=document.getElementById("zk-offline-status");
+function zkHasDirectTarget(){
+  const q=new URLSearchParams(location.search);
+  return !!hashCode() || q.get("zad")==="1";
+}
+function zkShowLaunch(){
+  if(!zkLaunch)return;
+  closeTopMenu();closeLayer();
+  zkLaunch.classList.add("show");
+  zkLaunch.setAttribute("aria-hidden","false");
+}
+function zkHideLaunch(){
+  if(!zkLaunch)return;
+  zkLaunch.classList.remove("show");
+  zkLaunch.setAttribute("aria-hidden","true");
+}
+const zkRootGuardToken=`${Date.now()}-${Math.random().toString(36).slice(2)}`;
+let zkExitPressedAt=0,zkExitRearmTimer=null;
+function zkArmRootGuard(){
+  clearTimeout(zkExitRearmTimer);
+  try{
+    if(history.state?.zkRootGuard===zkRootGuardToken)return;
+    history.pushState({...history.state,zkRootGuard:zkRootGuardToken},"",location.href);
+  }catch(_){ }
+}
+function zkLaunchVisible(){return !!zkLaunch?.classList.contains("show")}
+function zkConfirmNativeExit(){
+  zkExitPressedAt=Date.now();
+  toast("اضغط الرجوع مرة أخرى للخروج");
+  clearTimeout(zkExitRearmTimer);
+  /* Keep the guard removed briefly. A second physical Back now belongs to
+     Android/Chrome. If the user stays, restore the guard automatically. */
+  zkExitRearmTimer=setTimeout(()=>{zkExitPressedAt=0;zkArmRootGuard()},2200);
+}
+function zkRootBack(){
+  if(document.getElementById("layer")?.innerHTML){closeLayer();zkArmRootGuard();return}
+  const topMenu=document.getElementById("tb-popover");
+  if(topMenu&&!topMenu.hidden){closeTopMenu();zkArmRootGuard();return}
+  if(!zkLaunchVisible()){
+    zkShowLaunch();zkArmRootGuard();return;
+  }
+  zkConfirmNativeExit();
+}
+window.addEventListener("popstate",()=>zkRootBack());
+document.getElementById("zk-launch-quran")?.addEventListener("click",()=>{location.href="reader.html?home=1&from=zad"});
+document.getElementById("zk-launch-zad")?.addEventListener("click",()=>{zkHideLaunch();boot()});
+window.addEventListener("hashchange",()=>{zkHideLaunch();boot()});
 window.addEventListener("resize",queueTopUserSync,{passive:true});
 window.addEventListener("online",outboxWake);
-boot();
+if(zkHasDirectTarget())boot();else zkShowLaunch();
+zkArmRootGuard()
+
+/* PWA shell + offline Quran/Tafsir library. The index checks status only;
+   entering reader.html is the opt-in that starts a missing full download. */
+const ZK_OFFLINE_LIBRARY_KEY="zad:offline-library-v1";
+function zkRememberOfflineLibrary(ready){
+  try{
+    if(ready)localStorage.setItem(ZK_OFFLINE_LIBRARY_KEY,"1");
+    else localStorage.removeItem(ZK_OFFLINE_LIBRARY_KEY);
+    localStorage.removeItem("zad:quran-offline-v1");
+  }catch(_){ }
+}
+function zkPaintOfflineStatus(ready){
+  if(!zkOfflineStatus)return;
+  zkOfflineStatus.classList.toggle("ready",!!ready);
+  const label=zkOfflineStatus.querySelector("span:last-child");
+  if(label)label.textContent=ready?"القرآن والتفسير جاهزان دون اتصال":"";
+}
+if("serviceWorker" in navigator){
+  navigator.serviceWorker.addEventListener("message",event=>{
+    const data=event.data||{};
+    if(data.type==="OFFLINE_LIBRARY_READY"){
+      zkRememberOfflineLibrary(true);zkPaintOfflineStatus(true);
+    }else if(data.type==="OFFLINE_LIBRARY_INCOMPLETE"){
+      zkRememberOfflineLibrary(false);zkPaintOfflineStatus(false);
+    }
+  });
+  window.addEventListener("load",()=>{
+    navigator.serviceWorker.register("sw.js").then(()=>navigator.serviceWorker.ready).then(reg=>{
+      (reg.active||reg.waiting||reg.installing)?.postMessage({type:"CHECK_OFFLINE_LIBRARY"});
+    }).catch(()=>{});
+  },{once:true});
+  navigator.serviceWorker.addEventListener("controllerchange",()=>navigator.serviceWorker.ready.then(reg=>(reg.active||reg.waiting||reg.installing)?.postMessage({type:"CHECK_OFFLINE_LIBRARY"})).catch(()=>{}));
+}
 let ptTimer=setInterval(ptTick,30000);
 let outboxTimer=setInterval(flushOutbox,30000);
 zLoop();
