@@ -1,15 +1,15 @@
 "use strict";
 
 /*
-  Zad Al-Khair service worker — v88 production candidate.
+  Zad Al-Khair service worker — v89 production candidate.
   Cache domains are intentionally separated so an interface update never forces
   a re-download of the Mushaf, and a Tafsir correction never invalidates QCF4.
 */
-const SHELL_CACHE="zad-shell-v88";
+const SHELL_CACHE="zad-shell-v89";
 const QURAN_CACHE="zad-quran-core-v1";
 const TAFSIR_CACHE="zad-tafsir-alwajeez-v1";
 const AUDIO_CACHE="zad-audio-v1";
-const RUNTIME_CACHE="zad-runtime-v88";
+const RUNTIME_CACHE="zad-runtime-v89";
 const LEGACY_QURAN_CACHE="zad-quran-v80";
 
 const QCF_BASE="https://cdn.jsdelivr.net/npm/quran-qcf4@1.0.3/";
@@ -226,6 +226,7 @@ async function ensureOfflineLibrary(){
       return initial;
     }
     const total=(initial.quranReady?0:QURAN_REQUIRED.length)+(initial.tafsirReady?0:TAFSIR_REQUIRED.length);
+    await notifyAll({type:"OFFLINE_LIBRARY_PROGRESS",kind:"library",done:0,total});
     let offset=0,failed=0;
     if(!initial.quranReady){
       const result=await cacheSet(QURAN_CACHE,QURAN_REQUIRED,"quran",offset,total);

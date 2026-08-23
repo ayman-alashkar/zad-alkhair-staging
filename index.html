@@ -1164,6 +1164,9 @@ body.show-home-mine .tb-user,body.show-top-user .tb-user{opacity:1;transform:non
   .zk-launch-motto{font-size:1.2rem}
 }
 
+
+/* v89 · stable text sizing across Chrome refreshes */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 </style>
 
 
@@ -3841,7 +3844,7 @@ function zkPaintOfflineStatus(ready){
   if(!zkOfflineStatus)return;
   zkOfflineStatus.classList.toggle("ready",!!ready);
   const label=zkOfflineStatus.querySelector("span:last-child");
-  if(label)label.textContent=ready?"القرآن والتفسير جاهزان دون اتصال":"";
+  if(label)label.textContent="";
 }
 if("serviceWorker" in navigator){
   navigator.serviceWorker.addEventListener("message",event=>{
