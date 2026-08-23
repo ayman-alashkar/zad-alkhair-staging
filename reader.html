@@ -3285,6 +3285,54 @@ async function downloadedAudioPackagesForSurah(s,verify=true){
   }
   return out;
 }
+/* v99 · Offline playback follows the reciter actually downloaded.
+   - one downloaded reciter: use it automatically;
+   - multiple downloaded reciters: the Surah play button asks which one;
+   - inside the reader, keep the current reciter if it is available, otherwise
+     choose from the downloaded copies instead of blocking playback. */
+function activateOfflineReciter(r){
+  if(!r||r.id===reciter.id)return false;
+  playbackRequestId++;
+  try{audio.pause();audioPreload.pause()}catch(_){ }
+  activeSegment=null;activeTimingRows=null;segmentAdvancing=false;
+  try{releaseAudioPreload()}catch(_){ }
+  try{delete audio.dataset.source;delete audio.dataset.playMode;audio.removeAttribute("src");audio.load()}catch(_){ }
+  reciter=r;
+  storageJsonSet(STORAGE_KEYS.qari,reciter);
+  const q=document.getElementById("panelQari");if(q)q.value=reciter.id;
+  try{updatePlayer()}catch(_){ }
+  return true;
+}
+function chooseOfflineReciterForSurah(s,rows){
+  return new Promise(resolve=>{
+    let settled=false;
+    const finish=r=>{if(settled)return;settled=true;try{b.remove()}catch(_){ }resolve(r||null)};
+    const choices=rows.map(({r})=>`<button type="button" class="audio-qari-choice" data-offline-play-qari="${escapeHtml(r.id)}"><span>${escapeHtml(r.name)}</span><small>متاح دون اتصال ✓</small></button>`).join("");
+    const b=sheet("اختر القارئ",`<div class="audio-offline-prompt">هذه السورة متاحة للتشغيل دون اتصال بأكثر من قارئ. اختر القارئ الذي تود الاستماع بصوته:</div><div class="audio-qari-choices">${choices}</div>`);
+    b.querySelectorAll("[data-offline-play-qari]").forEach(btn=>btn.onclick=()=>{
+      const r=rows.find(x=>x.r.id===btn.dataset.offlinePlayQari)?.r||null;finish(r);
+    });
+    b.addEventListener("click",e=>{if(e.target===b||e.target.closest(".close-sheet"))finish(null)});
+  });
+}
+async function ensureOfflinePlaybackReciter(s,{chooseWhenMultiple=false}={}){
+  if(navigator.onLine)return true;
+  const rows=await downloadedAudioPackagesForSurah(s,true);
+  if(!rows.length){showToast(AUDIO_OFFLINE_UNAVAILABLE);return false}
+  const current=rows.find(({r})=>r.id===reciter.id)||null;
+  if(rows.length>1&&chooseWhenMultiple){
+    const chosen=await chooseOfflineReciterForSurah(s,rows);if(!chosen)return false;
+    activateOfflineReciter(chosen);return true;
+  }
+  if(current)return true;
+  if(rows.length===1){
+    const chosen=rows[0].r,changed=activateOfflineReciter(chosen);
+    if(changed)showToast(`سيبدأ التشغيل بصوت ${chosen.name}`);
+    return true;
+  }
+  const chosen=await chooseOfflineReciterForSurah(s,rows);if(!chosen)return false;
+  activateOfflineReciter(chosen);return true;
+}
 async function refreshAudioDownloadButton(btn,s){
   const rows=await downloadedAudioPackagesForSurah(s,true);
   setAudioDownloadButton(btn,rows.length?"downloaded":"available");
@@ -3442,7 +3490,7 @@ async function shareHubPayload(payload){
 function setIndexPlaybackBoundary(stop){continuousStopRef=stop||null}
 async function playSurahFromHub(s,closeHub){
   s=Number(s)||1;
-  if(!navigator.onLine&&!await isSurahAudioAvailableOffline(s)){showToast(AUDIO_OFFLINE_UNAVAILABLE);return}
+  if(!navigator.onLine&&!await ensureOfflinePlaybackReciter(s,{chooseWhenMultiple:true}))return;
   const last=maxAyah(s);setIndexPlaybackBoundary({s,a:last});
   continuousMode=true;storageSet(STORAGE_KEYS.continuous,"1");
   play={surah:s,from:1,to:1,current:1,repeatAyah:1,repeatAyahLeft:1,repeatGroup:1,repeatGroupLeft:1,repeatSurah:1,repeatSurahLeft:1,speed:play.speed||1};
@@ -3958,7 +4006,7 @@ function advanceTimedSegmentWithoutPause(){
 }
 
 async function playCurrent(expand=false){
-  if(!navigator.onLine&&!await isSurahAudioAvailableOffline(play.surah)){showToast(AUDIO_OFFLINE_UNAVAILABLE);return false}
+  if(!navigator.onLine&&!await ensureOfflinePlaybackReciter(play.surah))return false;
   const requestId=++playbackRequestId;
   const keepExpanded=expand||document.body.classList.contains("player-expanded");
   resetAudioProgress();

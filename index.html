@@ -1336,6 +1336,36 @@ body.zk-launch-prayer .modal{z-index:150}
 
 /* v89 · stable text sizing across Chrome refreshes */
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+
+
+/* ═══════════ v99 · v97 restored + precise launcher refinements ═══════════ */
+/* Keep the v97 identity intact. The motto now uses the empty vertical space
+   as a rising diagonal: اقرأْ → و → ارتقِ. */
+.zk-launch-motto{
+  position:relative;align-self:start;width:min(230px,74%);height:82px;margin:0 auto;
+  padding:0;min-height:82px;font-family:var(--ruqaa);font-weight:600;color:#A67527;
+  text-shadow:0 1px 0 rgba(255,255,255,.82)
+}
+.zk-launch-motto::before,.zk-launch-motto::after{display:none!important}
+.zk-launch-motto span{position:absolute;display:block;white-space:nowrap;line-height:1;font-size:clamp(1.34rem,5.2vw,1.78rem)}
+.zk-launch-motto .zk-motto-rise{left:5px;top:0}
+.zk-launch-motto .zk-motto-and{left:50%;top:50%;transform:translate(-50%,-50%);font-size:clamp(1.08rem,4.2vw,1.36rem);color:#B88A38}
+.zk-launch-motto .zk-motto-read{right:5px;bottom:0}
+.zk-launch-options{padding-top:2px}
+/* The old lower rosette was decorative but ambiguous, so it is intentionally absent. */
+.zk-launch-rosette{display:none!important}
+/* Keep only the prayer label centered, as requested. */
+.zk-launch-option:nth-child(3) strong{text-align:center}
+@media(max-width:620px){
+  .zk-launch-motto{width:min(205px,72%);height:70px;min-height:70px}
+  .zk-launch-motto span{font-size:clamp(1.22rem,5.5vw,1.52rem)}
+  .zk-launch-motto .zk-motto-and{font-size:clamp(1rem,4.5vw,1.2rem)}
+  .zk-launch-options{padding-top:0}
+}
+@media(max-height:690px) and (max-width:620px){
+  .zk-launch-motto{height:56px;min-height:56px;width:min(190px,70%)}
+  .zk-launch-motto span{font-size:1.18rem}.zk-launch-motto .zk-motto-and{font-size:.98rem}
+}
 </style>
 
 
@@ -1366,7 +1396,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
       <img class="zk-launch-mark" src="icons/zad-mark.svg" alt="" aria-hidden="true">
       <h1 class="zk-launch-brand">زاد الخير</h1>
     </div>
-    <p class="zk-launch-motto">اقرأْ وارتقِ</p>
+    <p class="zk-launch-motto" aria-label="اقرأْ وارتقِ"><span class="zk-motto-rise">ارتقِ</span><span class="zk-motto-and">و</span><span class="zk-motto-read">اقرأْ</span></p>
     <div class="zk-launch-options">
       <button class="zk-launch-option" id="zk-launch-quran" type="button">
         <span class="zk-launch-option-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m19.648 5.437-.659-1.043c-.364-.577-.546-.866-.785-.892-.238-.027-.505.247-1.038.795-1.722 1.77-3.444 1.508-5.166 4.691-1.722-3.183-3.444-2.921-5.166-4.691-.533-.548-.8-.822-1.038-.795-.239.026-.421.315-.785.892l-.658 1.043c-.255.402-.382.604-.347.816.034.212.217.357.584.647l6.182 4.898c.591.468.887.702 1.228.702s.637-.234 1.228-.702L19.41 6.9c.367-.29.55-.435.584-.647.035-.212-.092-.414-.346-.816M22 8.5l-16 12v-4.696M2 8.5l16 12v-4.696"/></svg></span>
@@ -1377,17 +1407,10 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
         <strong>الختمات الجماعية</strong>
       </button>
       <button class="zk-launch-option" id="zk-launch-prayer" type="button">
-        <span class="zk-launch-option-icon" aria-hidden="true"><svg viewBox="0 0 25 24"><path d="M15.5092 5.00159C14.2435 3.18742 11.8856 2.00044 9.50543 2.00044C5.63698 2.00044 2.50098 5.13565 2.50098 9.00311C2.50098 12.7024 5.37016 15.7493 9.00511 16.0058"/><path d="M9.50486 7.00244V9.5034L8.00391 10.5038"/><path d="M13.1148 15.5486C11.7537 13.8925 11.5215 12.2295 13.469 10.2102C15.5149 8.38506 16.6931 7.52188 17.007 7.00244C17.3209 7.52188 18.5182 8.38506 20.5641 10.2102C22.4183 11.8643 22.3017 13.8925 20.9405 15.5486M13.1148 15.5486H12.5923M13.1148 15.5486H20.9405M20.9405 15.5486H21.4009M11.5215 15.5486H12.5923M12.5923 15.5486V21.0934C12.6323 21.7611 12.5923 22.0727 13.8035 21.9852H16.9881M21.4009 15.5486H22.5001M21.4009 15.5486V21.1949C21.5177 22.1018 20.7956 21.9427 20.3338 21.9852H16.9881M16.9881 21.9852L17.0235 19.8507"/></svg></span>
+        <span class="zk-launch-option-icon" aria-hidden="true"><svg viewBox="0 0 25 24"><path d="M9.15309 9C5.68214 5.5 11.0125 3.75 12.5 2C13.9875 3.75 19.3179 5.5 15.8469 9H9.15309Z"/><path d="M18.5 12V11C18.5 10.0572 18.5 9.58579 18.2071 9.29289C17.9142 9 17.4428 9 16.5 9H8.5C7.55719 9 7.08579 9 6.79289 9.29289C6.5 9.58579 6.5 10.0572 6.5 11V12"/><path d="M17.5 12H7.5C6.08579 12 5.37868 12 4.93934 12.4393C4.5 12.8787 4.5 13.5858 4.5 15V19C4.5 20.4142 4.5 21.1213 4.93934 21.5607C5.37868 22 6.08579 22 7.5 22H17.5C18.9142 22 19.6213 22 20.0607 21.5607C20.5 21.1213 20.5 20.4142 20.5 19V15C20.5 13.5858 20.5 12.8787 20.0607 12.4393C19.6213 12 18.9142 12 17.5 12Z"/><path d="M10.0001 22V19C9.98279 16 12.5 15 12.5 15C12.5 15 15.0172 16 14.9999 19V22"/></svg></span>
         <strong>مواقيت الصلاة</strong>
       </button>
     </div>
-    <svg class="zk-launch-rosette" viewBox="0 0 64 64" aria-hidden="true">
-      <g fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M32 5c4 8 7 11 15 12-5 7-5 11 0 18-8 1-11 4-15 12-4-8-7-11-15-12 5-7 5-11 0-18 8-1 11-4 15-12Z"/>
-        <path d="M12.9 12.9c8.5 2.8 12.7 2.8 19.1-2.2 6.4 5 10.6 5 19.1 2.2-2.8 8.5-2.8 12.7 2.2 19.1-5 6.4-5 10.6-2.2 19.1-8.5-2.8-12.7-2.8-19.1 2.2-6.4-5-10.6-5-19.1-2.2 2.8-8.5 2.8-12.7-2.2-19.1 5-6.4 5-10.6 2.2-19.1Z" opacity=".62"/>
-        <circle cx="32" cy="32" r="8"/>
-      </g>
-    </svg>
   </div>
 </section>
 
@@ -1522,9 +1545,10 @@ const readLink=j=>readerLink(j);
    المدينة: [الاسم، خط العرض، خط الطول، منطقة زمنية خاصة (اختيارية)] */
 const PT_KEY="zad:prayer";
 const PRAYER_ICON=`<svg class="zk-icon" viewBox="0 0 25 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-  <path d="M15.5092 5.00159C14.2435 3.18742 11.8856 2.00044 9.50543 2.00044C5.63698 2.00044 2.50098 5.13565 2.50098 9.00311C2.50098 12.7024 5.37016 15.7493 9.00511 16.0058"/>
-  <path d="M9.50486 7.00244V9.5034L8.00391 10.5038"/>
-  <path d="M13.1148 15.5486C11.7537 13.8925 11.5215 12.2295 13.469 10.2102C15.5149 8.38506 16.6931 7.52188 17.007 7.00244C17.3209 7.52188 18.5182 8.38506 20.5641 10.2102C22.4183 11.8643 22.3017 13.8925 20.9405 15.5486M13.1148 15.5486H12.5923M13.1148 15.5486H20.9405M20.9405 15.5486H21.4009M11.5215 15.5486H12.5923M12.5923 15.5486V21.0934C12.6323 21.7611 12.5923 22.0727 13.8035 21.9852H16.9881M21.4009 15.5486H22.5001M21.4009 15.5486V21.1949C21.5177 22.1018 20.7956 21.9427 20.3338 21.9852H16.9881M16.9881 21.9852L17.0235 19.8507"/>
+  <path d="M9.15309 9C5.68214 5.5 11.0125 3.75 12.5 2C13.9875 3.75 19.3179 5.5 15.8469 9H9.15309Z"/>
+  <path d="M18.5 12V11C18.5 10.0572 18.5 9.58579 18.2071 9.29289C17.9142 9 17.4428 9 16.5 9H8.5C7.55719 9 7.08579 9 6.79289 9.29289C6.5 9.58579 6.5 10.0572 6.5 11V12"/>
+  <path d="M17.5 12H7.5C6.08579 12 5.37868 12 4.93934 12.4393C4.5 12.8787 4.5 13.5858 4.5 15V19C4.5 20.4142 4.5 21.1213 4.93934 21.5607C5.37868 22 6.08579 22 7.5 22H17.5C18.9142 22 19.6213 22 20.0607 21.5607C20.5 21.1213 20.5 20.4142 20.5 19V15C20.5 13.5858 20.5 12.8787 20.0607 12.4393C19.6213 12 18.9142 12 17.5 12Z"/>
+  <path d="M10.0001 22V19C9.98279 16 12.5 15 12.5 15C12.5 15 15.0172 16 14.9999 19V22"/>
 </svg>`;
 
 const PT_NAMES={fajr:"الفجر",sunrise:"الشروق",dhuhr:"الظهر",asr:"العصر",maghrib:"المغرب",isha:"العشاء"};
