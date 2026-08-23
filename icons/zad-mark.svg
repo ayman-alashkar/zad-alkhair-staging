@@ -1,13 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="زاد الخير">
-  <defs>
-    <linearGradient id="bg" x1="96" y1="48" x2="432" y2="472" gradientUnits="userSpaceOnUse"><stop stop-color="#123D37"/><stop offset="1" stop-color="#051D1B"/></linearGradient>
-    <linearGradient id="gold" x1="160" y1="112" x2="350" y2="398" gradientUnits="userSpaceOnUse"><stop stop-color="#F1D99A"/><stop offset=".5" stop-color="#D3A951"/><stop offset="1" stop-color="#9A6A24"/></linearGradient>
-    <linearGradient id="paper" x1="150" y1="282" x2="362" y2="402" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFDF5"/><stop offset="1" stop-color="#EDE3CB"/></linearGradient>
-    <pattern id="pattern" width="64" height="64" patternUnits="userSpaceOnUse"><path d="M32 4 60 32 32 60 4 32Z" fill="none" stroke="#E4C980" stroke-opacity=".07"/><path d="M12 12h40v40H12Z" fill="none" stroke="#E4C980" stroke-opacity=".045"/></pattern>
-  </defs>
-  <rect width="512" height="512" rx="116" fill="url(#bg)"/><rect width="512" height="512" rx="116" fill="url(#pattern)"/>
-  <path d="M128 410V241c0-89 49-153 128-194 79 41 128 105 128 194v169" fill="none" stroke="url(#gold)" stroke-width="10" stroke-linecap="round"/>
-  <path d="M151 405V244c0-72 39-126 105-164 66 38 105 92 105 164v161" fill="none" stroke="#E4C980" stroke-opacity=".22" stroke-width="3"/><path d="M256 78V47" stroke="#E7C979" stroke-width="8" stroke-linecap="round"/>
-  <g><path d="M256 283c-31-27-69-39-119-37v113c49-2 88 11 119 41Z" fill="url(#paper)" stroke="#D3A951" stroke-width="7" stroke-linejoin="round"/><path d="M256 283c31-27 69-39 119-37v113c-49-2-88 11-119 41Z" fill="url(#paper)" stroke="#D3A951" stroke-width="7" stroke-linejoin="round"/><path d="M256 283v117" stroke="#B6812F" stroke-width="7" stroke-linecap="round"/><path d="M170 282c25 1 44 7 60 18M342 282c-25 1-44 7-60 18" fill="none" stroke="#A9803B" stroke-opacity=".48" stroke-width="5" stroke-linecap="round"/><path d="M170 310c25 1 44 7 60 18M342 310c-25 1-44 7-60 18" fill="none" stroke="#A9803B" stroke-opacity=".28" stroke-width="4" stroke-linecap="round"/></g>
-  <path d="M107 422h298" stroke="#E4C980" stroke-opacity=".72" stroke-width="7" stroke-linecap="round"/><path d="M150 442h212" stroke="#E4C980" stroke-opacity=".22" stroke-width="3" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="زاد الخير">
+  <defs><linearGradient id="gold" x1="31" y1="17" x2="88" y2="108" gradientUnits="userSpaceOnUse"><stop stop-color="#E7CD88"/><stop offset=".52" stop-color="#C59A4A"/><stop offset="1" stop-color="#9B6B24"/></linearGradient></defs>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M24 59V48c0-16 11-29 36-42 25 13 36 26 36 42v11" stroke="#0F5C50" stroke-width="4.6"/>
+    <path d="M41 58V47c0-10 6-17 19-25 13 8 19 15 19 25v11" stroke="url(#gold)" stroke-width="4"/>
+    <path d="M14 65c18-3 33 2 46 14 13-12 28-17 46-14v29c-18-2-33 3-46 16-13-13-28-18-46-16V65Z" stroke="#0F5C50" stroke-width="4.2"/>
+    <path d="M60 79v31M24 76c13 0 23 3 31 10M96 76c-13 0-23 3-31 10" stroke="url(#gold)" stroke-width="3.3"/>
+    <path d="M31 89c10 .2 18 2.7 24 8M89 89c-10 .2-18 2.7-24 8" stroke="#0F5C50" stroke-width="2.2" opacity=".52"/>
+    <path d="m60 13 4 5-4 5-4-5 4-5Z" fill="#C59A4A" stroke="none"/>
+  </g>
 </svg>

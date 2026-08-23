@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="زاد الخير">
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M24 59V48c0-16 11-29 36-42 25 13 36 26 36 42v11" stroke="#FFF9EA" stroke-width="4.6"/>
+    <path d="M41 58V47c0-10 6-17 19-25 13 8 19 15 19 25v11" stroke="#E4C980" stroke-width="4"/>
+    <path d="M14 65c18-3 33 2 46 14 13-12 28-17 46-14v29c-18-2-33 3-46 16-13-13-28-18-46-16V65Z" stroke="#FFF9EA" stroke-width="4.2"/>
+    <path d="M60 79v31M24 76c13 0 23 3 31 10M96 76c-13 0-23 3-31 10" stroke="#E4C980" stroke-width="3.3"/>
+    <path d="m60 13 4 5-4 5-4-5 4-5Z" fill="#E4C980" stroke="none"/>
+  </g>
+</svg>
