@@ -1312,13 +1312,28 @@ body.zk-launch-prayer .modal{z-index:150}
 .prayer-times-modal{background:rgba(2,16,14,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
 .prayer-times-modal .frame{
   position:relative;max-width:470px;padding:0;overflow:hidden;border:1px solid rgba(228,201,128,.72);border-radius:28px;
-  background:linear-gradient(180deg,#083A33 0,#0B4A40 174px,#FFF9EA 174px,#F7EFDF 100%);
+  /* The prayer header now uses the exact same green field as the application background. */
+  background:
+    linear-gradient(180deg,transparent 0,transparent 174px,#FFF9EA 174px,#F7EFDF 100%),
+    radial-gradient(circle at 10% 7%,rgba(228,201,128,.13),transparent 25rem),
+    radial-gradient(circle at 92% 22%,rgba(73,161,140,.18),transparent 32rem),
+    linear-gradient(145deg,#061F1D 0%,var(--night) 44%,#0B3832 100%);
   box-shadow:0 46px 105px -40px rgba(0,0,0,.92),inset 0 0 0 1px rgba(255,255,255,.06)
 }
 .prayer-times-modal .frame::before{content:"";position:absolute;inset:6px;border:1px solid rgba(228,201,128,.2);border-radius:22px;pointer-events:none;z-index:4}
 .prayer-times-modal .frame::after{
-  content:"";position:absolute;left:-15%;right:-15%;top:0;height:174px;pointer-events:none;opacity:.2;
-  background-image:linear-gradient(30deg,rgba(228,201,128,.30) 12%,transparent 12.5%,transparent 87%,rgba(228,201,128,.30) 87.5%),linear-gradient(150deg,rgba(228,201,128,.30) 12%,transparent 12.5%,transparent 87%,rgba(228,201,128,.30) 87.5%);background-size:68px 118px
+  /* Exact copy of body::before: same five layers, opacity, positions, size and mask. */
+  content:"";position:absolute;left:0;right:0;top:0;height:174px;pointer-events:none;opacity:.24;
+  background-image:
+    linear-gradient(30deg,rgba(228,201,128,.18) 12%,transparent 12.5%,transparent 87%,rgba(228,201,128,.18) 87.5%),
+    linear-gradient(150deg,rgba(228,201,128,.18) 12%,transparent 12.5%,transparent 87%,rgba(228,201,128,.18) 87.5%),
+    linear-gradient(30deg,rgba(228,201,128,.18) 12%,transparent 12.5%,transparent 87%,rgba(228,201,128,.18) 87.5%),
+    linear-gradient(150deg,rgba(228,201,128,.18) 12%,transparent 12.5%,transparent 87%,rgba(228,201,128,.18) 87.5%),
+    linear-gradient(60deg,rgba(228,201,128,.08) 25%,transparent 25.5%,transparent 75%,rgba(228,201,128,.08) 75%);
+  background-position:0 0,0 0,42px 72px,42px 72px,0 0;
+  background-size:84px 144px;
+  -webkit-mask-image:linear-gradient(90deg,black,transparent 44%,transparent 56%,black);
+  mask-image:linear-gradient(90deg,black,transparent 44%,transparent 56%,black)
 }
 .prayer-times-modal .prayer-emblem{position:relative;z-index:5;width:48px;height:48px;margin:18px auto 4px;border:1px solid rgba(228,201,128,.58);border-radius:15px;background:rgba(255,249,234,.055);color:#E4C980;box-shadow:inset 0 0 0 3px rgba(228,201,128,.04)}
 .prayer-times-modal .display{position:relative;z-index:5;color:#FFF9EA!important;text-shadow:0 1px 0 rgba(0,0,0,.2)}
@@ -1329,7 +1344,7 @@ body.zk-launch-prayer .modal{z-index:150}
 .prayer-times-modal .actions{position:relative;z-index:5;margin:0;padding:14px 16px 16px;background:linear-gradient(180deg,rgba(255,249,234,0),#F7EFDF 35%)}
 .prayer-times-modal .actions .btn{border-color:#D6C6A5;background:#FFFDF7}.prayer-times-modal .actions .btn:first-child{color:#0F5C50;border-color:#BDA56F}
 @media(max-width:560px){
-  .prayer-times-modal{padding:.55rem}.prayer-times-modal .frame{border-radius:23px;background:linear-gradient(180deg,#083A33 0,#0B4A40 158px,#FFF9EA 158px,#F7EFDF 100%)}
+  .prayer-times-modal{padding:.55rem}.prayer-times-modal .frame{border-radius:23px;background:linear-gradient(180deg,transparent 0,transparent 158px,#FFF9EA 158px,#F7EFDF 100%),radial-gradient(circle at 10% 7%,rgba(228,201,128,.13),transparent 25rem),radial-gradient(circle at 92% 22%,rgba(73,161,140,.18),transparent 32rem),linear-gradient(145deg,#061F1D 0%,var(--night) 44%,#0B3832 100%)}
   .prayer-times-modal .frame::after{height:158px}.prayer-times-modal .prayer-emblem{width:43px;height:43px;margin-top:13px}.prayer-times-modal .prayer-emblem .zk-icon{width:25px;height:25px}
   .prayer-times-modal .display{font-size:1.22rem!important}.prayer-times-modal .prayer-head{margin-bottom:9px}.prayer-times-modal .ptable{margin-inline:9px;border-radius:15px}.prayer-times-modal .ptrow{min-height:46px;padding:.42rem .78rem}.prayer-times-modal .actions{padding:10px 11px 12px}
 }
