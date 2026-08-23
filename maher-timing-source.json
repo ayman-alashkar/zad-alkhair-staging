@@ -1,0 +1,9 @@
+{
+  "provider": "QUL-derived Maher Al-Muaiqly surah timing export",
+  "upstream_repository": "facilitator999/quranforyunus",
+  "upstream_commit": "2c71289821ff17158dfead0eb0404263c2bd0879",
+  "upstream_timestamps_tree": "bb3cab219edddb3ba34770f5db0d43d1c6a35188",
+  "files": 114,
+  "strategy": "immutable commit pin",
+  "reader": "zad-reader-v58-pinned-maher-timings.html"
+}

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0F5C50">
+  <title>تثبيت زاد الخير</title>
+  <link rel="manifest" href="../manifest.json">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <style>
+    *{box-sizing:border-box}
+    html,body{min-height:100%;margin:0}
+    body{
+      font-family:Tahoma,Arial,sans-serif;
+      background:#f7f1e4;
+      color:#163c36;
+      display:grid;
+      place-items:center;
+      padding:24px
+    }
+    .card{
+      width:min(440px,100%);
+      text-align:center;
+      background:rgba(255,255,255,.62);
+      border:1px solid rgba(181,145,73,.28);
+      border-radius:28px;
+      padding:34px 24px 28px;
+      box-shadow:0 18px 55px rgba(22,60,54,.10)
+    }
+    .mark{
+      width:82px;height:82px;border-radius:24px;
+      margin:0 auto 18px;
+      display:grid;place-items:center;
+      background:#0F5C50;
+      box-shadow:0 10px 28px rgba(15,92,80,.18)
+    }
+    .mark img{width:62px;height:62px;border-radius:16px}
+    h1{font-size:1.6rem;margin:0 0 8px;color:#0b5148}
+    .tag{margin:0 0 24px;color:#7a6743;font-size:1rem}
+    button,a.open{
+      appearance:none;border:0;width:100%;min-height:54px;
+      border-radius:16px;font:700 1.03rem Tahoma,Arial,sans-serif;
+      cursor:pointer;text-decoration:none;
+      display:flex;align-items:center;justify-content:center
+    }
+    #install{
+      background:#0F5C50;color:#fff;
+      box-shadow:0 9px 22px rgba(15,92,80,.20)
+    }
+    #install:disabled{opacity:.55;cursor:default}
+    .open{
+      background:transparent;color:#0F5C50;
+      border:1px solid rgba(15,92,80,.25);
+      margin-top:10px
+    }
+    #hint{
+      font-size:.88rem;line-height:1.8;
+      color:#6b6558;margin:18px 3px 0;
+      min-height:3em
+    }
+    .hidden{display:none!important}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="mark"><img src="../icons/icon-192.png" alt=""></div>
+    <h1>زاد الخير</h1>
+    <p class="tag">كلامُ الباري يجمعُنا</p>
+    <button id="install" type="button" disabled>تثبيت زاد الخير</button>
+    <a class="open" id="open" href="../">فتح زاد الخير</a>
+    <p id="hint">جاري تجهيز التثبيت…</p>
+  </main>
+<script>
+(()=>{
+  const btn=document.getElementById("install");
+  const hint=document.getElementById("hint");
+  const open=document.getElementById("open");
+  let promptEvent=null;
+
+  const standalone=
+    window.matchMedia("(display-mode: standalone)").matches ||
+    window.navigator.standalone===true;
+
+  if(standalone){
+    btn.classList.add("hidden");
+    hint.textContent="زاد الخير مثبت على جهازك بالفعل.";
+    open.textContent="فتح زاد الخير";
+    return;
+  }
+
+  window.addEventListener("beforeinstallprompt",e=>{
+    e.preventDefault();
+    promptEvent=e;
+    btn.disabled=false;
+    hint.textContent="اضغط الزر، ثم وافق على نافذة التثبيت.";
+  });
+
+  btn.addEventListener("click",async()=>{
+    if(!promptEvent){
+      hint.textContent="إن لم تظهر نافذة التثبيت، افتح هذه الصفحة في Chrome ثم اختر «تثبيت التطبيق» من قائمة ⋮.";
+      return;
+    }
+    btn.disabled=true;
+    await promptEvent.prompt();
+    const choice=await promptEvent.userChoice.catch(()=>null);
+    promptEvent=null;
+
+    if(choice && choice.outcome==="accepted"){
+      btn.classList.add("hidden");
+      hint.textContent="تمت الموافقة على التثبيت. ستجد زاد الخير بين تطبيقاتك.";
+    }else{
+      btn.disabled=false;
+      hint.textContent="يمكنك تثبيت زاد الخير متى شئت بالضغط على الزر.";
+    }
+  });
+
+  window.addEventListener("appinstalled",()=>{
+    btn.classList.add("hidden");
+    hint.textContent="تم تثبيت زاد الخير بنجاح.";
+  });
+
+  setTimeout(()=>{
+    if(!promptEvent && !standalone){
+      btn.disabled=false;
+      hint.textContent="اضغط «تثبيت زاد الخير». إذا لم تظهر نافذة التثبيت، افتح الصفحة في Chrome.";
+    }
+  },1800);
+})();
+</script>
+</body>
+</html>

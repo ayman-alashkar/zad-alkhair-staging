@@ -1,0 +1,1173 @@
+{
+  "dataset": "زاد الخير — التفسير الوجيز",
+  "dataset_version": "1.0.0",
+  "schema_version": 1,
+  "generated_from": "zad-tafsir-al-wajeez-complete-verified-publishable-v1.zip",
+  "source_package_sha256": "bfbf9a634b80871823579944dfb6d404b3083c0d8c5d3bfd6f3c7d708e548d8c",
+  "storage_strategy": "static per-surah JSON; intended for repository/PWA cache, not Supabase",
+  "counts": {
+    "surahs": 114,
+    "ayah_records": 6236,
+    "fadl_records": 60
+  },
+  "range": {
+    "first_key": "1:1",
+    "last_key": "114:6"
+  },
+  "integrity": {
+    "all_source_records_verified_text_exact": true,
+    "all_source_records_publishable": true,
+    "all_text_sha256_recalculated_and_matched": true,
+    "duplicate_ayah_keys": 0,
+    "canonical_quran_sequence": "PASS",
+    "canonical_ayah_bounds": "PASS",
+    "fadl_sha256": "60/60 PASS"
+  },
+  "files": [
+    {
+      "surah": 1,
+      "surah_name": "الفاتحة",
+      "file": "001.json",
+      "ayah_count": 7,
+      "first_key": "1:1",
+      "last_key": "1:7",
+      "sha256": "969c7de343958cd9ffb5e88ea21bb9baf4c1a48c9de3183ef935d600fb17dcb2",
+      "bytes": 2407
+    },
+    {
+      "surah": 2,
+      "surah_name": "البقرة",
+      "file": "002.json",
+      "ayah_count": 286,
+      "first_key": "2:1",
+      "last_key": "2:286",
+      "sha256": "f5107e7d07c76408f8c272d6082867e97663304da2b258faadd0a70969c9feda",
+      "bytes": 219142
+    },
+    {
+      "surah": 3,
+      "surah_name": "آل عمران",
+      "file": "003.json",
+      "ayah_count": 200,
+      "first_key": "3:1",
+      "last_key": "3:200",
+      "sha256": "6c76899933f280242e47eaf2e32c1f550045090e309b1103f7f723eca36a6027",
+      "bytes": 128072
+    },
+    {
+      "surah": 4,
+      "surah_name": "النساء",
+      "file": "004.json",
+      "ayah_count": 176,
+      "first_key": "4:1",
+      "last_key": "4:176",
+      "sha256": "a3c76c567a374a2a032d3f66ddd9ff4db8b8db26699638d950a988ac850a534f",
+      "bytes": 135472
+    },
+    {
+      "surah": 5,
+      "surah_name": "المائدة",
+      "file": "005.json",
+      "ayah_count": 120,
+      "first_key": "5:1",
+      "last_key": "5:120",
+      "sha256": "b590c423bab72751b9ec63761e601144259ccd91c321174ce49b99bb4a154ce4",
+      "bytes": 95733
+    },
+    {
+      "surah": 6,
+      "surah_name": "الأنعام",
+      "file": "006.json",
+      "ayah_count": 165,
+      "first_key": "6:1",
+      "last_key": "6:165",
+      "sha256": "76e77aeb8b967e6ed64ad607a47910e02a9e363117edfd56d9ce19350be0175e",
+      "bytes": 103888
+    },
+    {
+      "surah": 7,
+      "surah_name": "الأعراف",
+      "file": "007.json",
+      "ayah_count": 206,
+      "first_key": "7:1",
+      "last_key": "7:206",
+      "sha256": "a2954c6f5e71a969a4dfe1e9a5736012ed0869a6d291d95a0b8aa2d346d56c12",
+      "bytes": 111445
+    },
+    {
+      "surah": 8,
+      "surah_name": "الأنفال",
+      "file": "008.json",
+      "ayah_count": 75,
+      "first_key": "8:1",
+      "last_key": "8:75",
+      "sha256": "93157f4ae6ea31b658660536b7d2a9875bb994bff43ff1eaa9fa1d678cf332c1",
+      "bytes": 46197
+    },
+    {
+      "surah": 9,
+      "surah_name": "التوبة",
+      "file": "009.json",
+      "ayah_count": 129,
+      "first_key": "9:1",
+      "last_key": "9:129",
+      "sha256": "6a653a7e408b5f328d574ca77d1725da7f01665465a49f80b85f1ff317dcc91b",
+      "bytes": 90323
+    },
+    {
+      "surah": 10,
+      "surah_name": "يونس",
+      "file": "010.json",
+      "ayah_count": 109,
+      "first_key": "10:1",
+      "last_key": "10:109",
+      "sha256": "917c3735d65f88d40e38266ce8109453acc5a0879d8900b1f5b685343dce13e0",
+      "bytes": 63427
+    },
+    {
+      "surah": 11,
+      "surah_name": "هود",
+      "file": "011.json",
+      "ayah_count": 123,
+      "first_key": "11:1",
+      "last_key": "11:123",
+      "sha256": "2febe54da321062cbdfe29e8125346d17805335097865120814d355556870d8e",
+      "bytes": 63429
+    },
+    {
+      "surah": 12,
+      "surah_name": "يوسف",
+      "file": "012.json",
+      "ayah_count": 111,
+      "first_key": "12:1",
+      "last_key": "12:111",
+      "sha256": "e4de837dfc92b8229fd5f5ed897f1c11280101e593a5374180289b7558ae995f",
+      "bytes": 59597
+    },
+    {
+      "surah": 13,
+      "surah_name": "الرعد",
+      "file": "013.json",
+      "ayah_count": 43,
+      "first_key": "13:1",
+      "last_key": "13:43",
+      "sha256": "391748e9c74404652352152a29fb80a51449aa26d76787799e12ac3b2f9baaba",
+      "bytes": 29121
+    },
+    {
+      "surah": 14,
+      "surah_name": "إبراهيم",
+      "file": "014.json",
+      "ayah_count": 52,
+      "first_key": "14:1",
+      "last_key": "14:52",
+      "sha256": "4429bec6f6aeb27a10810ff422acd5a447d9b10d3117b7b779af2ff7f500235c",
+      "bytes": 28511
+    },
+    {
+      "surah": 15,
+      "surah_name": "الحجر",
+      "file": "015.json",
+      "ayah_count": 99,
+      "first_key": "15:1",
+      "last_key": "15:99",
+      "sha256": "110bac486e52fb440ef894104eac8617210b1edd8d92d20d280f8cd1a7b8d2a8",
+      "bytes": 31207
+    },
+    {
+      "surah": 16,
+      "surah_name": "النحل",
+      "file": "016.json",
+      "ayah_count": 128,
+      "first_key": "16:1",
+      "last_key": "16:128",
+      "sha256": "98a9d55b76f6d85aed2551058a38283e93f402d1d863922681330e3f98c3b26a",
+      "bytes": 66810
+    },
+    {
+      "surah": 17,
+      "surah_name": "الإسراء",
+      "file": "017.json",
+      "ayah_count": 111,
+      "first_key": "17:1",
+      "last_key": "17:111",
+      "sha256": "99af0605f7841397711d2c260b19674cdce01335aab4bc1d54db04b278842d28",
+      "bytes": 58285
+    },
+    {
+      "surah": 18,
+      "surah_name": "الكهف",
+      "file": "018.json",
+      "ayah_count": 110,
+      "first_key": "18:1",
+      "last_key": "18:110",
+      "sha256": "0a5704f553bd6ac510089bb495061f086c0cc9d9ba2d1f828cb1446e762b5fb8",
+      "bytes": 51611
+    },
+    {
+      "surah": 19,
+      "surah_name": "مريم",
+      "file": "019.json",
+      "ayah_count": 98,
+      "first_key": "19:1",
+      "last_key": "19:98",
+      "sha256": "a72a9fdf60067545479624d4426fa35a8d0a0aa291315c2eb3a942bc54435208",
+      "bytes": 37252
+    },
+    {
+      "surah": 20,
+      "surah_name": "طه",
+      "file": "020.json",
+      "ayah_count": 135,
+      "first_key": "20:1",
+      "last_key": "20:135",
+      "sha256": "db956de260a1d020619484f542e77dce5687c1131dacfa945aec9945e9af639b",
+      "bytes": 51330
+    },
+    {
+      "surah": 21,
+      "surah_name": "الأنبياء",
+      "file": "021.json",
+      "ayah_count": 112,
+      "first_key": "21:1",
+      "last_key": "21:112",
+      "sha256": "fe5969453817b4dc02d41dd818b626d2e40e6d4b4f7eb78960a01dad3ec2c093",
+      "bytes": 46101
+    },
+    {
+      "surah": 22,
+      "surah_name": "الحج",
+      "file": "022.json",
+      "ayah_count": 78,
+      "first_key": "22:1",
+      "last_key": "22:78",
+      "sha256": "e0ce6557da39ff274433c89d7944c4e22eda73b4bd48ce01cff6110a592ccbaa",
+      "bytes": 44938
+    },
+    {
+      "surah": 23,
+      "surah_name": "المؤمنون",
+      "file": "023.json",
+      "ayah_count": 118,
+      "first_key": "23:1",
+      "last_key": "23:118",
+      "sha256": "ee731fd159fe9d49917ea59356b93702230d9f856b7c50d2bb43c6d48cc79734",
+      "bytes": 42178
+    },
+    {
+      "surah": 24,
+      "surah_name": "النور",
+      "file": "024.json",
+      "ayah_count": 64,
+      "first_key": "24:1",
+      "last_key": "24:64",
+      "sha256": "cf0a8c0df6495d149b01903d5b101effc840c744fd00c65652f1bc7fae28ba77",
+      "bytes": 47223
+    },
+    {
+      "surah": 25,
+      "surah_name": "الفرقان",
+      "file": "025.json",
+      "ayah_count": 77,
+      "first_key": "25:1",
+      "last_key": "25:77",
+      "sha256": "184dfa373591af785c1f1b9247ec68195b4a668ed59b4b78f9d2607b92315f63",
+      "bytes": 36762
+    },
+    {
+      "surah": 26,
+      "surah_name": "الشعراء",
+      "file": "026.json",
+      "ayah_count": 227,
+      "first_key": "26:1",
+      "last_key": "26:227",
+      "sha256": "ee38422084b28370f1613a5d1fe42beb44e70ec99c4af23eadd2fab8d388ca3e",
+      "bytes": 62179
+    },
+    {
+      "surah": 27,
+      "surah_name": "النمل",
+      "file": "027.json",
+      "ayah_count": 93,
+      "first_key": "27:1",
+      "last_key": "27:93",
+      "sha256": "21487049a5480207f91c1baa370e096d34cfbfe1c6c32210c5e7199367fde06b",
+      "bytes": 41496
+    },
+    {
+      "surah": 28,
+      "surah_name": "القصص",
+      "file": "028.json",
+      "ayah_count": 88,
+      "first_key": "28:1",
+      "last_key": "28:88",
+      "sha256": "1b48a96c5aaf0a75488bfb39232c468ab6f1b385e871cbb33d46ab2aba91e7e9",
+      "bytes": 47824
+    },
+    {
+      "surah": 29,
+      "surah_name": "العنكبوت",
+      "file": "029.json",
+      "ayah_count": 69,
+      "first_key": "29:1",
+      "last_key": "29:69",
+      "sha256": "942b27ae514ed8d1305348a0b4d9760bfbb4285b66c00e7894dc02b1167f9b83",
+      "bytes": 38615
+    },
+    {
+      "surah": 30,
+      "surah_name": "الروم",
+      "file": "030.json",
+      "ayah_count": 60,
+      "first_key": "30:1",
+      "last_key": "30:60",
+      "sha256": "a1e7b748e480e2dd2eee7d93800aa1038529ae25fcb1637b62fb700b1de37b90",
+      "bytes": 29773
+    },
+    {
+      "surah": 31,
+      "surah_name": "لقمان",
+      "file": "031.json",
+      "ayah_count": 34,
+      "first_key": "31:1",
+      "last_key": "31:34",
+      "sha256": "20de61a74aa92befcb4692d1dfc99257d27ad94f25e807a5167ed92a4a03e8d8",
+      "bytes": 18687
+    },
+    {
+      "surah": 32,
+      "surah_name": "السجدة",
+      "file": "032.json",
+      "ayah_count": 30,
+      "first_key": "32:1",
+      "last_key": "32:30",
+      "sha256": "7c3b007cda2b2ff70a583e926525b047e91c460cf3779ddc94f42a99866c8208",
+      "bytes": 13744
+    },
+    {
+      "surah": 33,
+      "surah_name": "الأحزاب",
+      "file": "033.json",
+      "ayah_count": 73,
+      "first_key": "33:1",
+      "last_key": "33:73",
+      "sha256": "f3f61bc5f99a5b0f48c5ad2696d15f495651644d673757d686fd537ae31dca07",
+      "bytes": 48310
+    },
+    {
+      "surah": 34,
+      "surah_name": "سبأ",
+      "file": "034.json",
+      "ayah_count": 54,
+      "first_key": "34:1",
+      "last_key": "34:54",
+      "sha256": "1665a5cc00721df6e259a54b7558035ed62ee1c940e63f7b52db8941bc65f336",
+      "bytes": 30773
+    },
+    {
+      "surah": 35,
+      "surah_name": "فاطر",
+      "file": "035.json",
+      "ayah_count": 45,
+      "first_key": "35:1",
+      "last_key": "35:45",
+      "sha256": "ec85e219ec29b2d80d67017e4e00f879db369f1db8d4550a1db5938c15e77f72",
+      "bytes": 25127
+    },
+    {
+      "surah": 36,
+      "surah_name": "يس",
+      "file": "036.json",
+      "ayah_count": 83,
+      "first_key": "36:1",
+      "last_key": "36:83",
+      "sha256": "20d004179b5a6e0d870c0bd53e8437de0989294dd2955c267f4d5ef049db5a17",
+      "bytes": 30623
+    },
+    {
+      "surah": 37,
+      "surah_name": "الصافات",
+      "file": "037.json",
+      "ayah_count": 182,
+      "first_key": "37:1",
+      "last_key": "37:182",
+      "sha256": "d0a1892b51f837d3cb2706ac30991f6d65fb3c15985d51169e56f93f002e7aeb",
+      "bytes": 48092
+    },
+    {
+      "surah": 38,
+      "surah_name": "ص",
+      "file": "038.json",
+      "ayah_count": 88,
+      "first_key": "38:1",
+      "last_key": "38:88",
+      "sha256": "fde3847ba3b21acf38eea7004bdaf43cec141f25f955353bf62305663270a7e2",
+      "bytes": 30181
+    },
+    {
+      "surah": 39,
+      "surah_name": "الزمر",
+      "file": "039.json",
+      "ayah_count": 75,
+      "first_key": "39:1",
+      "last_key": "39:75",
+      "sha256": "ef0bafe29faae7db8f5d538faaaa56bfcc130cf5cdda24b692c3c3c71ff55f22",
+      "bytes": 41744
+    },
+    {
+      "surah": 40,
+      "surah_name": "غافر",
+      "file": "040.json",
+      "ayah_count": 85,
+      "first_key": "40:1",
+      "last_key": "40:85",
+      "sha256": "3afaa8d9369836e5abdf8f2f7b4ef1668a0eeac78b9f5eb1dce40a9357b508d0",
+      "bytes": 40866
+    },
+    {
+      "surah": 41,
+      "surah_name": "فصلت",
+      "file": "041.json",
+      "ayah_count": 54,
+      "first_key": "41:1",
+      "last_key": "41:54",
+      "sha256": "850056500282baf9e43e3168b98b5f8d20eb4a9ce77a62e6f4f89cf7bfb5ad2b",
+      "bytes": 28464
+    },
+    {
+      "surah": 42,
+      "surah_name": "الشورى",
+      "file": "042.json",
+      "ayah_count": 53,
+      "first_key": "42:1",
+      "last_key": "42:53",
+      "sha256": "6316481a8d6e42976172992addfc0f5615d175a481c7e5c5017ddd178370965f",
+      "bytes": 29698
+    },
+    {
+      "surah": 43,
+      "surah_name": "الزخرف",
+      "file": "043.json",
+      "ayah_count": 89,
+      "first_key": "43:1",
+      "last_key": "43:89",
+      "sha256": "213f4b08ef27bce52d7b59917d19cd4961154b6b06183027dd9ab4252a596f6f",
+      "bytes": 36734
+    },
+    {
+      "surah": 44,
+      "surah_name": "الدخان",
+      "file": "044.json",
+      "ayah_count": 59,
+      "first_key": "44:1",
+      "last_key": "44:59",
+      "sha256": "5ffd059835ce77657901b7571400157e732a4e0a8ea296333f1ce4e2bb7ef38b",
+      "bytes": 18123
+    },
+    {
+      "surah": 45,
+      "surah_name": "الجاثية",
+      "file": "045.json",
+      "ayah_count": 37,
+      "first_key": "45:1",
+      "last_key": "45:37",
+      "sha256": "75a88df7125aa18123d620a1b4a900614ce67b35434306bcf853a8591394bba1",
+      "bytes": 18192
+    },
+    {
+      "surah": 46,
+      "surah_name": "الأحقاف",
+      "file": "046.json",
+      "ayah_count": 35,
+      "first_key": "46:1",
+      "last_key": "46:35",
+      "sha256": "5e668ba94ebbf2d22c0e9b2fc58c7794e2649f022cc723ccf3494ca2ef517dd5",
+      "bytes": 21994
+    },
+    {
+      "surah": 47,
+      "surah_name": "محمد",
+      "file": "047.json",
+      "ayah_count": 38,
+      "first_key": "47:1",
+      "last_key": "47:38",
+      "sha256": "5b11b24410a9fbf7461abafa86778d29c58e14ec5ab4be5af27c80392efd8afe",
+      "bytes": 21000
+    },
+    {
+      "surah": 48,
+      "surah_name": "الفتح",
+      "file": "048.json",
+      "ayah_count": 29,
+      "first_key": "48:1",
+      "last_key": "48:29",
+      "sha256": "d21ca123938d21c112629b3d00152358ed1a5001cf6ef5d9a863dba4f29c38b0",
+      "bytes": 20344
+    },
+    {
+      "surah": 49,
+      "surah_name": "الحجرات",
+      "file": "049.json",
+      "ayah_count": 18,
+      "first_key": "49:1",
+      "last_key": "49:18",
+      "sha256": "9b5d8cc16841ee06cb753c9a7faf9fa824e48602ec5f8f4eb16584ec598fdfce",
+      "bytes": 13760
+    },
+    {
+      "surah": 50,
+      "surah_name": "ق",
+      "file": "050.json",
+      "ayah_count": 45,
+      "first_key": "50:1",
+      "last_key": "50:45",
+      "sha256": "c3178c346c780d1e289f582b120ef376243494c75fb32cff2326c948b7f09092",
+      "bytes": 15358
+    },
+    {
+      "surah": 51,
+      "surah_name": "الذاريات",
+      "file": "051.json",
+      "ayah_count": 60,
+      "first_key": "51:1",
+      "last_key": "51:60",
+      "sha256": "f2348dbd732b162d7af27c09ba275de3e6feac1aa9a1d3c98649f7b6a00d1c2d",
+      "bytes": 17519
+    },
+    {
+      "surah": 52,
+      "surah_name": "الطور",
+      "file": "052.json",
+      "ayah_count": 49,
+      "first_key": "52:1",
+      "last_key": "52:49",
+      "sha256": "494d0f3195f5c93a1f3ef5ac2a236f96aa417cd329743befbd665c00ffd05738",
+      "bytes": 15416
+    },
+    {
+      "surah": 53,
+      "surah_name": "النجم",
+      "file": "053.json",
+      "ayah_count": 62,
+      "first_key": "53:1",
+      "last_key": "53:62",
+      "sha256": "5586d3f63842c746e97ad687690a35ce748b8f03ec7a8228f7c52b511cb0abfe",
+      "bytes": 17401
+    },
+    {
+      "surah": 54,
+      "surah_name": "القمر",
+      "file": "054.json",
+      "ayah_count": 55,
+      "first_key": "54:1",
+      "last_key": "54:55",
+      "sha256": "8b1fe4283e8939d575d82e4f38db7c78cc353254e5173a9d9c9f59d3d825a23f",
+      "bytes": 16214
+    },
+    {
+      "surah": 55,
+      "surah_name": "الرحمن",
+      "file": "055.json",
+      "ayah_count": 78,
+      "first_key": "55:1",
+      "last_key": "55:78",
+      "sha256": "e67529bcda5132b8860629372ca672161ac9bc0073bc0fd507a89cae57d3b60e",
+      "bytes": 18291
+    },
+    {
+      "surah": 56,
+      "surah_name": "الواقعة",
+      "file": "056.json",
+      "ayah_count": 96,
+      "first_key": "56:1",
+      "last_key": "56:96",
+      "sha256": "0f371cffaea03582b1555ae57d7aaeb044a90db08e8ff02de18b194ad8969aa5",
+      "bytes": 23109
+    },
+    {
+      "surah": 57,
+      "surah_name": "الحديد",
+      "file": "057.json",
+      "ayah_count": 29,
+      "first_key": "57:1",
+      "last_key": "57:29",
+      "sha256": "de94285cd36c4d6737c086fb565abe7e58766069a174bc7767ecbafbed1a0062",
+      "bytes": 18284
+    },
+    {
+      "surah": 58,
+      "surah_name": "المجادلة",
+      "file": "058.json",
+      "ayah_count": 22,
+      "first_key": "58:1",
+      "last_key": "58:22",
+      "sha256": "c9df8b9656ffe163d950f40923ff676cbb85ef4dc7200a9dde489f385a1a2d2a",
+      "bytes": 16363
+    },
+    {
+      "surah": 59,
+      "surah_name": "الحشر",
+      "file": "059.json",
+      "ayah_count": 24,
+      "first_key": "59:1",
+      "last_key": "59:24",
+      "sha256": "9a00a6dab58bedda2b73de21dc98371b27ac477348da8fe54cd0224ae9dffdf5",
+      "bytes": 15761
+    },
+    {
+      "surah": 60,
+      "surah_name": "الممتحنة",
+      "file": "060.json",
+      "ayah_count": 13,
+      "first_key": "60:1",
+      "last_key": "60:13",
+      "sha256": "6a751b49eeeefa8a1a1574c7ba2d5df390afe9ff6037f86fb6ac22b6a960e41c",
+      "bytes": 10964
+    },
+    {
+      "surah": 61,
+      "surah_name": "الصف",
+      "file": "061.json",
+      "ayah_count": 14,
+      "first_key": "61:1",
+      "last_key": "61:14",
+      "sha256": "ac2060b3222b41bee97913516889754c0ab39a4999de6787e92a8a6e065e9139",
+      "bytes": 8613
+    },
+    {
+      "surah": 62,
+      "surah_name": "الجمعة",
+      "file": "062.json",
+      "ayah_count": 11,
+      "first_key": "62:1",
+      "last_key": "62:11",
+      "sha256": "24494865791136923d60e2c6d4dd507e8bcb47368ac1907ccdd4761199cc695d",
+      "bytes": 6405
+    },
+    {
+      "surah": 63,
+      "surah_name": "المنافقون",
+      "file": "063.json",
+      "ayah_count": 11,
+      "first_key": "63:1",
+      "last_key": "63:11",
+      "sha256": "72f6e53b0a852d003323d6a109385f3e1e5a9ced0ca6e8334f485f212d69af6a",
+      "bytes": 7488
+    },
+    {
+      "surah": 64,
+      "surah_name": "التغابن",
+      "file": "064.json",
+      "ayah_count": 18,
+      "first_key": "64:1",
+      "last_key": "64:18",
+      "sha256": "b528a85f447801f2070c313857256bd6a44cf5390851f3cfa7abf95eb228b947",
+      "bytes": 9220
+    },
+    {
+      "surah": 65,
+      "surah_name": "الطلاق",
+      "file": "065.json",
+      "ayah_count": 12,
+      "first_key": "65:1",
+      "last_key": "65:12",
+      "sha256": "41e26df7317f41f927b8a304ef75170e609faf9228a1b011a4f9788792c4e78c",
+      "bytes": 9074
+    },
+    {
+      "surah": 66,
+      "surah_name": "التحريم",
+      "file": "066.json",
+      "ayah_count": 12,
+      "first_key": "66:1",
+      "last_key": "66:12",
+      "sha256": "b6def364d0abd9764faf3ab0dfad2745747eeacc23f4a12568019e902d6917aa",
+      "bytes": 8927
+    },
+    {
+      "surah": 67,
+      "surah_name": "الملك",
+      "file": "067.json",
+      "ayah_count": 30,
+      "first_key": "67:1",
+      "last_key": "67:30",
+      "sha256": "cca748fed60211336da4a9fc21bde9ed723619f4d7546a27141e2149f8e4c891",
+      "bytes": 12140
+    },
+    {
+      "surah": 68,
+      "surah_name": "القلم",
+      "file": "068.json",
+      "ayah_count": 52,
+      "first_key": "68:1",
+      "last_key": "68:52",
+      "sha256": "dd9bb62dfe7e06466b13783351520d8553c920c47ff37c093f0c8a7f8a0fc105",
+      "bytes": 15195
+    },
+    {
+      "surah": 69,
+      "surah_name": "الحاقة",
+      "file": "069.json",
+      "ayah_count": 52,
+      "first_key": "69:1",
+      "last_key": "69:52",
+      "sha256": "ee2e16190353346a5c04cb3c74bb0a590c2a16d5037ea3b6570a0d4aa4d88595",
+      "bytes": 13133
+    },
+    {
+      "surah": 70,
+      "surah_name": "المعارج",
+      "file": "070.json",
+      "ayah_count": 44,
+      "first_key": "70:1",
+      "last_key": "70:44",
+      "sha256": "369e1496d88e399a05d2da15a1079ce55a03eed0a24d8adbb10d8602c92590da",
+      "bytes": 11686
+    },
+    {
+      "surah": 71,
+      "surah_name": "نوح",
+      "file": "071.json",
+      "ayah_count": 28,
+      "first_key": "71:1",
+      "last_key": "71:28",
+      "sha256": "74df0b094e3a0f91606a019f3a3d2d6f397222c280a06ef5bb463ea18d4bd96b",
+      "bytes": 9233
+    },
+    {
+      "surah": 72,
+      "surah_name": "الجن",
+      "file": "072.json",
+      "ayah_count": 28,
+      "first_key": "72:1",
+      "last_key": "72:28",
+      "sha256": "15bf86f1ef12b172380ddb261c73f706f1a7fce350a96d955b7c72cf3d0b2b1a",
+      "bytes": 10531
+    },
+    {
+      "surah": 73,
+      "surah_name": "المزمل",
+      "file": "073.json",
+      "ayah_count": 20,
+      "first_key": "73:1",
+      "last_key": "73:20",
+      "sha256": "8c76410abf3ca5bbffc12bb1e7e84f19721069bb9df44bec10a11ab0c2a851e7",
+      "bytes": 7926
+    },
+    {
+      "surah": 74,
+      "surah_name": "المدثر",
+      "file": "074.json",
+      "ayah_count": 56,
+      "first_key": "74:1",
+      "last_key": "74:56",
+      "sha256": "f5d4d0da73cf9b4eee551bfd3f1882c234ac4156ea3f84aacba6f2a4385aa282",
+      "bytes": 13656
+    },
+    {
+      "surah": 75,
+      "surah_name": "القيامة",
+      "file": "075.json",
+      "ayah_count": 40,
+      "first_key": "75:1",
+      "last_key": "75:40",
+      "sha256": "d29e60c3ce541acb75c21336a35d30c9519fc61308b3a377af58bd3e4d7a41d8",
+      "bytes": 10167
+    },
+    {
+      "surah": 76,
+      "surah_name": "الإنسان",
+      "file": "076.json",
+      "ayah_count": 31,
+      "first_key": "76:1",
+      "last_key": "76:31",
+      "sha256": "72fe466b34d12c0afb1e0847876e5651ff9a1749dd735a66f0c81861828a1c14",
+      "bytes": 11330
+    },
+    {
+      "surah": 77,
+      "surah_name": "المرسلات",
+      "file": "077.json",
+      "ayah_count": 50,
+      "first_key": "77:1",
+      "last_key": "77:50",
+      "sha256": "aadd68aaf2728c3a5704b4760e6562fe5748f55ec1af40765b4a90e34b6d06d2",
+      "bytes": 11732
+    },
+    {
+      "surah": 78,
+      "surah_name": "النبأ",
+      "file": "078.json",
+      "ayah_count": 40,
+      "first_key": "78:1",
+      "last_key": "78:40",
+      "sha256": "1d66f6b5ae0786caf9685549248a37012c77eaa92e6680c101bca1ea9505314a",
+      "bytes": 10411
+    },
+    {
+      "surah": 79,
+      "surah_name": "النازعات",
+      "file": "079.json",
+      "ayah_count": 46,
+      "first_key": "79:1",
+      "last_key": "79:46",
+      "sha256": "efbda490e52cb55ff0193181b7428758c6f61f995a7dde1300a1097f8d3ad29e",
+      "bytes": 11053
+    },
+    {
+      "surah": 80,
+      "surah_name": "عبس",
+      "file": "080.json",
+      "ayah_count": 42,
+      "first_key": "80:1",
+      "last_key": "80:42",
+      "sha256": "a09cda0bb114f30e535acc7b6355a3cde53cea59facdf97a944b49e78dfffbc5",
+      "bytes": 9320
+    },
+    {
+      "surah": 81,
+      "surah_name": "التكوير",
+      "file": "081.json",
+      "ayah_count": 29,
+      "first_key": "81:1",
+      "last_key": "81:29",
+      "sha256": "e481c85ef8788a88fbd7e907f8c66d63a9d548b829c62b3a9fb6fa86c076d051",
+      "bytes": 6843
+    },
+    {
+      "surah": 82,
+      "surah_name": "الانفطار",
+      "file": "082.json",
+      "ayah_count": 19,
+      "first_key": "82:1",
+      "last_key": "82:19",
+      "sha256": "b3ec86eb635130768271c9f709a195373ae5c1f22cb451a89a99cb61eb12fb48",
+      "bytes": 4234
+    },
+    {
+      "surah": 83,
+      "surah_name": "المطففين",
+      "file": "083.json",
+      "ayah_count": 36,
+      "first_key": "83:1",
+      "last_key": "83:36",
+      "sha256": "1f70953e5097370d7af16c22a496273d934c69e1dc90084eadcb82e2d848de95",
+      "bytes": 9416
+    },
+    {
+      "surah": 84,
+      "surah_name": "الانشقاق",
+      "file": "084.json",
+      "ayah_count": 25,
+      "first_key": "84:1",
+      "last_key": "84:25",
+      "sha256": "0ae19f175f5361c29c17f8e7cc5d49d03c52fb6db09461cd9a148d8cab6cac91",
+      "bytes": 6013
+    },
+    {
+      "surah": 85,
+      "surah_name": "البروج",
+      "file": "085.json",
+      "ayah_count": 22,
+      "first_key": "85:1",
+      "last_key": "85:22",
+      "sha256": "107e73e861ad392b7b0fc11b692f961747124d814657b262124a702c869da100",
+      "bytes": 6190
+    },
+    {
+      "surah": 86,
+      "surah_name": "الطارق",
+      "file": "086.json",
+      "ayah_count": 17,
+      "first_key": "86:1",
+      "last_key": "86:17",
+      "sha256": "da5b493f7f7334ef0102afda3d2b9024c5d22548be05a715769a35b630003df9",
+      "bytes": 4471
+    },
+    {
+      "surah": 87,
+      "surah_name": "الأعلى",
+      "file": "087.json",
+      "ayah_count": 19,
+      "first_key": "87:1",
+      "last_key": "87:19",
+      "sha256": "fd94e2f03ff108e5a8ff9e3c4e21b683eebfcef60f15a0eaf5ee3f1aa8f624f5",
+      "bytes": 4869
+    },
+    {
+      "surah": 88,
+      "surah_name": "الغاشية",
+      "file": "088.json",
+      "ayah_count": 26,
+      "first_key": "88:1",
+      "last_key": "88:26",
+      "sha256": "300b50179e02deb0e35148e652a9cb37bfac3d38373b5a270c3725fd531cafe1",
+      "bytes": 5975
+    },
+    {
+      "surah": 89,
+      "surah_name": "الفجر",
+      "file": "089.json",
+      "ayah_count": 30,
+      "first_key": "89:1",
+      "last_key": "89:30",
+      "sha256": "974fa2c26e36616834b14787bcc22af06afaad16ec90dd1c0d6463948fdcd418",
+      "bytes": 8424
+    },
+    {
+      "surah": 90,
+      "surah_name": "البلد",
+      "file": "090.json",
+      "ayah_count": 20,
+      "first_key": "90:1",
+      "last_key": "90:20",
+      "sha256": "0a0520b7abe3a97fde5de215341abcd144031ea8d0d05bc3656a274e6595eeb6",
+      "bytes": 5333
+    },
+    {
+      "surah": 91,
+      "surah_name": "الشمس",
+      "file": "091.json",
+      "ayah_count": 15,
+      "first_key": "91:1",
+      "last_key": "91:15",
+      "sha256": "aeb092a311619bbfdf58e969fa86b2bcd429ed5bcaffda249a392c7fc485802f",
+      "bytes": 4033
+    },
+    {
+      "surah": 92,
+      "surah_name": "الليل",
+      "file": "092.json",
+      "ayah_count": 21,
+      "first_key": "92:1",
+      "last_key": "92:21",
+      "sha256": "52ef344decf9933ca4bea09e529094f860d4bae2fa40844a20c3492c793a0453",
+      "bytes": 5580
+    },
+    {
+      "surah": 93,
+      "surah_name": "الضحى",
+      "file": "093.json",
+      "ayah_count": 11,
+      "first_key": "93:1",
+      "last_key": "93:11",
+      "sha256": "6c24fdd8082d80b451e53115fe09aacd06afb7b0dec5c7493ccf2d0ba7de5b98",
+      "bytes": 3901
+    },
+    {
+      "surah": 94,
+      "surah_name": "الشرح",
+      "file": "094.json",
+      "ayah_count": 8,
+      "first_key": "94:1",
+      "last_key": "94:8",
+      "sha256": "6c809ab4d7a8309d9717693adb70d6bce80413086a0873f0485e0dcde4fc74cd",
+      "bytes": 2415
+    },
+    {
+      "surah": 95,
+      "surah_name": "التين",
+      "file": "095.json",
+      "ayah_count": 8,
+      "first_key": "95:1",
+      "last_key": "95:8",
+      "sha256": "8be4261196aaf6f6dcd1c5ddb56d1a7bcdc8b7671ca8e04abab7ddd4953af889",
+      "bytes": 2572
+    },
+    {
+      "surah": 96,
+      "surah_name": "العلق",
+      "file": "096.json",
+      "ayah_count": 19,
+      "first_key": "96:1",
+      "last_key": "96:19",
+      "sha256": "459b688488dd4ffbf15ec47ef9489e875c855c8e402222845ba636a023bdfaf9",
+      "bytes": 5757
+    },
+    {
+      "surah": 97,
+      "surah_name": "القدر",
+      "file": "097.json",
+      "ayah_count": 5,
+      "first_key": "97:1",
+      "last_key": "97:5",
+      "sha256": "0896f8e6b980d5e80bad2bc90072569dcdf1e0cb7b75d4f1f28bf3333a3165c3",
+      "bytes": 1784
+    },
+    {
+      "surah": 98,
+      "surah_name": "البينة",
+      "file": "098.json",
+      "ayah_count": 8,
+      "first_key": "98:1",
+      "last_key": "98:8",
+      "sha256": "f7d325480969e3acadc6b8cd94880357774f16c57f20df68b0396cdfccdb6e68",
+      "bytes": 3657
+    },
+    {
+      "surah": 99,
+      "surah_name": "الزلزلة",
+      "file": "099.json",
+      "ayah_count": 8,
+      "first_key": "99:1",
+      "last_key": "99:8",
+      "sha256": "e73dd41e80bde6c2f7221a437abf35376a5df8a2d8e9e7db500ac07844c9d0d1",
+      "bytes": 2846
+    },
+    {
+      "surah": 100,
+      "surah_name": "العاديات",
+      "file": "100.json",
+      "ayah_count": 11,
+      "first_key": "100:1",
+      "last_key": "100:11",
+      "sha256": "2ba6aa308e853b578c80438d0998bc85f40949bca6da735134e65033f41102ab",
+      "bytes": 3382
+    },
+    {
+      "surah": 101,
+      "surah_name": "القارعة",
+      "file": "101.json",
+      "ayah_count": 11,
+      "first_key": "101:1",
+      "last_key": "101:11",
+      "sha256": "0cb2f75538ff11a5648fba52638aa85a954cb4cda4bfe30be92be68d80544bb2",
+      "bytes": 2997
+    },
+    {
+      "surah": 102,
+      "surah_name": "التكاثر",
+      "file": "102.json",
+      "ayah_count": 8,
+      "first_key": "102:1",
+      "last_key": "102:8",
+      "sha256": "e8ae733e4e5dd40f7d51272467a96b78f33e9d108b7de6d41684601b235d4807",
+      "bytes": 2811
+    },
+    {
+      "surah": 103,
+      "surah_name": "العصر",
+      "file": "103.json",
+      "ayah_count": 3,
+      "first_key": "103:1",
+      "last_key": "103:3",
+      "sha256": "c6c89cf018f33b8c47ef7820d0a5505f66756d103c540a394adc490a5151b8c6",
+      "bytes": 1462
+    },
+    {
+      "surah": 104,
+      "surah_name": "الهمزة",
+      "file": "104.json",
+      "ayah_count": 9,
+      "first_key": "104:1",
+      "last_key": "104:9",
+      "sha256": "a36e6048cf91c98276b8caa161d7137a7fa0f8fc4bcc266ae078177fc3e677fc",
+      "bytes": 2672
+    },
+    {
+      "surah": 105,
+      "surah_name": "الفيل",
+      "file": "105.json",
+      "ayah_count": 5,
+      "first_key": "105:1",
+      "last_key": "105:5",
+      "sha256": "481ac039be45f0a5e9b64143881b7e92994b57a796ac2255c36f993f47a8fd49",
+      "bytes": 1833
+    },
+    {
+      "surah": 106,
+      "surah_name": "قريش",
+      "file": "106.json",
+      "ayah_count": 4,
+      "first_key": "106:1",
+      "last_key": "106:4",
+      "sha256": "61299245a42b88bba4321341ef3e18242922a3400f0464018dbbcf6b9b680be4",
+      "bytes": 1977
+    },
+    {
+      "surah": 107,
+      "surah_name": "الماعون",
+      "file": "107.json",
+      "ayah_count": 7,
+      "first_key": "107:1",
+      "last_key": "107:7",
+      "sha256": "9ae31e55608ead78e036ade16f4d7aacc292c4c6edf3158ed6aa4ecad5afcff3",
+      "bytes": 2504
+    },
+    {
+      "surah": 108,
+      "surah_name": "الكوثر",
+      "file": "108.json",
+      "ayah_count": 3,
+      "first_key": "108:1",
+      "last_key": "108:3",
+      "sha256": "2ac78c97dcd45c02f7f601da562ccfb96c1ebb5441d13a54c9472f06de61c6d1",
+      "bytes": 1398
+    },
+    {
+      "surah": 109,
+      "surah_name": "الكافرون",
+      "file": "109.json",
+      "ayah_count": 6,
+      "first_key": "109:1",
+      "last_key": "109:6",
+      "sha256": "953d56b0a7502b61da5dcdcdf4c375ba26c377fad8ee72a00887b73a89ac83a9",
+      "bytes": 2422
+    },
+    {
+      "surah": 110,
+      "surah_name": "النصر",
+      "file": "110.json",
+      "ayah_count": 3,
+      "first_key": "110:1",
+      "last_key": "110:3",
+      "sha256": "9e01fead82903aa34777d4218dd1999af6f51ac1ac5eb487a2aa3db2202c413e",
+      "bytes": 1317
+    },
+    {
+      "surah": 111,
+      "surah_name": "المسد",
+      "file": "111.json",
+      "ayah_count": 5,
+      "first_key": "111:1",
+      "last_key": "111:5",
+      "sha256": "8c7bc1f5de922038ecee31f748604ea44341cd9db0b496e8c1cda18f93568fa1",
+      "bytes": 2045
+    },
+    {
+      "surah": 112,
+      "surah_name": "الإخلاص",
+      "file": "112.json",
+      "ayah_count": 4,
+      "first_key": "112:1",
+      "last_key": "112:4",
+      "sha256": "21d832882a96fd72f7ab078ea672ec7a0628447903cb2941f5f0b08898a12326",
+      "bytes": 1201
+    },
+    {
+      "surah": 113,
+      "surah_name": "الفلق",
+      "file": "113.json",
+      "ayah_count": 5,
+      "first_key": "113:1",
+      "last_key": "113:5",
+      "sha256": "438ddbea232b96b479a3655be79ff413e66f05452ea24b8d54a3f834c4d68824",
+      "bytes": 2491
+    },
+    {
+      "surah": 114,
+      "surah_name": "الناس",
+      "file": "114.json",
+      "ayah_count": 6,
+      "first_key": "114:1",
+      "last_key": "114:6",
+      "sha256": "af633155ce392dbae6654450f5b8f39d5a4b8476ec52a9a94962897a8e089143",
+      "bytes": 2022
+    }
+  ],
+  "fadl": {
+    "file": "fadl.json",
+    "sha256": "30fdb38ddaf9558da580d1a8a17f8b81fc087618e37791e1014aac07aed4ff88",
+    "bytes": 30870
+  }
+}

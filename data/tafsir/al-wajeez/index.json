@@ -1,0 +1,695 @@
+{
+  "schema_version": 1,
+  "source_id": "wahba_al_zuhayli_al_wajeez",
+  "title": "التفسير الوجيز للدكتور وهبة الزحيلي",
+  "version": "1.0.0",
+  "total_ayah_records": 6236,
+  "total_fadl_records": 60,
+  "surah_files": [
+    {
+      "surah": 1,
+      "name": "الفاتحة",
+      "file": "001.json",
+      "ayah_count": 7
+    },
+    {
+      "surah": 2,
+      "name": "البقرة",
+      "file": "002.json",
+      "ayah_count": 286
+    },
+    {
+      "surah": 3,
+      "name": "آل عمران",
+      "file": "003.json",
+      "ayah_count": 200
+    },
+    {
+      "surah": 4,
+      "name": "النساء",
+      "file": "004.json",
+      "ayah_count": 176
+    },
+    {
+      "surah": 5,
+      "name": "المائدة",
+      "file": "005.json",
+      "ayah_count": 120
+    },
+    {
+      "surah": 6,
+      "name": "الأنعام",
+      "file": "006.json",
+      "ayah_count": 165
+    },
+    {
+      "surah": 7,
+      "name": "الأعراف",
+      "file": "007.json",
+      "ayah_count": 206
+    },
+    {
+      "surah": 8,
+      "name": "الأنفال",
+      "file": "008.json",
+      "ayah_count": 75
+    },
+    {
+      "surah": 9,
+      "name": "التوبة",
+      "file": "009.json",
+      "ayah_count": 129
+    },
+    {
+      "surah": 10,
+      "name": "يونس",
+      "file": "010.json",
+      "ayah_count": 109
+    },
+    {
+      "surah": 11,
+      "name": "هود",
+      "file": "011.json",
+      "ayah_count": 123
+    },
+    {
+      "surah": 12,
+      "name": "يوسف",
+      "file": "012.json",
+      "ayah_count": 111
+    },
+    {
+      "surah": 13,
+      "name": "الرعد",
+      "file": "013.json",
+      "ayah_count": 43
+    },
+    {
+      "surah": 14,
+      "name": "إبراهيم",
+      "file": "014.json",
+      "ayah_count": 52
+    },
+    {
+      "surah": 15,
+      "name": "الحجر",
+      "file": "015.json",
+      "ayah_count": 99
+    },
+    {
+      "surah": 16,
+      "name": "النحل",
+      "file": "016.json",
+      "ayah_count": 128
+    },
+    {
+      "surah": 17,
+      "name": "الإسراء",
+      "file": "017.json",
+      "ayah_count": 111
+    },
+    {
+      "surah": 18,
+      "name": "الكهف",
+      "file": "018.json",
+      "ayah_count": 110
+    },
+    {
+      "surah": 19,
+      "name": "مريم",
+      "file": "019.json",
+      "ayah_count": 98
+    },
+    {
+      "surah": 20,
+      "name": "طه",
+      "file": "020.json",
+      "ayah_count": 135
+    },
+    {
+      "surah": 21,
+      "name": "الأنبياء",
+      "file": "021.json",
+      "ayah_count": 112
+    },
+    {
+      "surah": 22,
+      "name": "الحج",
+      "file": "022.json",
+      "ayah_count": 78
+    },
+    {
+      "surah": 23,
+      "name": "المؤمنون",
+      "file": "023.json",
+      "ayah_count": 118
+    },
+    {
+      "surah": 24,
+      "name": "النور",
+      "file": "024.json",
+      "ayah_count": 64
+    },
+    {
+      "surah": 25,
+      "name": "الفرقان",
+      "file": "025.json",
+      "ayah_count": 77
+    },
+    {
+      "surah": 26,
+      "name": "الشعراء",
+      "file": "026.json",
+      "ayah_count": 227
+    },
+    {
+      "surah": 27,
+      "name": "النمل",
+      "file": "027.json",
+      "ayah_count": 93
+    },
+    {
+      "surah": 28,
+      "name": "القصص",
+      "file": "028.json",
+      "ayah_count": 88
+    },
+    {
+      "surah": 29,
+      "name": "العنكبوت",
+      "file": "029.json",
+      "ayah_count": 69
+    },
+    {
+      "surah": 30,
+      "name": "الروم",
+      "file": "030.json",
+      "ayah_count": 60
+    },
+    {
+      "surah": 31,
+      "name": "لقمان",
+      "file": "031.json",
+      "ayah_count": 34
+    },
+    {
+      "surah": 32,
+      "name": "السجدة",
+      "file": "032.json",
+      "ayah_count": 30
+    },
+    {
+      "surah": 33,
+      "name": "الأحزاب",
+      "file": "033.json",
+      "ayah_count": 73
+    },
+    {
+      "surah": 34,
+      "name": "سبأ",
+      "file": "034.json",
+      "ayah_count": 54
+    },
+    {
+      "surah": 35,
+      "name": "فاطر",
+      "file": "035.json",
+      "ayah_count": 45
+    },
+    {
+      "surah": 36,
+      "name": "يس",
+      "file": "036.json",
+      "ayah_count": 83
+    },
+    {
+      "surah": 37,
+      "name": "الصافات",
+      "file": "037.json",
+      "ayah_count": 182
+    },
+    {
+      "surah": 38,
+      "name": "ص",
+      "file": "038.json",
+      "ayah_count": 88
+    },
+    {
+      "surah": 39,
+      "name": "الزمر",
+      "file": "039.json",
+      "ayah_count": 75
+    },
+    {
+      "surah": 40,
+      "name": "غافر",
+      "file": "040.json",
+      "ayah_count": 85
+    },
+    {
+      "surah": 41,
+      "name": "فصلت",
+      "file": "041.json",
+      "ayah_count": 54
+    },
+    {
+      "surah": 42,
+      "name": "الشورى",
+      "file": "042.json",
+      "ayah_count": 53
+    },
+    {
+      "surah": 43,
+      "name": "الزخرف",
+      "file": "043.json",
+      "ayah_count": 89
+    },
+    {
+      "surah": 44,
+      "name": "الدخان",
+      "file": "044.json",
+      "ayah_count": 59
+    },
+    {
+      "surah": 45,
+      "name": "الجاثية",
+      "file": "045.json",
+      "ayah_count": 37
+    },
+    {
+      "surah": 46,
+      "name": "الأحقاف",
+      "file": "046.json",
+      "ayah_count": 35
+    },
+    {
+      "surah": 47,
+      "name": "محمد",
+      "file": "047.json",
+      "ayah_count": 38
+    },
+    {
+      "surah": 48,
+      "name": "الفتح",
+      "file": "048.json",
+      "ayah_count": 29
+    },
+    {
+      "surah": 49,
+      "name": "الحجرات",
+      "file": "049.json",
+      "ayah_count": 18
+    },
+    {
+      "surah": 50,
+      "name": "ق",
+      "file": "050.json",
+      "ayah_count": 45
+    },
+    {
+      "surah": 51,
+      "name": "الذاريات",
+      "file": "051.json",
+      "ayah_count": 60
+    },
+    {
+      "surah": 52,
+      "name": "الطور",
+      "file": "052.json",
+      "ayah_count": 49
+    },
+    {
+      "surah": 53,
+      "name": "النجم",
+      "file": "053.json",
+      "ayah_count": 62
+    },
+    {
+      "surah": 54,
+      "name": "القمر",
+      "file": "054.json",
+      "ayah_count": 55
+    },
+    {
+      "surah": 55,
+      "name": "الرحمن",
+      "file": "055.json",
+      "ayah_count": 78
+    },
+    {
+      "surah": 56,
+      "name": "الواقعة",
+      "file": "056.json",
+      "ayah_count": 96
+    },
+    {
+      "surah": 57,
+      "name": "الحديد",
+      "file": "057.json",
+      "ayah_count": 29
+    },
+    {
+      "surah": 58,
+      "name": "المجادلة",
+      "file": "058.json",
+      "ayah_count": 22
+    },
+    {
+      "surah": 59,
+      "name": "الحشر",
+      "file": "059.json",
+      "ayah_count": 24
+    },
+    {
+      "surah": 60,
+      "name": "الممتحنة",
+      "file": "060.json",
+      "ayah_count": 13
+    },
+    {
+      "surah": 61,
+      "name": "الصف",
+      "file": "061.json",
+      "ayah_count": 14
+    },
+    {
+      "surah": 62,
+      "name": "الجمعة",
+      "file": "062.json",
+      "ayah_count": 11
+    },
+    {
+      "surah": 63,
+      "name": "المنافقون",
+      "file": "063.json",
+      "ayah_count": 11
+    },
+    {
+      "surah": 64,
+      "name": "التغابن",
+      "file": "064.json",
+      "ayah_count": 18
+    },
+    {
+      "surah": 65,
+      "name": "الطلاق",
+      "file": "065.json",
+      "ayah_count": 12
+    },
+    {
+      "surah": 66,
+      "name": "التحريم",
+      "file": "066.json",
+      "ayah_count": 12
+    },
+    {
+      "surah": 67,
+      "name": "الملك",
+      "file": "067.json",
+      "ayah_count": 30
+    },
+    {
+      "surah": 68,
+      "name": "القلم",
+      "file": "068.json",
+      "ayah_count": 52
+    },
+    {
+      "surah": 69,
+      "name": "الحاقة",
+      "file": "069.json",
+      "ayah_count": 52
+    },
+    {
+      "surah": 70,
+      "name": "المعارج",
+      "file": "070.json",
+      "ayah_count": 44
+    },
+    {
+      "surah": 71,
+      "name": "نوح",
+      "file": "071.json",
+      "ayah_count": 28
+    },
+    {
+      "surah": 72,
+      "name": "الجن",
+      "file": "072.json",
+      "ayah_count": 28
+    },
+    {
+      "surah": 73,
+      "name": "المزمل",
+      "file": "073.json",
+      "ayah_count": 20
+    },
+    {
+      "surah": 74,
+      "name": "المدثر",
+      "file": "074.json",
+      "ayah_count": 56
+    },
+    {
+      "surah": 75,
+      "name": "القيامة",
+      "file": "075.json",
+      "ayah_count": 40
+    },
+    {
+      "surah": 76,
+      "name": "الإنسان",
+      "file": "076.json",
+      "ayah_count": 31
+    },
+    {
+      "surah": 77,
+      "name": "المرسلات",
+      "file": "077.json",
+      "ayah_count": 50
+    },
+    {
+      "surah": 78,
+      "name": "النبأ",
+      "file": "078.json",
+      "ayah_count": 40
+    },
+    {
+      "surah": 79,
+      "name": "النازعات",
+      "file": "079.json",
+      "ayah_count": 46
+    },
+    {
+      "surah": 80,
+      "name": "عبس",
+      "file": "080.json",
+      "ayah_count": 42
+    },
+    {
+      "surah": 81,
+      "name": "التكوير",
+      "file": "081.json",
+      "ayah_count": 29
+    },
+    {
+      "surah": 82,
+      "name": "الانفطار",
+      "file": "082.json",
+      "ayah_count": 19
+    },
+    {
+      "surah": 83,
+      "name": "المطففين",
+      "file": "083.json",
+      "ayah_count": 36
+    },
+    {
+      "surah": 84,
+      "name": "الانشقاق",
+      "file": "084.json",
+      "ayah_count": 25
+    },
+    {
+      "surah": 85,
+      "name": "البروج",
+      "file": "085.json",
+      "ayah_count": 22
+    },
+    {
+      "surah": 86,
+      "name": "الطارق",
+      "file": "086.json",
+      "ayah_count": 17
+    },
+    {
+      "surah": 87,
+      "name": "الأعلى",
+      "file": "087.json",
+      "ayah_count": 19
+    },
+    {
+      "surah": 88,
+      "name": "الغاشية",
+      "file": "088.json",
+      "ayah_count": 26
+    },
+    {
+      "surah": 89,
+      "name": "الفجر",
+      "file": "089.json",
+      "ayah_count": 30
+    },
+    {
+      "surah": 90,
+      "name": "البلد",
+      "file": "090.json",
+      "ayah_count": 20
+    },
+    {
+      "surah": 91,
+      "name": "الشمس",
+      "file": "091.json",
+      "ayah_count": 15
+    },
+    {
+      "surah": 92,
+      "name": "الليل",
+      "file": "092.json",
+      "ayah_count": 21
+    },
+    {
+      "surah": 93,
+      "name": "الضحى",
+      "file": "093.json",
+      "ayah_count": 11
+    },
+    {
+      "surah": 94,
+      "name": "الشرح",
+      "file": "094.json",
+      "ayah_count": 8
+    },
+    {
+      "surah": 95,
+      "name": "التين",
+      "file": "095.json",
+      "ayah_count": 8
+    },
+    {
+      "surah": 96,
+      "name": "العلق",
+      "file": "096.json",
+      "ayah_count": 19
+    },
+    {
+      "surah": 97,
+      "name": "القدر",
+      "file": "097.json",
+      "ayah_count": 5
+    },
+    {
+      "surah": 98,
+      "name": "البينة",
+      "file": "098.json",
+      "ayah_count": 8
+    },
+    {
+      "surah": 99,
+      "name": "الزلزلة",
+      "file": "099.json",
+      "ayah_count": 8
+    },
+    {
+      "surah": 100,
+      "name": "العاديات",
+      "file": "100.json",
+      "ayah_count": 11
+    },
+    {
+      "surah": 101,
+      "name": "القارعة",
+      "file": "101.json",
+      "ayah_count": 11
+    },
+    {
+      "surah": 102,
+      "name": "التكاثر",
+      "file": "102.json",
+      "ayah_count": 8
+    },
+    {
+      "surah": 103,
+      "name": "العصر",
+      "file": "103.json",
+      "ayah_count": 3
+    },
+    {
+      "surah": 104,
+      "name": "الهمزة",
+      "file": "104.json",
+      "ayah_count": 9
+    },
+    {
+      "surah": 105,
+      "name": "الفيل",
+      "file": "105.json",
+      "ayah_count": 5
+    },
+    {
+      "surah": 106,
+      "name": "قريش",
+      "file": "106.json",
+      "ayah_count": 4
+    },
+    {
+      "surah": 107,
+      "name": "الماعون",
+      "file": "107.json",
+      "ayah_count": 7
+    },
+    {
+      "surah": 108,
+      "name": "الكوثر",
+      "file": "108.json",
+      "ayah_count": 3
+    },
+    {
+      "surah": 109,
+      "name": "الكافرون",
+      "file": "109.json",
+      "ayah_count": 6
+    },
+    {
+      "surah": 110,
+      "name": "النصر",
+      "file": "110.json",
+      "ayah_count": 3
+    },
+    {
+      "surah": 111,
+      "name": "المسد",
+      "file": "111.json",
+      "ayah_count": 5
+    },
+    {
+      "surah": 112,
+      "name": "الإخلاص",
+      "file": "112.json",
+      "ayah_count": 4
+    },
+    {
+      "surah": 113,
+      "name": "الفلق",
+      "file": "113.json",
+      "ayah_count": 5
+    },
+    {
+      "surah": 114,
+      "name": "الناس",
+      "file": "114.json",
+      "ayah_count": 6
+    }
+  ],
+  "fadl_file": "fadl.json"
+}

@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "expected_ayah_records": 6236,
+  "actual_ayah_records": 6236,
+  "expected_surahs": 114,
+  "actual_surahs": 114,
+  "expected_fadl_records": 60,
+  "actual_fadl_records": 60,
+  "duplicate_keys": 0,
+  "first_key": "1:1",
+  "last_key": "114:6",
+  "canonical_sequence_exact": true,
+  "source_text_sha256_matches": 6236,
+  "source_publishable_true": 6236,
+  "source_verified_text_exact": 6236,
+  "source_exact_character_audit_true": 6236,
+  "fadl_sha256_matches": 60
+}
