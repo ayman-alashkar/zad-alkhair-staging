@@ -3709,7 +3709,7 @@ function setIndexPlaybackBoundary(stop){continuousStopRef=stop||null}
 async function playSurahFromHub(s,closeHub){
   s=Number(s)||1;
   if(!navigator.onLine&&!await ensureOfflinePlaybackReciter(s,{chooseWhenMultiple:true}))return;
-  const last=maxAyah(s);setIndexPlaybackBoundary({s,a:last});
+  setIndexPlaybackBoundary(null);
   continuousMode=true;storageSet(STORAGE_KEYS.continuous,"1");
   play={surah:s,from:1,to:1,current:1,repeatAyah:1,repeatAyahLeft:1,repeatGroup:1,repeatGroupLeft:1,repeatSurah:1,repeatSurahLeft:1,speed:play.speed||1};
   pendingSurahBasmala=(s!==1&&s!==9);basmalaFallbackTarget=null;

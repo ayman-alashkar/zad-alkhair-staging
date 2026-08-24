@@ -1411,6 +1411,29 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .prayer-times-modal .prayer-head{text-align:center}
 @media(max-width:620px){.zk-launch-motto{transform:translateY(8px)}}
 @media(max-height:690px) and (max-width:620px){.zk-launch-motto{transform:translateY(5px)}}
+/* v104 · Desktop launcher geometry.
+   The compact mobile rules above are correct for phones, but on a desktop a
+   narrow/short browser window can match those breakpoints too. Reserve the
+   approved 82px motto row and restore the desktop identity geometry for a fine
+   pointer, so «اقرأْ وارتقِ» no longer jumps upward as the window is resized. */
+@media(hover:hover) and (pointer:fine){
+  .zk-launch-card{grid-template-rows:auto 82px 1fr auto}
+  .zk-launch-motto{width:min(230px,74%);height:82px;min-height:82px;margin:0 auto;transform:translateY(10px)}
+}
+@media(max-width:620px) and (hover:hover) and (pointer:fine){
+  .zk-launch-card{
+    padding-top:clamp(76px,12vh,104px);padding-bottom:clamp(46px,7.4vh,62px);
+    gap:clamp(6px,1.15vh,12px);grid-template-rows:auto 82px 1fr auto
+  }
+  .zk-launch-identity{grid-row:1}
+  .zk-launch-mark{width:clamp(84px,18vw,104px);height:clamp(84px,18vw,104px)}
+  .zk-launch-brand{font-size:clamp(3rem,10.4vw,4.18rem)}
+  .zk-launch-motto{
+    position:absolute;left:50%;top:42%;margin:0;
+    transform:translate(-50%,10px)
+  }
+  .zk-launch-options{grid-row:3}
+}
 </style>
 
 
@@ -1580,7 +1603,16 @@ function readerLink(j=null,khatmahCode=code){
   const tail=q.toString();
   return "reader.html"+(tail?"?"+tail:"");
 }
-const readLink=j=>readerLink(j);
+function sharedJuzLink(j,khatmahCode=code){
+  const n=Number(j);
+  if(!(n>=1&&n<=30)) return readerLink(j,khatmahCode);
+  const q=new URLSearchParams();
+  const c=String(khatmahCode||"").trim().toUpperCase();
+  if(c) q.set("code",c);
+  const tail=q.toString();
+  return `juz/${n}/`+(tail?`?${tail}`:"");
+}
+const readLink=j=>sharedJuzLink(j);
 
 
 
@@ -2181,9 +2213,34 @@ function zkReplaceHash(value=""){
     history.replaceState(history.state,"",url.href);
   }catch(_){location.hash=value?String(value):""}
 }
-/* آخر ختمة دخلها صاحب هذا الجهاز.
-   يفتح بها التطبيق المثبَّت، فهو يبدأ من الجذر بلا رمز. */
+/* الختمة النشطة:
+   - LAST: آخر ختمة مؤكدة لهذا الجهاز، وتبقى بعد إغلاق التطبيق.
+   - ACTIVE_SESSION: سياق الرابط/الاختيار الحالي في هذا التبويب.
+   عند وجود الاثنين، سياق الجلسة هو الأحدث والأولى بالفتح. */
 const LAST="zad:last";
+const ACTIVE_SESSION="zad:active-khatmah-session";
+function cleanKhatmahCode(value){
+  return String(value||"").trim().toUpperCase().slice(0,4);
+}
+function activeSessionGet(){
+  try{return cleanKhatmahCode(sessionStorage.getItem(ACTIVE_SESSION));}catch(_){return ""}
+}
+function activeKhatmahGet(){
+  const session=activeSessionGet();
+  if(session)return session;
+  try{return cleanKhatmahCode(localStorage.getItem(LAST));}catch(_){return ""}
+}
+function activeKhatmahSet(value,persist=false){
+  const c=cleanKhatmahCode(value);if(!c)return "";
+  try{sessionStorage.setItem(ACTIVE_SESSION,c);}catch(_){ }
+  if(persist){try{localStorage.setItem(LAST,c);}catch(_){ }}
+  return c;
+}
+function activeKhatmahForget(value=""){
+  const c=cleanKhatmahCode(value),session=activeSessionGet();
+  try{if(!c||session===c)sessionStorage.removeItem(ACTIVE_SESSION);}catch(_){ }
+  try{const last=cleanKhatmahCode(localStorage.getItem(LAST));if(!c||last===c)localStorage.removeItem(LAST);}catch(_){ }
+}
 const linkFor=c=>location.origin+location.pathname+"#"+c;
 const vKey=()=>"zad:viewer:"+code;
 
@@ -2199,6 +2256,7 @@ function minePut(list){
 }
 function mineRemember(){
   if(!code||!viewer||!state) return;
+  activeKhatmahSet(code,true);
   const rest=mineGet().filter(x=>x.code!==code);
   rest.unshift({code,name:viewer.name,title:state.title||"",
                 publicId:state.publicId||null,at:Date.now()});
@@ -2323,7 +2381,8 @@ function loadViewer(){
 /* الرجوع إلى الرئيسية: من الشريط العلوي ومن أزرار الصفحات سواء */
 function goHome(){
   clearInterval(lkTimer); lkTimer=null; linking=false;
-  localStorage.removeItem(LAST);   /* طلب صريح للرئيسية، فلا يُعاد التوجيه */
+  /* الرجوع إلى صفحة الختمات لا يغيّر الختمة النشطة. بذلك إذا عاد القارئ
+     لاحقًا إلى واجهة زاد الخير ثم اختار «الختمات الجماعية» يرجع إلى ختمته. */
   closeLayer();
   zkReplaceHash("");code="";state=null;viewer=null;screen="home";render();
   loadPublicKhatmahs(true);
@@ -3045,7 +3104,7 @@ async function refresh(silent=false){
   /* لا تسمح لاستجابة أقدم أن تمحو حالة جلب أحدث. */
   if(seq!==refreshSeq) return false;
   state=nextState;
-  if(!state){ screen="notfound"; if(!silent) render(); return true; }
+  if(!state){ activeKhatmahForget(code); screen="notfound"; if(!silent) render(); return true; }
   if(viewer && !memberOf(viewer.id)){ /* حُذف أو دُمج */ viewer=null; localStorage.removeItem(vKey()); }
   if(screen!=="linking"){
     const me=viewer?memberOf(viewer.id):null;
@@ -3081,7 +3140,7 @@ async function doSignIn(id,name,ocode){
   }
   viewer={id:r.id,name:r.name};
   localStorage.setItem(vKey(),JSON.stringify(viewer));
-  localStorage.setItem(LAST,code);
+  activeKhatmahSet(code,true);
   if(ocode) localStorage.setItem(cKey(),ocode);
   gateName="";
   if(!await refresh(true)){
@@ -3525,6 +3584,7 @@ function leaveDialog(){
       if(!r||!r.ok) return toast((r&&r.error)||"تعذّر التنفيذ");
       mineForget(code);
       localStorage.removeItem(vKey()); localStorage.removeItem(cKey());
+      activeKhatmahForget(code);
       toast(r.freed?`غادرتَ الختمة، وتحرّرت ${ar(r.freed)} ${r.freed===1?"جزء":"أجزاء"}`:"غادرتَ الختمة");
       goHome();
     }catch(e){ toast("تعذّر الاتصال"); }
@@ -3727,7 +3787,7 @@ ${free.length?"الأجزاء المتاحة: "+free.join("، "):"اكتملت �
 
 function logoutCurrent(){
   localStorage.removeItem(vKey()); localStorage.removeItem(cKey());
-  localStorage.removeItem(LAST);
+  activeKhatmahForget(code);
   clearInterval(lkTimer); lkTimer=null; linking=false;
   viewer=null;gateName="";closeTopMenu();closeLayer();screen="gate";render();
 }
@@ -3806,7 +3866,7 @@ function bind(){
       zkReplaceHash(code);
       viewer={id:keyOf(org),name:org};
       localStorage.setItem(vKey(),JSON.stringify(viewer));
-      localStorage.setItem(LAST,code);
+      activeKhatmahSet(code,true);
       localStorage.setItem(cKey(),oc);
       /* لا يرى الرمز ولا الرابط حتى يربط تذكيره، فلا تُستعمل ختمة بلا مشرف مربوط */
       await refresh(true);
@@ -3999,7 +4059,7 @@ async function cancelKhatmah(){
     const r=await edge("cancel-khatmah",body,{key:`cancel:${code}`});
     if(!r.ok) return toast(r.error||"الرمز غير صحيح");
     localStorage.removeItem(vKey()); localStorage.removeItem(cKey());
-    localStorage.removeItem(LAST);
+    activeKhatmahForget(code);
     zkReplaceHash(""); code=""; state=null; viewer=null; screen="home"; closeLayer(); render();
     loadPublicKhatmahs(true);
     toast("أُلغيت الختمة");
@@ -4014,17 +4074,16 @@ async function boot(){
   clearInterval(lkTimer); lkTimer=null; linking=false;
 
   if(!code){
-    /* لا رمز في الرابط: نعود إلى آخر ختمة إن كان صاحبها ما زال مسجَّلًا فيها */
-    const last=localStorage.getItem(LAST);
-    if(last && localStorage.getItem("zad:viewer:"+last)){
-      location.replace(location.origin+location.pathname+"#"+last);
-      return;
-    }
-    state=null; viewer=null; screen="home"; render(); loadPublicKhatmahs(); return;
+    /* زر «الختمات الجماعية» يفتح سياق الجلسة أولًا، ثم آخر ختمة محفوظة
+       على الجهاز. إن لم توجد ختمة نشطة أصلًا نعرض صفحة الختمات المعتادة. */
+    const active=activeKhatmahGet();
+    if(active){zkReplaceHash(active);code=active;}
+    else{state=null;viewer=null;screen="home";render();loadPublicKhatmahs();return;}
   }
 
+  activeKhatmahSet(code,false);
   loadViewer();
-  if(viewer) localStorage.setItem(LAST,code);
+  if(viewer) activeKhatmahSet(code,true);
   screen="boot"; render();
   await refresh();
 }
@@ -4051,9 +4110,15 @@ document.addEventListener("click",e=>{
 },true);
 const zkLaunch=document.getElementById("zk-launch");
 const zkOfflineStatus=document.getElementById("zk-offline-status");
-function zkHasDirectTarget(){
-  const q=new URLSearchParams(location.search);
-  return !!hashCode() || q.get("zad")==="1";
+function zkCaptureIncomingKhatmah(){
+  const incoming=hashCode();
+  if(!incoming)return "";
+  /* الرابط يحدد سياق هذه الجلسة حتى لو كان المستخدم جديدًا في الختمة.
+     لا نجعله دائمًا إلا إن كان هذا الجهاز مسجّلًا فيها بالفعل. */
+  const known=!!localStorage.getItem("zad:viewer:"+incoming);
+  activeKhatmahSet(incoming,known);
+  zkReplaceHash("");
+  return incoming;
 }
 function zkShowLaunch(){
   if(!zkLaunch)return;
@@ -4097,10 +4162,18 @@ window.addEventListener("popstate",()=>zkRootBack());
 document.getElementById("zk-launch-quran")?.addEventListener("click",()=>{location.href="reader.html?home=1&from=zad"});
 document.getElementById("zk-launch-zad")?.addEventListener("click",()=>{zkHideLaunch();boot()});
 document.getElementById("zk-launch-prayer")?.addEventListener("click",()=>{document.body.classList.add("zk-launch-prayer");prayerDialog()});
-window.addEventListener("hashchange",()=>{zkHideLaunch();boot()});
+window.addEventListener("hashchange",()=>{
+  const incoming=hashCode();
+  if(incoming){
+    const known=!!localStorage.getItem("zad:viewer:"+incoming);
+    activeKhatmahSet(incoming,known);zkReplaceHash("");zkShowLaunch();return;
+  }
+  if(!zkLaunchVisible())boot();
+});
 window.addEventListener("resize",queueTopUserSync,{passive:true});
 window.addEventListener("online",outboxWake);
-if(zkHasDirectTarget())boot();else zkShowLaunch();
+zkCaptureIncomingKhatmah();
+zkShowLaunch();
 zkArmRootGuard()
 
 /* PWA shell + offline Quran/Tafsir library. The index checks status only;
